@@ -1,55 +1,47 @@
 <?php
-// index.php
+// contoh PHP sederhana (bisa dikembangkan nanti)
+$title = "ArtVault - Home";
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ARTVAULT | Home</title>
+    <title><?= $title; ?></title>
     <link rel="stylesheet" href="assets/css/home.css">
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!-- NAVBAR -->
 <nav class="navbar">
-    <div class="logo">ARTVAULT</div>
+    <div class="nav-left">
+        <img src="img/logo.png" class="logo" alt="Logo">
+    </div>
 
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
+    <ul class="nav-menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
 
-    <div class="auth-buttons">
-        <button class="btn login">Login</button>
-        <button class="btn register">Register</button>
+    <div class="nav-right">
+        <button class="btn login">Log In</button>
+        <button class="btn signup">Sign Up</button>
     </div>
 </nav>
 
-<!-- ===== HOME SECTION ===== -->
-<section id="home" class="home">
-    <div class="home-content">
+<!-- HERO / HOME SECTION -->
+<section class="hero">
+    <img src="img/banner.jpg" class="hero-img" alt="Banner">
+
+    <div class="hero-overlay">
         <h1>ARTVAULT</h1>
-        <h2>Pameran Digital Karya Siswa</h2>
-        <p>
-            Platform digital untuk menyimpan, menampilkan, dan mengelola karya siswa
-            secara terpusat sebagai dokumentasi dan portofolio internal sekolah.
-        </p>
-
-        <div class="home-buttons">
-            <button class="btn primary">Jelajahi Galeri</button>
-            <button class="btn secondary">Mulai Sekarang</button>
-        </div>
-    </div>
-
-    <div class="home-image">
-        <img src="https://via.placeholder.com/450x300" alt="Art Preview">
+        <p>Website that holds art made by our students.</p>
     </div>
 </section>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>
