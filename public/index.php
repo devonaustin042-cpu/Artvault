@@ -8,22 +8,22 @@ $title = "ArtVault - Home";
 <head>
     <meta charset="UTF-8">
     <title><?= $title; ?></title>
-    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
     <div class="nav-left">
-        <img src="img/logo.png" class="logo" alt="Logo">
+        <img src="assets/image/logo.png" class="logo" alt="Logo">
     </div>
 
     <ul class="nav-menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="features.php">Features</a></li>
+        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="contact.php">Contact</a></li>
     </ul>
 
     <div class="nav-right">
@@ -34,7 +34,7 @@ $title = "ArtVault - Home";
 
 <!-- HERO / HOME SECTION -->
 <section class="hero">
-    <img src="img/banner.jpg" class="hero-img" alt="Banner">
+    <img src="assets/image/banner.png" class="hero-img" alt="Banner">
 
     <div class="hero-overlay">
         <h1>ARTVAULT</h1>
