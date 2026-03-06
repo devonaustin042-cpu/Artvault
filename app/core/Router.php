@@ -35,9 +35,9 @@ class Router
             if(preg_match($pattern, $uri, $matches)) {
                 array_shift($matches);
 
-                require_once '../app/controllers/' . $route['controller'] . '.php';
+                require_once __DIR__ . '/../controllers/' . $route['controller'] . '.php';
 
-                $controllerClass = 'App\\Controllers\\' . $route['controller'];
+                $controllerClass = 'App\\controllers\\' . $route['controller'];
                 $controller = new $controllerClass();
                 $function = $route['function'];
 
