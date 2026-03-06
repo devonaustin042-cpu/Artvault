@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <p>WElcome 123</p>
-    <a href="/gallery">Go to Gallery</a>
+    <h1>Welcome to Artvault</h1>
+
+    <a href="/gallery">Go to Gallery</a><br>
+    <a href="/about">Go to About</a><br>
+    <a href="/contact">Go to Contact</a><br>
 </body>
 </html>
