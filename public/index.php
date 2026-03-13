@@ -9,6 +9,7 @@ $router->add('GET', '/', 'ArtController', 'home');
 $router->add('GET', '/gallery', 'ArtController', 'gallery');
 $router->add('GET', '/about', 'ArtController', 'about');
 $router->add('GET', '/contact', 'ArtController', 'contact');
+$router->add('GET', '/art-trash-hunt', 'ArtController', 'artDetail');
 
 $router->run();
 ?>

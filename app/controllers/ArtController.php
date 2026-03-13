@@ -5,22 +5,26 @@ class ArtController {
 
     public function home()
     {
-        require_once __DIR__ . '/../views/Landing/home.php';
+        require_once __DIR__ . '/../views/landing/home.php';
     }
 
     public function gallery()
     {
-        require_once __DIR__ . '/../views/Landing/gallery.php';
+        require_once __DIR__ . '/../views/landing/gallery.php';
     }
 
     public function about()
     {
-        require_once __DIR__ . '/../views/Landing/about.php';
+        require_once __DIR__ . '/../views/landing/about.php';
     }
     
     public function contact()
     {
-        require_once __DIR__ . '/../views/Landing/contact.php';
+        require_once __DIR__ . '/../views/landing/contact.php';
     }
 
+    public function artDetail()
+    {
+        require_once __DIR__ . '/../views/landing/art-trash-hunt.php';
+    }
 }
