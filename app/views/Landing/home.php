@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Artvault - Home</title>
+    
+    <link rel="stylesheet" href="/css/index.css">
 </head>
-<body>
-    <h1>Welcome to Artvault</h1>
+<body class="bg-gray-100 p-10">
 
-    <a href="/gallery">Go to Gallery</a><br>
-    <a href="/about">Go to About</a><br>
-    <a href="/contact">Go to Contact</a><br>
+    <div class="card-custom max-w-sm mx-auto text-center">
+        <h1 class="text-2xl font-bold mb-4">Uji Coba External</h1>
+        
+        <button onclick="selamatDatang()" class="btn-artvault">
+            Klik Saya
+        </button>
+    </div>
+
+    <script src="/resources/js/script.js"></script>
 </body>
 </html>

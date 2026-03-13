@@ -1,0 +1,25 @@
+{
+  "name": "artvault",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./app/resources/css/input.css -o ./public/css/index.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devonaustin042-cpu/Artvault.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devonaustin042-cpu/Artvault/issues"
+  },
+  "homepage": "https://github.com/devonaustin042-cpu/Artvault#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.1"
+  }
+}

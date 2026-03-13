@@ -1,0 +1,12 @@
+@import "tailwindcss";
+/* Ini adalah Coding External Custom */
+@layer components {
+  .btn-artvault {
+    @apply bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md 
+           hover:bg-blue-700 hover:scale-105 transition-all duration-300;
+  }
+
+  .card-custom {
+    @apply border border-gray-200 p-4 rounded-2xl bg-white shadow-sm;
+  }
+}
