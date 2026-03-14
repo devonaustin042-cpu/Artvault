@@ -53,7 +53,7 @@
                     <p class="art-author">Made by : Odin Madun</p>
                 </div>
             </a>
-            <a href="/art-trash-hunt" class="art-card">
+            <a href="/detail" class="art-card">
                 <img src="/img/gallery/Trash-Hunt.png" alt="Trash Hunt">
                 <div class="art-info">
                     <p class="art-title">Trash Hunt</p>
@@ -132,7 +132,7 @@
     <div class="add-work-popup">
 
         <div class="add-work-header">
-            <img src="img/logo/artvault.png" alt="Artvault Logo" class="add-work-logo">
+            <img src="/img/logo/artvault.png" alt="Artvault Logo" class="add-work-logo">
             <span>Come on, submit your interesting work to be exhibited!</span>
             <img src="/img/icon/user.png" alt="User" class="user-icon">
         </div>

@@ -70,7 +70,7 @@
  
                 <!-- Edit / Delete -->
                 <div class="art-detail-actions">
-                    <button class="btn-edit" onclick="location.href='/edit-art'">Edit</button>
+                    <button class="btn-edit" onclick="openEditWork()">Edit</button>
                     <span class="art-action-or">Or</span>
                     <button class="btn-delete" onclick="confirmDelete()">Delete</button>
                 </div>
@@ -121,6 +121,43 @@
         </div>
  
     </div>
+        <!-- POPUP EDIT WORK -->
+    <div class="add-work-overlay" id="editWorkOverlay">
+        <div class="add-work-popup">
+
+            <div class="add-work-header">
+                <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="add-work-logo">
+                <span>Manage your artwork here edit or remove it anytime!</span>
+                <img src="/img/icon/user.png" alt="User" class="user-icon">
+            </div>
+
+            <div class="add-work-body">
+                <button class="btn-back-popup" onclick="closeEditWork()">
+                    <img src="/img/icon/back.png" alt="Back" class="back-icon-2">
+                </button>
+
+                <!-- Preview gambar -->
+                <div class="upload-area" onclick="document.getElementById('editFileInput').click()">
+                    <input type="file" id="editFileInput" accept="image/*" style="display:none" onchange="previewEditImage(event)">
+                    <img id="editPreviewImg" src="/img/gallery/trash-hunt.png" alt="Trash Hunt" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+                </div>
+
+                <!-- Name -->
+                <div class="add-work-field">
+                    <input type="text" value="Trash Hunt">
+                </div>
+
+                <!-- Description -->
+                <div class="add-work-field">
+                    <textarea rows="4">The illustration titled "Trash Hunt" presents a vibrant and imaginative urban scene with a dynamic visual style. At the top of the artwork, the large title "TRASH HUNT" appears in bright, colorful letters that resemble a game logo or an adventure title. This immediately gives the impression that the artwork is related to a mission or an exciting adventure focused on collecting or dealing with trash...</textarea>
+                </div>
+
+                <!-- Submit -->
+                <button class="btn-add-submit">Done!</button>
+
+            </div>
+        </div>
+    </div>
  
     <script>
         function toggleDesc() {
@@ -149,11 +186,25 @@
     `;
     overlay.id = 'confirmOverlay';
     document.body.appendChild(overlay);
+
 }
 
 function closeConfirm() {
     const overlay = document.getElementById('confirmOverlay');
     if (overlay) overlay.remove();
+}
+function openEditWork() {
+    document.getElementById('editWorkOverlay').classList.add('active');
+}
+
+function closeEditWork() {
+    document.getElementById('editWorkOverlay').classList.remove('active');
+}
+
+function previewEditImage(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    document.getElementById('editPreviewImg').src = URL.createObjectURL(file);
 }
     </script>
 

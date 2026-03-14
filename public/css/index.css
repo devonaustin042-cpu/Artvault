@@ -722,6 +722,18 @@
   object-fit: contain;
   justify-content: center;
 }
+.add-work-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+.add-work-overlay.active {
+  display: flex;
+}
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
 *, *::before, *::after {
   box-sizing: border-box;
