@@ -33,15 +33,63 @@
         </div>
     </nav>
 
-<div class="Box-1"></div>
+    <div class="Box-1"></div>
 
-    <!-- HERO BANNER -->
-    <section class="hero">
-        <img src="/img/banner/Banner-1.png" alt="Artvault Banner" class="hero-img">
-        </div>
+        <!-- HERO BANNER -->
+        <section class="hero">
+            <img src="/img/banner/Banner-1.png" alt="Artvault Banner" class="hero-img">
+            </div>
+
+    <div class="Box-1"></div>
+
+                <!-- About Our Website -->
+
+    <section class="about-section">
+    <div class="about-text">
+        <h1>More About Our Website</h1>
+        <p>
+        More than just a storage space, Artvault serves as the primary platform for
+        young creators to appreciate their work. We believe that schools are not just
+        places to learn, but also suburban fields where brilliant ideas grow.
+        Here, every stroke of art, line of code, and string of words created by
+        students has a life and a story of its own. We dedicate this website to
+        ensuring that their hard work and imagination are not lost to time, but rather
+        live forever as a legacy of achievement worthy of celebration and recognition.
+        </p>
+    </div>
+    <div class="about-image">
+        <img src="/img/gallery/homeimg.png" alt="Colorful classroom">
+    </div>
     </section>
-<div class="margin-pembatas-sementara"></div>
-<div class="box-2"></div>
+
+    <div class="Box-1"></div>
+
+    <section class="art-of-the-day" style="background-image: url('img/banner/background.png');">
+        <h2>Art Of The Day</h2>
+            <div class="art-grid">
+                    <div class="art-card">
+                        <p class="art-credit">Made By : Nicho</p>
+                        <img src="img/gallery/sparkle-1.png" alt="Art 1">
+                    </div>
+                    <div class="art-card">
+                        <p class="art-credit">Made By : Nicho</p>
+                        <img src="img/gallery/haze-1.png" alt="Art 2">
+                    </div>
+                    <div class="art-card">
+                        <p class="art-credit">Made By : Nicho</p>
+                        <img src="img/gallery/Mei-1.png" alt="Art 3">
+                    </div>
+            </div>
+    </section>
+
+    <div class="Box-1"></div>
+    <!-- Pembatas saja ini ya diingat ! (diapus aja kalau udah ada konten lain) -->
+
+        </section>
+    <div class="margin-pembatas-sementara"></div>
+    <div class="box-2"></div>
+
+
          <!-- FOOTER --> 
 
           <!-- Brand -->

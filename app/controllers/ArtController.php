@@ -25,6 +25,11 @@ class ArtController {
 
     public function artDetail()
     {
-        require_once __DIR__ . '/../views/landing/art-trash-hunt.php';
+        require_once __DIR__ . '/../views/main page/author/detail.php';
+    }
+
+    public function authorgallery()
+    {
+        require_once __DIR__ . '/../views/main page/author/gallery.php';
     }
 }
