@@ -16,17 +16,14 @@
         <div class="nav-logo">
             <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
         </div>
-
         <ul class="nav-menu">
-            <li><a href="/" class="">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/gallery" class="active">Gallery</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/about">About</a></li>
         </ul>
-
         <div class="nav-actions">
-            <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-            <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
+            <img src="/img/icon/user.png" alt="User Icon" class="user-icon" onclick="toggleUserMenu()">
         </div>
     </nav>
 
@@ -42,84 +39,84 @@
         </div>
 
         <div class="gallery-grid">
-            <a href="/art/1" class="art-card">
+            <a href="/" class="art-card">
                 <img src="/img/gallery/Claymonster.png" alt="Claymonster">
                 <div class="art-info">
                     <p class="art-title">Claymonster</p>
                     <p class="art-author">Made by : Chisa Evelyn</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/2" class="art-card">
                 <img src="/img/gallery/Koi-Pond.png" alt="Koi Pond">
                 <div class="art-info">
                     <p class="art-title">Koi Pond</p>
                     <p class="art-author">Made by : Odin Madun</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/detail" class="art-card">
                 <img src="/img/gallery/Trash-Hunt.png" alt="Trash Hunt">
                 <div class="art-info">
                     <p class="art-title">Trash Hunt</p>
                     <p class="art-author">Made by : Viktor Wembu</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/4" class="art-card">
                 <img src="/img/gallery/Cherish-the-moment.png" alt="Cherish the moment">
                 <div class="art-info">
                     <p class="art-title">Cherish the moment</p>
                     <p class="art-author">Made by : Daniel Caesar</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/5" class="art-card">
                 <img src="/img/gallery/Ayo-punya-cita-cita.png" alt="Ayo punya cita-cita">
                 <div class="art-info">
                     <p class="art-title">Ayo punya cita-cita</p>
                     <p class="art-author">Made by : Faysal Pratama Agung</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/6" class="art-card">
                 <img src="/img/gallery/Billie-Eilish.png" alt="Billie Eilish">
                 <div class="art-info">
                     <p class="art-title">Billie Eilish</p>
                     <p class="art-author">Made by : Depon Vintjai</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/7" class="art-card">
                 <img src="/img/gallery/A-positive-spin-on.png">
                 <div class="art-info">
                     <p class="art-title">A positive spin on n...</p>
                     <p class="art-author">Made by : Tang You Hoong</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/8" class="art-card">
                 <img src="/img/gallery/Menggapai-Indonesia.png" alt="Menggapai Indonese...">
                 <div class="art-info">
                     <p class="art-title">Menggapai Indonese...</p>
                     <p class="art-author">Made by : Marcello Adil</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/9" class="art-card">
                 <img src="/img/gallery/Vibrant-River.png" alt="Vibrant River">
                 <div class="art-info">
                     <p class="art-title">Vibrant River</p>
                     <p class="art-author">Made by : Reyfan Andika</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/10" class="art-card">
                 <img src="/img/gallery/Anonymous-Protagonis.png" alt="Anonymous Protagonis">
                 <div class="art-info">
                     <p class="art-title">Anonymous Protag...</p>
                     <p class="art-author">Made by : Felicia Chiao</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/11" class="art-card">
                 <img src="/img/gallery/A-Chill-Doomsday.png" alt="A Chill Doomsday">
                 <div class="art-info">
                     <p class="art-title">A Chill Doomsday</p>
                     <p class="art-author">Made by : Nicholas Jo</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/12" class="art-card">
                 <img src="/img/gallery/Melody-in-Guitar.png" alt="Melody in Guitar">
                 <div class="art-info">
                     <p class="art-title">Melody in Guitar</p>
@@ -129,13 +126,13 @@
         </div>
 
         <div class="add-work-wrap">
-            <button class="btn-add-work">+ Add your work!</button>
+            <button class="btn-add-work" onclick="openAddWork()">+ Add your work!</button>
             <!-- POPUP ADD WORK -->
 <div class="add-work-overlay" id="addWorkOverlay">
     <div class="add-work-popup">
 
         <div class="add-work-header">
-            <img src="img/logo/artvault.png" alt="Artvault Logo" class="add-work-logo">
+            <img src="/img/logo/artvault.png" alt="Artvault Logo" class="add-work-logo">
             <span>Come on, submit your interesting work to be exhibited!</span>
             <img src="/img/icon/user.png" alt="User" class="user-icon">
         </div>
