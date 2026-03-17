@@ -252,7 +252,7 @@
   box-shadow: 0 8px 24px rgba(93,90,136,0.18);
   border-color: var(--purple-soft);
 }
-.art-card img {
+.art-card > img {
   width: 100%;
   height: 460px;
   object-fit: cover;
@@ -441,6 +441,18 @@
   width: 100px;
   height: 100px;
   object-fit: contain;
+}
+.Art-like-img {
+  width: 20px !important;
+  height: 20px !important;
+  object-fit: contain;
+  display: inline-block;
+}
+.art-like {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
 }
 .art-detail-page {
   background: #fff;
@@ -779,7 +791,7 @@ body {
   margin-left: -500px;
 }
 .nav-menu a {
-  font-size: 1rem;
+  font-size: 1.5em;
   font-weight: 700;
   color: rgba(255,255,255,0.8);
   text-decoration: none;
