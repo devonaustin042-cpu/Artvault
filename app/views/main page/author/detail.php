@@ -34,7 +34,7 @@
  
         <!-- Header -->
         <div class="art-detail-header">
-            <a href="/gallery" class="btn-back"><img src="/img/icon/back.png"></a>
+            <a href="author/gallery" class="btn-back"><img src="/img/icon/back.png"></a>
             <h2>This is the detail of the work!</h2>
         </div>
  
