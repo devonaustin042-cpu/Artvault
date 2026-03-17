@@ -294,3 +294,5 @@ function previewEditImage(event) {
     <script src="/js/script.js"></script>
 </body>
 </html>
+
+<!-- Develop Detail Page -->
