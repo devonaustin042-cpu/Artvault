@@ -175,3 +175,5 @@
     <script src="/js/script.js"></script>
 </body>
 </html>
+
+<!-- /* Tugas Pengerjaan Landing-Page-Homepage (Masih Setengah Jadi-Menunggu Design Figma) */ -->
