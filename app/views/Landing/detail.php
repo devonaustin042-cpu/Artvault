@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artvault - Home</title>
-
+    <title>Artvault - Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-
 
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -21,10 +18,12 @@
         </div>
 
 
+
         <div class="nav-actions">
-            <img src="/img/icon/user.png" alt="User Icon" class="user-icon" onclick="toggleUserMenu()">
+            <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
+            <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
         </div>
-    </nav>        
+    </nav>
 
 
     <!-- Starting Point FONK FONK FONK -->
@@ -67,13 +66,7 @@
                     <p>In the center of the composition, two main characters are depicted wearing green uniforms that resemble those of sanitation workers or environmental rescue team members. One of the characters appears in the foreground in an active pose, as if they are controlling or pushing through a stream of water mixed with trash. The character looks energetic and determined, with a facial expression that reflects enthusiasm and dedication to their task.</p>
                     <button class="btn-read-more" onclick="toggleDesc()">Show Less</button>
                 </div>
- 
-                <!-- Edit / Delete -->
-                <div class="art-detail-actions">
-                    <button class="btn-edit" onclick="openEditWork()">Edit</button>
-                    <span class="art-action-or">Or</span>
-                    <button class="btn-delete" onclick="confirmDelete()">Delete</button>
-                </div>
+
             </div>
  
         </div>

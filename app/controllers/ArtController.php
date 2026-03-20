@@ -32,4 +32,9 @@ class ArtController {
     {
         require_once __DIR__ . '/../views/main page/author/gallery.php';
     }
+
+    public function landingArtdetail()
+    {
+        require_once __DIR__ . '/../views/landing/detail.php';
+    }
 }
