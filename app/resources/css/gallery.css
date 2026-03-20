@@ -107,7 +107,7 @@
     border-color: var(--purple-soft);
 }
 
-.art-card img {
+.art-card > img {
     width: 100%;
     height: 460px;
     object-fit: cover;
@@ -319,4 +319,18 @@
     width: 100px;
     height: 100px;
     object-fit: contain;
+}
+
+.Art-like-img {
+    width: 20px !important;  /* Pakai !important kalau dia masih bandel */
+    height: 20px !important; /* Paksa jadi kotak kecil */
+    object-fit: contain;
+    display: inline-block;
+}
+
+.art-like {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
 }
