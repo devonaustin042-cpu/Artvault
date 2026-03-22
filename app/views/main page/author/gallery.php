@@ -55,7 +55,8 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">49</p>
                 </div>
             </a>
-            <a href="/author/detail" class="art-card">
+            <!-- Fixed -->
+            <a href="/author/detail" class="art-card"> 
                 <img src="/img/gallery/Trash-Hunt.png" alt="Trash Hunt">
                 <div class="art-info">
                     <p class="art-title">Trash Hunt</p>
