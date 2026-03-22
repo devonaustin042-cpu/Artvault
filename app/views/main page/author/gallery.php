@@ -264,3 +264,5 @@
     <script src="/js/script.js"></script>
 </body>
 </html>
+
+<!-- Develop Author Page Gallery -->

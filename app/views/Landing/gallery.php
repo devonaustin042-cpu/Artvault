@@ -42,7 +42,7 @@
         </div>
 
         <div class="gallery-grid">
-            <a href="" class="art-card">
+            <a href="/art/1" class="art-card">
                 <img src="/img/gallery/Claymonster.png" alt="Claymonster">
                 <div class="art-info">
                     <p class="art-title">Claymonster</p>
