@@ -52,32 +52,32 @@
         young creators to appreciate their work. We believe that schools are not just
         places to learn, but also suburban fields where brilliant ideas grow.
         Here, every stroke of art, line of code, and string of words created by
-        students has a life and a story of its own. We dedicate this website to
+        students has a life and a story of its own. We believe this website to
         ensuring that their hard work and imagination are not lost to time, but rather
         live forever as a legacy of achievement worthy of celebration and recognition.
         </p>
     </div>
     <div class="about-image">
-        <img src="/img/gallery/homeimg.png" alt="Colorful classroom">
+        <img src="/img/gallery/Homeimg.png" alt="Colorful classroom">
     </div>
     </section>
 
     <div class="Box-1"></div>
 
-    <section class="art-of-the-day" style="background-image: url('img/banner/background.png');">
+    <section class="art-of-the-day" style="background-image: url('/img/banner/background.png');">
         <h2>Art Of The Day</h2>
             <div class="art-grid">
                     <div class="art-card">
                         <p class="art-credit">Made By : Nicho</p>
-                        <img src="img/gallery/sparkle-1.png" alt="Art 1">
+                        <img src="/img/gallery/sparkle-1.png" alt="Art 1">
                     </div>
                     <div class="art-card">
                         <p class="art-credit">Made By : Nicho</p>
-                        <img src="img/gallery/haze-1.png" alt="Art 2">
+                        <img src="/img/gallery/haze-1.png" alt="Art 2">
                     </div>
                     <div class="art-card">
                         <p class="art-credit">Made By : Nicho</p>
-                        <img src="img/gallery/Mei-1.png" alt="Art 3">
+                        <img src="/img/gallery/Mei-1.png" alt="Art 3">
                     </div>
             </div>
     </section>
@@ -108,9 +108,9 @@
                     <h4 class="footer-heading">Navigation</h4>
                     <ul class="footer-links">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/gallery.php">Gallery</a></li>
-                        <li><a href="/about.php">About</a></li>
-                        <li><a href="/contact.php">Contact</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
 

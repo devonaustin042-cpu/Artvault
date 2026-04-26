@@ -3,38 +3,15 @@ namespace App\Controllers;
 
 class ArtController {
 
-    public function home()
+    public function index()
     {
-        require_once __DIR__ . '/../views/landing/home.php';
+        require_once __DIR__ . '/../views/Landing/gallery.php';
     }
 
-    public function gallery()
+    public function show($id = null)
     {
-        require_once __DIR__ . '/../views/landing/gallery.php';
+        // $id akan digunakan nanti untuk mengambil data karya dari database
+        require_once __DIR__ . '/../views/Landing/detail.php';
     }
 
-    public function about()
-    {
-        require_once __DIR__ . '/../views/landing/about.php';
-    }
-    
-    public function contact()
-    {
-        require_once __DIR__ . '/../views/landing/contact.php';
-    }
-
-    public function artDetail()
-    {
-        require_once __DIR__ . '/../views/main page/author/detail.php';
-    }
-
-    public function authorgallery()
-    {
-        require_once __DIR__ . '/../views/main page/author/gallery.php';
-    }
-
-    public function landingArtdetail()
-    {
-        require_once __DIR__ . '/../views/landing/detail.php';
-    }
 }

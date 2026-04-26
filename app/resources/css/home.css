@@ -1,0 +1,104 @@
+/* ══ HOME PAGE ══ */
+
+.Box-1 {
+  background-color: #3E4053;
+  height: 40px;
+}
+
+.hero {
+  margin-top: -20px;
+}
+
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 80px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+  text-align: center;
+}
+
+.about-text h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: #1F3C88;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 2rem;
+  color: #333333;
+  line-height: 1.8;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  height: 660px;
+  padding-right: 40px;
+}
+
+.art-of-the-day {
+  padding: 40px 60px;
+  background: url('/img/banner/background.png') center/cover no-repeat;
+  height: 700px;
+  width: 100%;
+}
+
+.art-of-the-day-logo {
+  width: 200px;
+  height: 200px;
+  margin-top: -200px;
+  margin-bottom: -200px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 1600px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.art-of-the-day h2 {
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1F3C88;
+  margin-bottom: 24px;
+  font-variant: small-caps;
+}
+
+.art-grid {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.art-credit {
+  font-size: 1.44rem;
+  font-weight: 700;
+  color: #1F3C88;
+  text-align: center;
+}
+
+.art-card img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+
+.box-2 {
+  background: linear-gradient(to right, #1f3c88 0%, #2a3f70 50%, #3e4052 100%);
+  text-align: center;
+  padding: 0.9rem 1rem;
+  height: 40px;
+}

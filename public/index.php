@@ -5,13 +5,15 @@ use App\Core\Router;
 
 $router = new Router();
 
-$router->add('GET', '/', 'ArtController', 'home');
-$router->add('GET', '/gallery', 'ArtController', 'gallery');
-$router->add('GET', '/about', 'ArtController', 'about');
-$router->add('GET', '/contact', 'ArtController', 'contact');
-$router->add('GET', '/author/detail', 'ArtController', 'artDetail');
-$router->add('GET', '/author/gallery', 'ArtController', 'authorgallery');
-$router->add('GET', '/landing/detail', 'ArtController', 'landingArtdetail');
+$router->add('GET', '/', 'HomeController', 'index');
+$router->add('GET', '/about', 'HomeController', 'about');
+$router->add('GET', '/contact', 'HomeController', 'contact');
+
+$router->add('GET', '/gallery', 'ArtController', 'index');
+$router->add('GET', '/gallery/{id}', 'ArtController', 'show');
+
+$router->add('GET', '/author/gallery/{id}', 'AuthorController', 'gallery');
+$router->add('GET', '/author/detail/{id}', 'AuthorController', 'detail');
 
 $router->run();
 ?>
