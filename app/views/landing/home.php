@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/app/resources/css/home.css">
 </head>
 <body>
 
@@ -29,7 +30,7 @@
 
         <div class="nav-actions">
             <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-            <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
+            <button class="btn btn-signup" onclick="location.href='/signin'">Sign Up</button>
         </div>
     </nav>
 
@@ -108,9 +109,9 @@
                     <h4 class="footer-heading">Navigation</h4>
                     <ul class="footer-links">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/gallery.php">Gallery</a></li>
-                        <li><a href="/about.php">About</a></li>
-                        <li><a href="/contact.php">Contact</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
 

@@ -22,22 +22,22 @@
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
     font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
   }
+  /* ... other base styles ... */
   img, video {
     max-width: 100%;
     height: auto;
-    display: block;
-    vertical-align: middle;
   }
-  button, input, select, textarea {
+  button, input, select, optgroup, textarea, ::file-selector-button {
     font: inherit;
     color: inherit;
-    background: transparent;
   }
   a {
     color: inherit;
-    text-decoration: none;
+    text-decoration: inherit;
   }
 }
 
@@ -54,10 +54,9 @@ body {
   font-family: 'Lato', sans-serif;
   background: #f0f2f5;
   margin: 0;
-  overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* Navbar */
 .navbar {
   position: sticky;
   top: 0;
@@ -72,6 +71,7 @@ body {
 }
 .nav-logo .logo-img {
   height: 90px;
+  margin-top: 20px;
   width: auto;
   object-fit: contain;
 }
@@ -84,32 +84,14 @@ body {
   font-size: 1.2rem;
   font-weight: 700;
   color: rgba(255,255,255,0.8);
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 .nav-menu a:hover, .nav-menu a.active {
   color: var(--gold);
 }
-.nav-actions {
-  display: flex;
-  gap: 1rem;
-}
-.btn {
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 700;
-  cursor: pointer;
-  border: none;
-}
-.btn-login {
-  background: var(--gold);
-  color: #374366;
-}
-.btn-signup {
-  background: #fff;
-  color: #374366;
-}
 
-/* FOOTER */
+/* Footer */
 .footer {
   background: #ffffff;
   border-top: 1px solid #e0e4ed;
@@ -119,26 +101,10 @@ body {
   justify-content: space-between;
   padding: 2.5rem 3rem;
   flex-wrap: wrap;
-  gap: 2rem;
-}
-.footer-heading {
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-.footer-links li {
-  margin-bottom: 0.5rem;
 }
 .footer-bottom {
   background: linear-gradient(to right, #1f3c88 0%, #2a3f70 50%, #3e4052 100%);
   text-align: center;
-  padding: 1rem;
+  padding: 0.9rem 1rem;
   color: #fff;
-}
-.Box-1 {
-  background-color: #3E4053;
-  height: 40px;
 }

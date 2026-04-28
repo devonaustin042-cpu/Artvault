@@ -18,7 +18,7 @@
         </div>
 
         <ul class="nav-menu">
-            <li><a href="/" class="">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/gallery">Gallery</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/about" class="active">About</a></li>
@@ -26,6 +26,6 @@
 
         <div class="nav-actions">
             <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-            <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
+            <button class="btn btn-signup" onclick="location.href='/signin'">Sign Up</button>
         </div>
     </nav>
