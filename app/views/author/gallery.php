@@ -16,14 +16,17 @@
         <div class="nav-logo">
             <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
         </div>
+
         <ul class="nav-menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/" class="">Home</a></li>
+            <li><a href="/gallery" class="active">Gallery</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/about">About</a></li>
         </ul>
+
         <div class="nav-actions">
-            <img src="/img/icon/user.png" alt="User Icon" class="user-icon" onclick="toggleUserMenu()">
+            <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
+            <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
         </div>
     </nav>
 
@@ -39,7 +42,7 @@
         </div>
 
         <div class="gallery-grid">
-            <a href="/author/art/1" class="art-card">
+            <a href="/art/1" class="art-card">
                 <img src="/img/gallery/Claymonster.png" alt="Claymonster">
                 <div class="art-info">
                     <p class="art-title">Claymonster</p>
@@ -47,7 +50,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">25</p>
                 </div>
             </a>
-            <a href="/author/art/2" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Koi-Pond.png" alt="Koi Pond">
                 <div class="art-info">
                     <p class="art-title">Koi Pond</p>
@@ -55,8 +58,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">49</p>
                 </div>
             </a>
-            <!-- Fixed -->
-            <a href="/author/art/3" class="art-card"> 
+            <a href="/landing/detail" class="art-card">
                 <img src="/img/gallery/Trash-Hunt.png" alt="Trash Hunt">
                 <div class="art-info">
                     <p class="art-title">Trash Hunt</p>
@@ -64,7 +66,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">78</p>
                 </div>
             </a>
-            <a href="/author/art/4" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Cherish-the-moment.png" alt="Cherish the moment">
                 <div class="art-info">
                     <p class="art-title">Cherish the moment</p>
@@ -72,7 +74,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">65</p>
                 </div>
             </a>
-            <a href="/author/art/5" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Ayo-punya-cita-cita.png" alt="Ayo punya cita-cita">
                 <div class="art-info">
                     <p class="art-title">Ayo punya cita-cita</p>
@@ -80,7 +82,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">69</p>
                 </div>
             </a>
-            <a href="/author/art/6" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Billie-Eilish.png" alt="Billie Eilish">
                 <div class="art-info">
                     <p class="art-title">Billie Eilish</p>
@@ -88,7 +90,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">72</p>
                 </div>
             </a>
-            <a href="/author/art/7" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/A-positive-spin-on.png">
                 <div class="art-info">
                     <p class="art-title">A positive spin on n...</p>
@@ -96,7 +98,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">51</p>
                 </div>
             </a>
-            <a href="/author/art/8" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Menggapai-Indonesia.png" alt="Menggapai Indonese...">
                 <div class="art-info">
                     <p class="art-title">Menggapai Indonese...</p>
@@ -104,7 +106,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">91</p>
                 </div>
             </a>
-            <a href="/author/art/9" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Vibrant-River.png" alt="Vibrant River">
                 <div class="art-info">
                     <p class="art-title">Vibrant River</p>
@@ -112,7 +114,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">34</p>
                 </div>
             </a>
-            <a href="/author/art/10" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Anonymous-Protagonis.png" alt="Anonymous Protagonis">
                 <div class="art-info">
                     <p class="art-title">Anonymous Protag...</p>
@@ -120,7 +122,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">101</p>
                 </div>
             </a>
-            <a href="/author/art/11" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/A-Chill-Doomsday.png" class="art-card" alt="A Chill Doomsday">
                 <div class="art-info">
                     <p class="art-title">A Chill Doomsday</p>
@@ -128,7 +130,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">99</p>
                 </div>
             </a>
-            <a href="/author/art/12" class="art-card">
+            <a href="" class="art-card">
                 <img src="/img/gallery/Melody-in-Guitar.png" alt="Melody in Guitar">
                 <div class="art-info">
                     <p class="art-title">Melody in Guitar</p>
@@ -138,14 +140,14 @@
             </a>
         </div>
 
-        <div class="add-work-wrap">
-            <button class="btn-add-work" onclick="openAddWork()">+ Add your work!</button>
-            <!-- POPUP ADD WORK -->
+         <div class="add-work-wrap">
+              <button class="btn-add-work" onclick="openAddWork()">+ Add your work!</button>
+                    <!-- POPUP ADD WORK -->
         <div class="add-work-overlay" id="addWorkOverlay">
             <div class="add-work-popup">
 
                 <div class="add-work-header">
-                    <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="add-work-logo">
+                    <img src="img/logo/artvault.png" alt="Artvault Logo" class="add-work-logo">
                     <span>Come on, submit your interesting work to be exhibited!</span>
                     <img src="/img/icon/user.png" alt="User" class="user-icon">
                 </div>
@@ -180,7 +182,8 @@
     </div>
 </div>
 
-    <!-- FOOTER --> 
+    <!-- FOOTER -->
+    <div class="box-2"></div>
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
@@ -189,7 +192,6 @@
             </div>
         </div>
         <div class="footer-main">
-            <!-- Navigation -->
             <div class="footer-col">
                 <h4 class="footer-heading">Navigation</h4>
                 <ul class="footer-links">
@@ -199,33 +201,23 @@
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
-
-            <!-- Contact -->
             <div class="footer-col">
                 <h4 class="footer-heading">Contact</h4>
                 <ul class="footer-contact">
                     <li>
-                        <span class="contact-icon">
-                            <img src="/img/icon/mail.png" alt="Email Icon" class="contact-icon-img">
-                        </span>
+                        <span class="contact-icon"><img src="/img/icon/mail.png" alt="Email" class="contact-icon-img"></span>
                         <span>Artvault@gmail.com</span>
                     </li>
                     <li>
-                        <span class="contact-icon">
-                            <img src="/img/icon/location.png" alt="Location Icon" class="contact-icon-img">
-                        </span>
+                        <span class="contact-icon"><img src="/img/icon/location.png" alt="Location" class="contact-icon-img"></span>
                         <span>Pontianak, Kalimantan Barat, Indonesia</span>
                     </li>
                     <li>
-                        <span class="contact-icon">
-                            <img src="/img/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
-                        </span>
+                        <span class="contact-icon"><img src="/img/icon/telephone.png" alt="Phone" class="contact-icon-img"></span>
                         <span>+62 897 3871 170</span>
                     </li>
                 </ul>
             </div>
-
-            <!-- Help & Center -->
             <div class="footer-col">
                 <h4 class="footer-heading">Help & Center</h4>
                 <ul class="footer-links">
@@ -235,8 +227,6 @@
                     <li><a href="#">Cancellation and Refund Policy</a></li>
                 </ul>
             </div>
-
-            <!-- Logo + Sosmed -->
             <div class="footer-col footer-social-col">
                 <img src="/img/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
                 <div class="footer-social">
@@ -250,8 +240,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Bar -->
         <div class="footer-bottom">
             <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
         </div>
@@ -273,10 +261,10 @@
         preview.src = URL.createObjectURL(file);
         preview.style.display = 'block';
         uploadBtn.style.display = 'none';
+        
     }
     </script>
+    
     <script src="/js/script.js"></script>
 </body>
 </html>
-
-<!-- Develop Author Page Gallery -->
