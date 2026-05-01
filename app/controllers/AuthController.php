@@ -9,6 +9,10 @@ class AuthController {
         require_once __DIR__ . '/../views/landing/register.php';
     }
 
+    public function login() {
+        require_once __DIR__ . '/../views/landing/login.php';
+    }
+
     public function handleSignUp() {
         // PASTIKAN TIDAK ADA echo/var_dump/die DI SINI
         

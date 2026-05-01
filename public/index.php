@@ -19,6 +19,7 @@ $router->add('GET', '/author/gallery', 'ArtController', 'authorGallery');
 $router->add('GET', '/author/art/{id}', 'ArtController', 'authorDetail');
 
 // Auth Routes
+$router->add('GET', '/login', 'AuthController', 'login');
 $router->add('GET', '/register', 'AuthController', 'index');        
 $router->add('POST', '/post-register', 'AuthController', 'handleSignUp');
 
