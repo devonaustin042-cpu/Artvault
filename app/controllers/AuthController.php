@@ -1,21 +1,26 @@
 <?php
 namespace App\Controllers;
 
+require_once __DIR__ . '/../models/User_model.php';
+
 class AuthController {
+    
     public function index() {
-        // Karena dipanggil dari public/index.php, path ini harus tepat
         require_once __DIR__ . '/../views/landing/register.php';
     }
 
     public function handleSignUp() {
+        // PASTIKAN TIDAK ADA echo/var_dump/die DI SINI
+        
         $userModel = new \User_model(); 
         $result = $userModel->register($_POST);
 
-        if ($result == "success") {
-            header("Location: /login"); // Langsung ke root
+        if ($result === "success") {
+            header("Location: /login");
+            exit;
         } else {
-            header("Location: /register?status=" . $result);
+            // Tampilkan error jika gagal masuk database
+            die("Gagal simpan ke database! Alasan: " . $result);
         }
-        exit;
     }
 }
