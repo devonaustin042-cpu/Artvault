@@ -90,89 +90,69 @@
             </div>
     </div>
 
-<!-- FOOTER --> 
-<!-- FOOTER SECTION -->
-<footer class="mt-20 bg-white border-t border-gray-200">
-    <!-- Container Atas: Konten Footer -->
-    <div class="container mx-auto px-10 py-12">
-        
-        <!-- Baris Brand (Logo & Nama) -->
-        <div class="flex items-center gap-3 mb-10">
-            <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="h-10 w-auto">
-            <span class="text-2xl font-bold text-[#1D2939]">Artvault</span>
-        </div>
-
-        <!-- Grid Utama Footer -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<script src="https://cdn.tailwindcss.com"></script>
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
             
-            <!-- Kolom 1: Navigation -->
-            <div>
-                <h4 class="text-lg font-bold text-[#1D2939] mb-5">Navigation</h4>
-                <ul class="space-y-3 text-gray-600">
-                    <li><a href="/" class="hover:text-yellow-600 transition">Home</a></li>
-                    <li><a href="/gallery" class="hover:text-yellow-600 transition">Gallery</a></li>
-                    <li><a href="/about" class="hover:text-yellow-600 transition">About</a></li>
-                    <li><a href="/contact" class="hover:text-yellow-600 transition">Contact</a></li>
+            <!-- Kolom 1: Brand -->
+            <div class="footer-col footer-brand-col">
+                <div class="footer-brand-top">
+                    <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
+                    <span class="footer-brand-name">Artvault</span>
+                <p class="footer-description">Galeri seni digital sekolah untuk mengapresiasi kreativitas siswa.</p>
+            </div>
+
+            <!-- Kolom 2: Navigation -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
 
-            <!-- Kolom 2: Contact -->
-            <div>
-                <h4 class="text-lg font-bold text-[#1D2939] mb-5">Contact</h4>
-                <ul class="space-y-4 text-gray-600">
-                    <li class="flex items-center gap-3">
-                        <img src="/img/icon/mail.png" alt="Mail" class="w-5 h-5">
-                        <span class="text-sm">Artvault@gmail.com</span>
+            <!-- Kolom 3: Contact -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Contact</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <img src="/img/icon/mail.png" alt="Email" class="contact-icon-img">
+                        <span>Artvault@gmail.com</span>
                     </li>
-                    <li class="flex items-start gap-3">
-                        <img src="/img/icon/location.png" alt="Location" class="w-5 h-5 mt-1">
-                        <span class="text-sm">Pontianak, Kalimantan Barat, Indonesia</span>
+                    <li>
+                        <img src="/img/icon/location.png" alt="Location" class="contact-icon-img">
+                        <span>Pontianak, Kalimantan Barat</span>
                     </li>
-                    <li class="flex items-center gap-3">
-                        <img src="/img/icon/telephone.png" alt="Phone" class="w-5 h-5">
-                        <span class="text-sm">+62 897 3871 170</span>
+                    <li>
+                        <img src="/img/icon/telephone.png" alt="Phone" class="contact-icon-img">
+                        <span>+62 897 3871 170</span>
                     </li>
                 </ul>
             </div>
 
-            <!-- Kolom 3: Help & Center -->
-            <div>
-                <h4 class="text-lg font-bold text-[#1D2939] mb-5">Help & Center</h4>
-                <ul class="space-y-3 text-gray-600">
-                    <li><a href="#" class="hover:text-yellow-600 transition text-sm">Customer Support</a></li>
-                    <li><a href="#" class="hover:text-yellow-600 transition text-sm">Terms and Services</a></li>
-                    <li><a href="#" class="hover:text-yellow-600 transition text-sm">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-yellow-600 transition text-sm">Cancellation and Refund Policy</a></li>
-                </ul>
-            </div>
-
-            <!-- Kolom 4: Big Logo & Socials -->
-            <div class="flex flex-col items-center md:items-end">
-                <img src="/img/logo/Artvault.png" alt="Artvault" class="w-32 h-auto mb-6 opacity-80">
-                <div class="text-center md:text-right">
-                    <p class="text-sm font-bold text-[#1D2939] mb-3">Follow Us</p>
-                    <div class="flex gap-3 justify-center md:justify-end">
-                        <a href="#" class="hover:scale-110 transition"><img src="/img/icon/instagram.png" alt="Instagram" class="w-8 h-8"></a>
-                        <a href="#" class="hover:scale-110 transition"><img src="/img/icon/facebook.png" alt="Facebook" class="w-8 h-8"></a>
-                        <a href="#" class="hover:scale-110 transition"><img src="/img/icon/tiktok.png" alt="TikTok" class="w-8 h-8"></a>
-                        <a href="#" class="hover:scale-110 transition"><img src="/img/icon/youtube.png" alt="YouTube" class="w-8 h-8"></a>
-                    </div>
+            <!-- Kolom 4: Social Media -->
+            <div class="footer-col footer-social-col">
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
+                    <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
                 </div>
             </div>
 
         </div>
-    </div>
 
-    <!-- Bottom Bar (Biru Gelap) -->
-    <div class="bg-[#1D2939] py-4">
-        <div class="container mx-auto px-10 text-center">
-            <p class="text-white text-sm tracking-wide">
-                Copyright &copy; 2025 Artvault All Rights Reserved
-            </p>
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
         </div>
     </div>
 </footer>
-
     </div>
 </body>
 </html>
