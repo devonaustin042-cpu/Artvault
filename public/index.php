@@ -22,6 +22,7 @@ $router->add('GET', '/author/art/{id}', 'ArtController', 'authorDetail');
 $router->add('GET', '/login', 'AuthController', 'login');
 $router->add('GET', '/register', 'AuthController', 'index');        
 $router->add('POST', '/post-register', 'AuthController', 'handleSignUp');
+$router->add('POST', '/post-login', 'AuthController', 'handleLogin');
 
 $router->run();
 ?>
