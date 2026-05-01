@@ -4,7 +4,7 @@
 class Database {
     private $host = "localhost";
     private $user = "root";
-    private $pass = ""; // Default Laragon kosong
+    private $pass = "123"; // Default Laragon kosong
     private $db   = "db_gallery_sekolah"; // Sesuaikan dengan nama database kamu
     protected $dbh; // Database Handle
 

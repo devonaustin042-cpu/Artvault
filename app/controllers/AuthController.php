@@ -14,8 +14,6 @@ class AuthController {
     }
 
     public function handleSignUp() {
-        // PASTIKAN TIDAK ADA echo/var_dump/die DI SINI
-        
         $userModel = new \User_model(); 
         $result = $userModel->register($_POST);
 
@@ -23,8 +21,29 @@ class AuthController {
             header("Location: /login");
             exit;
         } else {
-            // Tampilkan error jika gagal masuk database
             die("Gagal simpan ke database! Alasan: " . $result);
         }
+    }
+
+    public function handleLogin() {
+        session_start();
+        
+        $userModel = new \User_model();
+        $result = $userModel->login($_POST);
+
+        if ($result === false) {
+            die("Login gagal: email atau password salah.");
+        }
+
+        $_SESSION['user_id']   = $result['id'];
+        $_SESSION['user_name'] = $result['nama_lengkap'];
+        $_SESSION['user_role'] = $result['role'];
+
+        if ($result['role'] === 'author') {
+            header("Location: /author/gallery");
+        } else {
+            header("Location: /");
+        }
+        exit;
     }
 }
