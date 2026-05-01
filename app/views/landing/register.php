@@ -6,6 +6,7 @@
     <title>Sign Up - ArtVault</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body class="bg-[#F8F9FA] font-sans"> 
 
@@ -91,68 +92,87 @@
     </div>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<footer class="footer">
-    <div class="footer-container">
-        <!-- Main Footer Content -->
-        <div class="footer-main">
-            
-            <!-- Kolom 1: Brand -->
-            <div class="footer-col footer-brand-col">
-                <div class="footer-brand-top">
-                    <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
-                    <span class="footer-brand-name">Artvault</span>
-                <p class="footer-description">Galeri seni digital sekolah untuk mengapresiasi kreativitas siswa.</p>
-            </div>
+         <!-- FOOTER --> 
 
-            <!-- Kolom 2: Navigation -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/gallery">Gallery</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
+          <!-- Brand -->
+            <footer class="footer">
+                <div class="footer-brand">
+                        <div class="footer-brand-top">
+                            <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
+                            <span class="footer-brand-name">Artvault</span>
+                        </div>
+                    </div>
+            <div class="footer-main">
+                
 
-            <!-- Kolom 3: Contact -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Contact</h4>
-                <ul class="footer-contact">
-                    <li>
-                        <img src="/img/icon/mail.png" alt="Email" class="contact-icon-img">
-                        <span>Artvault@gmail.com</span>
-                    </li>
-                    <li>
-                        <img src="/img/icon/location.png" alt="Location" class="contact-icon-img">
-                        <span>Pontianak, Kalimantan Barat</span>
-                    </li>
-                    <li>
-                        <img src="/img/icon/telephone.png" alt="Phone" class="contact-icon-img">
-                        <span>+62 897 3871 170</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Kolom 4: Social Media -->
-            <div class="footer-col footer-social-col">
-                <h4 class="footer-heading">Follow Us</h4>
-                <div class="social-icons">
-                    <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
-                    <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
+                <!-- Navigation -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
                 </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <span class="contact-icon">
+                                <img src="/img/icon/mail.png" alt="Email Icon" class="contact-icon-img">
+                            </span>
+                            <span>Artvault@gmail.com</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <img src="/img/icon/location.png" alt="Location Icon" class="contact-icon-img">
+                            </span>
+                            <span>Pontianak, Kalimantan Barat, Indonesia</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <img src="/img/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
+                            </span>
+                            <span>+62 897 3871 170</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Help & Center -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Help & Center</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Terms and Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cancellation and Refund Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Logo + Sosmed -->
+                <div class="footer-col footer-social-col">
+                    <img src="/img/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
+                    <div class="footer-social">
+                        <p class="footer-follow">Follow Us</p>
+                        <div class="social-icons">
+                            <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
+                            <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
+                            <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
+                            <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="footer-bottom">
-            <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
-        </div>
-    </div>
-</footer>
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

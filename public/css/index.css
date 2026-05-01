@@ -260,6 +260,24 @@
   .min-h-screen {
     min-height: 100vh;
   }
+<<<<<<< HEAD
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-6 {
+    width: calc(var(--spacing) * 6);
+  }
+  .w-7 {
+    width: calc(var(--spacing) * 7);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
+  }
+=======
+>>>>>>> main
   .w-9 {
     width: calc(var(--spacing) * 9);
   }
@@ -313,6 +331,18 @@
   .border-black {
     border-color: var(--color-black);
   }
+<<<<<<< HEAD
+  .border-gray-100 {
+    border-color: var(--color-gray-100);
+  }
+  .border-gray-200 {
+    border-color: var(--color-gray-200);
+  }
+  .border-gray-500 {
+    border-color: var(--color-gray-500);
+  }
+=======
+>>>>>>> main
   .bg-\[\#F2C94C\] {
     background-color: #F2C94C;
   }
@@ -328,6 +358,18 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
+<<<<<<< HEAD
+  .px-10 {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  .px-20 {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+=======
+>>>>>>> main
   .py-3\.5 {
     padding-block: calc(var(--spacing) * 3.5);
   }
@@ -372,6 +414,13 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
+<<<<<<< HEAD
+  .tracking-wide {
+    --tw-tracking: var(--tracking-wide);
+    letter-spacing: var(--tracking-wide);
+  }
+=======
+>>>>>>> main
   .text-\[\#D4AF37\] {
     color: #D4AF37;
   }
