@@ -9,14 +9,16 @@ $router = new Router();
 $router->add('GET', '/', 'HomeController', 'index');
 $router->add('GET', '/about', 'HomeController', 'about');
 $router->add('GET', '/contact', 'HomeController', 'contact');
+$router->add('GET', '/gallery', 'ArtController', 'gallery');
 
 // Gallery Routes
-$router->add('GET', '/gallery', 'ArtController', 'gallery');
 $router->add('GET', '/art/{id}', 'ArtController', 'detail');
 
 // Author Routes
-$router->add('GET', '/author/gallery', 'ArtController', 'authorGallery');
-$router->add('GET', '/author/art/{id}', 'ArtController', 'authorDetail');
+$router->add('GET', '/author/gallery', 'HomeController', 'authorGallery');
+$router->add('GET', '/author/art/{id}', 'HomeController', 'authorDetail');
+$router->add('GET', '/author/gallery', 'HomeController', 'gallery');
+$router->add('POST', '/author/home', 'HomeController', 'home');
 
 // Auth Routes
 $router->add('GET', '/login', 'AuthController', 'login');
