@@ -29,7 +29,7 @@
             
             <!-- Sisi Kiri: Ilustrasi -->
             <div class="hidden md:block w-full md:w-1/2 max-w-lg">
-                <img src="/img/banner/sign-up-banner.png" alt="Login Banner" class="w-full h-auto object-contain">
+                <img src="/img/banner/login-banner.png" alt="Login Banner" class="w-full h-auto object-contain">
             </div>
 
             <!-- Sisi Righ: Form -->
