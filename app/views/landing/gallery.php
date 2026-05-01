@@ -27,7 +27,7 @@
 
         <div class="nav-actions">
             <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-            <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
+            <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
         </div>
     </nav>
 
