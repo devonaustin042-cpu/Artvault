@@ -61,3 +61,104 @@
   object-fit: cover;
   aspect-ratio: 4/3;
 }
+
+        .feature-section {
+            padding: 80px 60px;
+            background-color: #fff;
+            text-align: center;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .feature-card {
+            padding: 30px;
+            border-radius: 15px;
+            background: #f9f9f9;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            color: #1F3C88;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .cta-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/banner/Background-2.png') center/cover no-repeat;
+            padding: 100px 60px;
+            text-align: center;
+            color: white;
+        }
+        .cta-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .cta-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background-color: var(--gold);
+            color: #1F3C88;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-large:hover {
+            background-color: #fff;
+            transform: scale(1.05);
+        }
+        .note-section {
+            display: flex;
+            align-items: center;
+            padding: 80px 60px;
+            background-color: #f0f2f5;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .note-img {
+            width: 400px;
+            max-width: 100%;
+            height: auto;
+        }
+        .note-text {
+            flex: 1;
+            padding-left: 50px;
+            min-width: 300px;
+        }
+        .note-text h2 {
+            font-family: 'Cinzel', serif;
+            color: #1F3C88;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .note-text {
+                padding-left: 0;
+                padding-top: 40px;
+                text-align: center;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 

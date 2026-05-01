@@ -10,106 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/app/resources/css/home.css">
-    <style>
-        .feature-section {
-            padding: 80px 60px;
-            background-color: #fff;
-            text-align: center;
-        }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-        .feature-card {
-            padding: 30px;
-            border-radius: 15px;
-            background: #f9f9f9;
-            transition: transform 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            object-fit: contain;
-        }
-        .feature-card h3 {
-            font-family: 'Cinzel', serif;
-            color: #1F3C88;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        .cta-section {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/banner/Background-2.png') center/cover no-repeat;
-            padding: 100px 60px;
-            text-align: center;
-            color: white;
-        }
-        .cta-content h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-        .cta-content p {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .btn-large {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background-color: var(--gold);
-            color: #1F3C88;
-            border: none;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-large:hover {
-            background-color: #fff;
-            transform: scale(1.05);
-        }
-        .note-section {
-            display: flex;
-            align-items: center;
-            padding: 80px 60px;
-            background-color: #f0f2f5;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .note-img {
-            width: 400px;
-            max-width: 100%;
-            height: auto;
-        }
-        .note-text {
-            flex: 1;
-            padding-left: 50px;
-            min-width: 300px;
-        }
-        .note-text h2 {
-            font-family: 'Cinzel', serif;
-            color: #1F3C88;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        @media (max-width: 768px) {
-            .note-text {
-                padding-left: 0;
-                padding-top: 40px;
-                text-align: center;
-            }
-        }
-    </style>
+
 </head>
 <body>
 
@@ -160,30 +61,6 @@
 
     <div class="Box-1"></div>
 
-    <!-- Features Section -->
-    <section class="feature-section">
-        <h2 style="font-family: 'Cinzel', serif; font-size: 3rem; color: #1F3C88;">Why Choose Artvault?</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <img src="/img/icon/paint.png" alt="Paint" class="feature-icon">
-                <h3>Unleash Creativity</h3>
-                <p>A dedicated space for students to showcase their artistic talents and reach a wider audience within the school community.</p>
-            </div>
-            <div class="feature-card">
-                <img src="/img/icon/Like.png" alt="Like" class="feature-icon">
-                <h3>Get Appreciated</h3>
-                <p>Receive feedback and likes from fellow students and teachers, encouraging growth and confidence in your craft.</p>
-            </div>
-            <div class="feature-card">
-                <img src="/img/icon/user.png" alt="User" class="feature-icon">
-                <h3>Connect & Inspire</h3>
-                <p>Follow your favorite student artists and get inspired by the diverse range of works exhibited in our digital gallery.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="Box-1"></div>
-
     <!-- Art Of The Day -->
     <section class="art-of-the-day">
         <h2>Art Of The Day</h2>
@@ -205,29 +82,221 @@
 
     <div class="Box-1"></div>
 
-    <!-- Note Section -->
-    <section class="note-section">
-        <img src="/img/banner/left-note.png" alt="Note" class="note-img">
-        <div class="note-text">
-            <h2>A Message to Creators</h2>
-            <p style="font-size: 1.5rem; line-height: 1.6; color: #555;">
-                "Your imagination is your only limit. Artvault is here to ensure that your voice is heard and your vision is seen. Start your journey with us today and leave a lasting legacy."
-            </p>
+    <style>
+        /* Motive Section */
+        .motive-section {
+            padding: 80px 60px;
+            background-color: #fdfdfd;
+        }
+        .motive-container {
+            display: flex;
+            gap: 50px;
+            align-items: stretch;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .motive-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .motive-left img {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+        }
+        .motive-right {
+            flex: 1.5;
+            background-color: #fff;
+            padding: 80px 50px;
+            position: relative;
+            border: 1px solid #eee;
+            /* Lined paper effect: Light blue lines, red horizontal line near top */
+            background-image: 
+                linear-gradient(to bottom, transparent 79px, #ff9999 79px, #ff9999 81px, transparent 81px),
+                linear-gradient(#e5f3ff 1px, transparent 1px);
+            background-size: 100% 100%, 100% 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .motive-right h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: #1A1F2C;
+            font-size: 2.5rem;
+            max-width: 300px;
+            margin: 0;
+            line-height: 1.2;
+            text-align: left;
+        }
+        .clipboard-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            perspective: 1000px;
+        }
+        .clipboard-card {
+            width: 340px;
+            background-color: #d2b48c; /* Tan board */
+            padding: 12px;
+            border-radius: 8px;
+            transform: rotate(-2deg);
+            box-shadow: 15px 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            margin-top: 20px;
+        }
+        /* Pure CSS Metal Clip */
+        .clip-metal {
+            width: 90px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ccc, #999);
+            margin: -32px auto 10px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .clip-metal::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 15px;
+            background: #666;
+            top: 6px;
+            left: 20px;
+            border-radius: 8px;
+        }
+        .clipboard-paper {
+            background-color: #fff9e6; /* Beige paper */
+            padding: 35px 25px;
+            min-height: 300px;
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            font-size: 1.05rem;
+            line-height: 28px;
+            /* Ruled lines on paper */
+            background-image: linear-gradient(#d1eaff 1px, transparent 1px);
+            background-size: 100% 28px;
+            border-top: 2px solid #ff9999;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 60px;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            /* Subtle topo pattern using CSS SVG */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 50 Q 25 25, 50 50 T 100 50' fill='none' stroke='%23f0f0f0' stroke-width='1'/%3E%3Cpath d='M0 70 Q 25 45, 50 70 T 100 70' fill='none' stroke='%23f0f0f0' stroke-width='1'/%3E%3C/svg%3E");
+        }
+        .team-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.2rem;
+            color: #1A1F2C;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .team-desc {
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            color: #666;
+            max-width: 650px;
+            margin: 0 auto 60px;
+            font-size: 1.1rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .team-card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.04);
+            text-align: center;
+            border: 1px solid #f9f9f9;
+            transition: transform 0.3s;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        .avatar-circle {
+            width: 120px;
+            height: 120px;
+            background-color: #f7f7f7;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            border: 4px solid #FFD700;
+        }
+        .team-card h3 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1A1F2C;
+            margin-bottom: 5px;
+        }
+        .team-card p {
+            font-family: 'Lato', sans-serif;
+            color: #999;
+            font-size: 1rem;
+        }
+    </style>
+
+    <!-- Motive Section -->
+    <section class="motive-section">
+        <div class="motive-container">
+            <div class="motive-left">
+                <img src="/img/banner/left-note.png" alt="Motive Illustration">
+            </div>
+            <div class="motive-right">
+                <h2>What Is Our Motives?</h2>
+                <div class="clipboard-container">
+                    <div class="clipboard-card">
+                        <div class="clip-metal"></div>
+                        <div class="clipboard-paper">
+                            <p>Our motives is to reach some students that couldn't possibly keep their art on sight and prevent it from being swallowed by time and age. Artvault was made to prevent some event like this, we will display their art and show the audience how great our students were.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <div class="Box-1"></div>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Exhibit?</h2>
-            <p>Join hundreds of student artists today and start sharing your masterpieces with the world.</p>
-            <button class="btn-large" onclick="location.href='/register'">Join Now</button>
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2 class="team-title">Meet our artvault team</h2>
+        <p class="team-desc">The creative minds behind the platform dedicated to student artists. We are committed to showcasing the best talent in our school.</p>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="avatar-circle"></div>
+                <h3>Michael Yusliardy</h3>
+                <p>Front End Developer</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar-circle"></div>
+                <h3>Devon Austin Vintjhe</h3>
+                <p>Back End Developer</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar-circle"></div>
+                <h3>Nicholas Jonathan G</h3>
+                <p>UI/UX Designer</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar-circle"></div>
+                <h3>Felix Yonathan</h3>
+                <p>UI/UX Designer</p>
+            </div>
         </div>
     </section>
 
-    <div class="box-2"></div>
+    <div class="Box-1"></div>
 
     <!-- FOOTER --> 
     <footer class="footer">
