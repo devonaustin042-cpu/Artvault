@@ -42,4 +42,14 @@ class AuthController {
         header("Location: /author/home");
         exit;
     }
+
+    public function logout() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        session_unset();
+        session_destroy();
+        header("Location: /");
+        exit;
+    }
 }
