@@ -26,28 +26,13 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/author/home"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <a href="javascript:void(0)" onclick="toggleLogoutPopup()"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
             <?php endif; ?>
         </div>
     </nav>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artvault - Gallery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/index.css">
-</head>
-<body>
-
-
 
     <!-- LOGOUT POPUP -->
     <div id="logoutPopup" class="logout-popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
@@ -85,7 +70,7 @@
         </div>
 
         <div class="gallery-grid">
-            <a href="" class="art-card">
+            <a href="/art/1" class="art-card">
                 <img src="/img/gallery/Claymonster.png" alt="Claymonster">
                 <div class="art-info">
                     <p class="art-title">Claymonster</p>
@@ -93,7 +78,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">25</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/2" class="art-card">
                 <img src="/img/gallery/Koi-Pond.png" alt="Koi Pond">
                 <div class="art-info">
                     <p class="art-title">Koi Pond</p>
@@ -101,7 +86,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">49</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/3" class="art-card">
                 <img src="/img/gallery/Trash-Hunt.png" alt="Trash Hunt">
                 <div class="art-info">
                     <p class="art-title">Trash Hunt</p>
@@ -109,7 +94,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">78</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/4" class="art-card">
                 <img src="/img/gallery/Cherish-the-moment.png" alt="Cherish the moment">
                 <div class="art-info">
                     <p class="art-title">Cherish the moment</p>
@@ -117,7 +102,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">65</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/5" class="art-card">
                 <img src="/img/gallery/Ayo-punya-cita-cita.png" alt="Ayo punya cita-cita">
                 <div class="art-info">
                     <p class="art-title">Ayo punya cita-cita</p>
@@ -125,7 +110,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">69</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/6" class="art-card">
                 <img src="/img/gallery/Billie-Eilish.png" alt="Billie Eilish">
                 <div class="art-info">
                     <p class="art-title">Billie Eilish</p>
@@ -133,7 +118,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">72</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/7" class="art-card">
                 <img src="/img/gallery/A-positive-spin-on.png">
                 <div class="art-info">
                     <p class="art-title">A positive spin on n...</p>
@@ -141,7 +126,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">51</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/8" class="art-card">
                 <img src="/img/gallery/Menggapai-Indonesia.png" alt="Menggapai Indonese...">
                 <div class="art-info">
                     <p class="art-title">Menggapai Indonese...</p>
@@ -149,7 +134,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">91</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/9" class="art-card">
                 <img src="/img/gallery/Vibrant-River.png" alt="Vibrant River">
                 <div class="art-info">
                     <p class="art-title">Vibrant River</p>
@@ -157,7 +142,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">34</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/10" class="art-card">
                 <img src="/img/gallery/Anonymous-Protagonis.png" alt="Anonymous Protagonis">
                 <div class="art-info">
                     <p class="art-title">Anonymous Protag...</p>
@@ -165,7 +150,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">101</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/11" class="art-card">
                 <img src="/img/gallery/A-Chill-Doomsday.png" class="art-card" alt="A Chill Doomsday">
                 <div class="art-info">
                     <p class="art-title">A Chill Doomsday</p>
@@ -173,7 +158,7 @@
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">99</p>
                 </div>
             </a>
-            <a href="" class="art-card">
+            <a href="/art/12" class="art-card">
                 <img src="/img/gallery/Melody-in-Guitar.png" alt="Melody in Guitar">
                 <div class="art-info">
                     <p class="art-title">Melody in Guitar</p>
@@ -184,7 +169,9 @@
         </div>
 
          <div class="add-work-wrap">
-              <button class="btn-add-work">+ Add your work!</button>
+            <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'author'): ?>
+              <button class="btn-add-work" onclick="openAddWork()">+ Add your work!</button>
+            <?php endif; ?>
                     <!-- POPUP ADD WORK -->
         <div class="add-work-overlay" id="addWorkOverlay">
             <div class="add-work-popup">
@@ -310,4 +297,4 @@
     
     <script src="/js/script.js"></script>
 </body>
-</html>.
+</html>
