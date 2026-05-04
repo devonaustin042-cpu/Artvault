@@ -26,8 +26,6 @@ class AuthController {
     }
 
     public function handleLogin() {
-        session_start();
-        
         $userModel = new \User_model();
         $result = $userModel->login($_POST);
 
@@ -39,14 +37,11 @@ class AuthController {
         $_SESSION['user_name'] = $result['nama_lengkap'];
         $_SESSION['user_role'] = $result['role'];
 
-        header("Location: /author/home");
+        header("Location: /");
         exit;
     }
 
     public function logout() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
         session_unset();
         session_destroy();
         header("Location: /");
