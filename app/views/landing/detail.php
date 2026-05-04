@@ -97,11 +97,13 @@
                     <button class="btn-read-more" onclick="toggleDesc()">Show Less</button>
                 </div>
 
+                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'author'): ?>
                 <div class="art-detail-actions">
                     <button class="btn-edit" onclick="openEditWork()">Edit</button>
                     <span class="art-action-or">or</span>
                     <button class="btn-delete" onclick="confirmDelete()">Delete</button>
                 </div>
+                <?php endif; ?>
             </div>
  
         </div>
