@@ -74,26 +74,26 @@
  
             <!-- Gambar -->
             <div class="art-detail-img-wrap">
-                <img src="/img/gallery/trash-hunt.png" alt="Trash Hunt" class="art-detail-img">
+                <img src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['judul']; ?>" class="art-detail-img">
             </div>
  
             <!-- Info -->
             <div class="art-detail-info">
-                <h1 class="art-detail-title">Trash Hunt</h1>
-                <p class="art-detail-author">by Viktor Wembu</p>
+                <h1 class="art-detail-title"><?= $art['judul']; ?></h1>
+                <p class="art-detail-author">by <?= $art['author_name']; ?></p>
                 <hr class="art-detail-divider">
  
                 <p class="art-detail-label">Description :</p>
  
                 <!-- Teks pendek -->
-                <div class="art-desc-short">
-                    <p>The illustration titled "Trash Hunt" presents a vibrant and imaginative urban scene with a dynamic visual style...</p>
+                <div class="art-desc-short" id="descShort">
+                    <p><?= substr($art['deskripsi'], 0, 100); ?>...</p>
                     <button class="btn-read-more" onclick="toggleDesc()">Read For More...</button>
                 </div>
  
                 <!-- Teks panjang -->
-                <div class="art-desc-full" id="descFull">
-                    <p>The illustration titled "Trash Hunt" presents a vibrant and imaginative urban scene with a dynamic visual style...</p>
+                <div class="art-desc-full" id="descFull" style="display:none;">
+                    <p><?= $art['deskripsi']; ?></p>
                     <button class="btn-read-more" onclick="toggleDesc()">Show Less</button>
                 </div>
 
@@ -186,6 +186,19 @@
         </div>
     </footer>
 
+    <script>
+        function toggleDesc() {
+            const short = document.getElementById('descShort');
+            const full = document.getElementById('descFull');
+            if (full.style.display === 'none') {
+                full.style.display = 'block';
+                short.style.display = 'none';
+            } else {
+                full.style.display = 'none';
+                short.style.display = 'block';
+            }
+        }
+    </script>
     <script src="/js/script.js"></script>
 </body>
 </html>
