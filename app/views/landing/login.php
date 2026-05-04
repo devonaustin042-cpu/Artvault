@@ -15,6 +15,32 @@
 </head>
 <body class="bg-[#F8F9FA] font-sans"> 
 
+    <!-- ERROR POPUP -->
+    <?php if (isset($_GET['error']) && $_GET['error'] === 'invalid_credentials'): ?>
+    <div id="errorPopup" class="fixed top-10 left-1/2 -translate-x-1/2 z-[2000] animate-bounce">
+        <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 rounded shadow-lg flex items-center gap-3">
+            <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+            <div>
+                <p class="font-bold">Login Failed!</p>
+                <p class="text-sm">Email or Password is incorrect. Please try again.</p>
+            </div>
+            <button onclick="this.parentElement.parentElement.remove()" class="ml-4 hover:text-orange-900">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            const popup = document.getElementById('errorPopup');
+            if(popup) {
+                popup.style.transition = 'opacity 0.5s ease';
+                popup.style.opacity = '0';
+                setTimeout(() => popup.remove(), 500);
+            }
+        }, 4000);
+    </script>
+    <?php endif; ?>
+
     <div class="min-h-screen flex flex-col justify-between">
         
         <!-- Tombol Back -->
