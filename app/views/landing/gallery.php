@@ -70,102 +70,16 @@
         </div>
 
         <div class="gallery-grid">
-            <a href="/art/1" class="art-card">
-                <img src="/img/gallery/Claymonster.png" alt="Claymonster">
+            <?php foreach ($artworks as $row): ?>
+            <a href="/art/<?= $row['id']; ?>" class="art-card">
+                <img src="/img/gallery/<?= $row['file_path']; ?>" alt="<?= $row['judul']; ?>">
                 <div class="art-info">
-                    <p class="art-title">Claymonster</p>
-                    <p class="art-author">Made by : Chisa Evelyn</p>
+                    <p class="art-title"><?= $row['judul']; ?></p>
+                    <p class="art-author">Made by : <?= $row['author_name']; ?></p>
                     <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">25</p>
                 </div>
             </a>
-            <a href="/art/2" class="art-card">
-                <img src="/img/gallery/Koi-Pond.png" alt="Koi Pond">
-                <div class="art-info">
-                    <p class="art-title">Koi Pond</p>
-                    <p class="art-author">Made by : Odin Madun</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">49</p>
-                </div>
-            </a>
-            <a href="/art/3" class="art-card">
-                <img src="/img/gallery/Trash-Hunt.png" alt="Trash Hunt">
-                <div class="art-info">
-                    <p class="art-title">Trash Hunt</p>
-                    <p class="art-author">Made by : Viktor Wembu</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">78</p>
-                </div>
-            </a>
-            <a href="/art/4" class="art-card">
-                <img src="/img/gallery/Cherish-the-moment.png" alt="Cherish the moment">
-                <div class="art-info">
-                    <p class="art-title">Cherish the moment</p>
-                    <p class="art-author">Made by : Daniel Caesar</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">65</p>
-                </div>
-            </a>
-            <a href="/art/5" class="art-card">
-                <img src="/img/gallery/Ayo-punya-cita-cita.png" alt="Ayo punya cita-cita">
-                <div class="art-info">
-                    <p class="art-title">Ayo punya cita-cita</p>
-                    <p class="art-author">Made by : Faysal Pratama Agung</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">69</p>
-                </div>
-            </a>
-            <a href="/art/6" class="art-card">
-                <img src="/img/gallery/Billie-Eilish.png" alt="Billie Eilish">
-                <div class="art-info">
-                    <p class="art-title">Billie Eilish</p>
-                    <p class="art-author">Made by : Depon Vintjai</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">72</p>
-                </div>
-            </a>
-            <a href="/art/7" class="art-card">
-                <img src="/img/gallery/A-positive-spin-on.png">
-                <div class="art-info">
-                    <p class="art-title">A positive spin on n...</p>
-                    <p class="art-author">Made by : Tang You Hoong</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">51</p>
-                </div>
-            </a>
-            <a href="/art/8" class="art-card">
-                <img src="/img/gallery/Menggapai-Indonesia.png" alt="Menggapai Indonese...">
-                <div class="art-info">
-                    <p class="art-title">Menggapai Indonese...</p>
-                    <p class="art-author">Made by : Marcello Adil</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">91</p>
-                </div>
-            </a>
-            <a href="/art/9" class="art-card">
-                <img src="/img/gallery/Vibrant-River.png" alt="Vibrant River">
-                <div class="art-info">
-                    <p class="art-title">Vibrant River</p>
-                    <p class="art-author">Made by : Reyfan Andika</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">34</p>
-                </div>
-            </a>
-            <a href="/art/10" class="art-card">
-                <img src="/img/gallery/Anonymous-Protagonis.png" alt="Anonymous Protagonis">
-                <div class="art-info">
-                    <p class="art-title">Anonymous Protag...</p>
-                    <p class="art-author">Made by : Felicia Chiao</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">101</p>
-                </div>
-            </a>
-            <a href="/art/11" class="art-card">
-                <img src="/img/gallery/A-Chill-Doomsday.png" class="art-card" alt="A Chill Doomsday">
-                <div class="art-info">
-                    <p class="art-title">A Chill Doomsday</p>
-                    <p class="art-author">Made by : Nicholas Jo</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">99</p>
-                </div>
-            </a>
-            <a href="/art/12" class="art-card">
-                <img src="/img/gallery/Melody-in-Guitar.png" alt="Melody in Guitar">
-                <div class="art-info">
-                    <p class="art-title">Melody in Guitar</p>
-                    <p class="art-author">Made by : Jo Halimawan</p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">120</p>
-                </div>
-            </a>
+            <?php endforeach; ?>
         </div>
 
          <div class="add-work-wrap">
