@@ -29,8 +29,12 @@
         </ul>
 
         <div class="nav-actions">
-            <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-            <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="/author/home"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+            <?php else: ?>
+                <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
+                <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
+            <?php endif; ?>
         </div>
     </nav>
 
