@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../app/core/Router.php';
 
 use App\Core\Router;
@@ -25,6 +26,7 @@ $router->add('GET', '/login', 'AuthController', 'login');
 $router->add('GET', '/register', 'AuthController', 'index');        
 $router->add('POST', '/post-register', 'AuthController', 'handleSignUp');
 $router->add('POST', '/post-login', 'AuthController', 'handleLogin');
+$router->add('GET', '/logout', 'AuthController', 'logout');
 
 $router->run();
 ?>

@@ -25,17 +25,45 @@
         </ul>
 
         <div class="nav-actions">
-            <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-            <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="javascript:void(0)" onclick="toggleLogoutPopup()"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+            <?php else: ?>
+                <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
+                <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
+            <?php endif; ?>
         </div>
     </nav>
+
+    <!-- LOGOUT POPUP -->
+    <div id="logoutPopup" class="logout-popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div class="logout-popup-content" style="background: white; padding: 2rem; border-radius: 15px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <img src="/img/icon/user.png" alt="User" style="width: 60px; height: 60px; margin-bottom: 1rem; border-radius: 50%;">
+            <h3 style="font-family: 'Cinzel', serif; margin-bottom: 0.5rem;">Logout?</h3>
+            <p style="color: #666; margin-bottom: 1.5rem;">Are you sure you want to log out of Artvault?</p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="location.href='/logout'" style="background: #ff4d4d; color: white; border: none; padding: 10px 25px; border-radius: 8px; cursor: pointer; font-weight: bold;">Logout</button>
+                <button onclick="toggleLogoutPopup()" style="background: #eee; color: #333; border: none; padding: 10px 25px; border-radius: 8px; cursor: pointer; font-weight: bold;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLogoutPopup() {
+            const popup = document.getElementById('logoutPopup');
+            if (popup.style.display === 'none' || popup.style.display === '') {
+                popup.style.display = 'flex';
+            } else {
+                popup.style.display = 'none';
+            }
+        }
+    </script>
 
     <div class="Box-1"></div>
 
     <section class="about-section">
-        <div class="about-text">
-            <h1>Contact Us</h1>
-            <p>
+...
+</body>
+</html>
             Have questions or want to collaborate? Feel free to reach out to us through any of the following channels. We're always happy to hear from you!
             </p>
             <div style="margin-top: 2rem; text-align: left; display: inline-block;">
