@@ -39,11 +39,7 @@ class AuthController {
         $_SESSION['user_name'] = $result['nama_lengkap'];
         $_SESSION['user_role'] = $result['role'];
 
-        if ($result['role'] === 'author') {
-            header("Location: /author/gallery");
-        } else {
-            header("Location: /");
-        }
+        header("Location: /author/home");
         exit;
     }
 }

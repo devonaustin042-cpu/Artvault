@@ -18,7 +18,7 @@ $router->add('GET', '/art/{id}', 'ArtController', 'detail');
 $router->add('GET', '/author/gallery', 'HomeController', 'authorGallery');
 $router->add('GET', '/author/art/{id}', 'HomeController', 'authorDetail');
 $router->add('GET', '/author/gallery', 'HomeController', 'gallery');
-$router->add('POST', '/author/home', 'HomeController', 'home');
+$router->add('GET', '/author/home', 'HomeController', 'home');
 
 // Auth Routes
 $router->add('GET', '/login', 'AuthController', 'login');
