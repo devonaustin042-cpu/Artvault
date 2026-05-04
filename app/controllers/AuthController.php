@@ -30,7 +30,8 @@ class AuthController {
         $result = $userModel->login($_POST);
 
         if ($result === false) {
-            die("Login gagal: email atau password salah.");
+            header("Location: /login?error=invalid_credentials");
+            exit;
         }
 
         $_SESSION['user_id']   = $result['id'];

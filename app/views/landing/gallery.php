@@ -34,8 +34,7 @@
         </div>
     </nav>
 
-    <!-- GALLERY -->
-... User modified the `new_string` content to be: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
