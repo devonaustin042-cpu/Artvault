@@ -4,9 +4,9 @@
 class Database {
     private $host = "localhost";
     private $user = "root";
-    private $pass = "123"; // Default Laragon kosong
-    private $db   = "db_gallery_sekolah"; // Sesuaikan dengan nama database kamu
-    protected $dbh; // Database Handle
+    private $pass = "123"; 
+    private $db   = "db_gallery_school"; 
+    protected $dbh; 
 
     public function __construct() {
         // Data Source Name
