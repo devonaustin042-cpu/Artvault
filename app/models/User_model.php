@@ -10,7 +10,11 @@ class User_model extends Database {
 
         try {
             $hashed_password = password_hash($data['password'], PASSWORD_DEFAULT);
-            $role = (strpos($data['email'], '.sch.id') !== false) ? 'author' : 'viewer';
+            
+            // Classification: Strictly only @ski.sch.id are authors. 
+            // gmail.com and other domains are viewers.
+            $is_author = (strpos($data['email'], '@ski.sch.id') !== false);
+            $role = $is_author ? 'author' : 'viewer';
 
             $query = "INSERT INTO users (nama_lengkap, email, password, role) VALUES (:nama_lengkap, :email, :password, :role)";
             $stmt = $this->dbh->prepare($query);

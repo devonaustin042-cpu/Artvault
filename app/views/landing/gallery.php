@@ -19,7 +19,7 @@
 
         <ul class="nav-menu">
                     <li><a href="/">Home</a></li>
-                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/gallery" class="active">Gallery</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/contact">Contact</a></li>
         </ul>
@@ -62,21 +62,37 @@
     <div class="gallery-page">
 
         <div class="gallery-topbar">
-            <button class="btn-category">Category</button>
+            <div class="filter-category">
+                <button class="btn-filter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 6H21M6 12H18M10 18H14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="btn-category">Category</button>
+            </div>
             <div class="search-box">
                 <input type="text" placeholder="Search....">
-                <button class="search-btn">🔍</button>
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </div>
 
         <div class="gallery-grid">
             <?php foreach ($artworks as $row): ?>
             <a href="/art/<?= $row['id']; ?>" class="art-card">
-                <img src="/img/gallery/<?= $row['file_path']; ?>" alt="<?= $row['judul']; ?>">
+                <div class="art-img-container">
+                    <img src="/img/gallery/<?= $row['file_path']; ?>" alt="<?= $row['judul']; ?>">
+                </div>
                 <div class="art-info">
                     <p class="art-title"><?= $row['judul']; ?></p>
                     <p class="art-author">Made by : <?= $row['author_name']; ?></p>
-                    <p class="art-like"><img src="/img/icon/like.png" class="Art-like-img">25</p>
+                    <div class="art-like">
+                        <img src="/img/icon/like.png" class="art-like-img">
+                        <span>25</span>
+                    </div>
                 </div>
             </a>
             <?php endforeach; ?>
@@ -84,45 +100,46 @@
 
          <div class="add-work-wrap">
             <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'author'): ?>
-              <button class="btn-add-work" onclick="openAddWork()">+ Add your work!</button>
+                <button class="btn-add-work" onclick="openAddWork()">+ Add your Art !</button>
+                
+                <!-- POPUP ADD WORK (Only for Authors) -->
+                <div class="add-work-overlay" id="addWorkOverlay">
+                    <div class="add-work-popup">
+
+                        <div class="add-work-header">
+                            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="add-work-logo">
+                            <span>Come on, submit your interesting work to be exhibited!</span>
+                            <img src="/img/icon/user.png" alt="User" class="user-icon">
+                        </div>
+
+                        <div class="add-work-body">
+                        <button class="btn-back-popup" onclick="closeAddWork()">
+                                <img src="/img/icon/back.png" alt="Back" class="back-icon-2">
+                            </button>
+                            <!-- Upload Area -->
+                            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                                <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="previewImage(event)">
+                                <img id="previewImg" src="" alt="" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:8px;">
+                                <button class="btn-upload" id="uploadBtn">Upload your art</button>
+                            </div>
+
+                            <!-- Name -->
+                            <div class="add-work-field">
+                                <input type="text" placeholder="Add the name of your Art!">
+                            </div>
+
+                            <!-- Description -->
+                            <div class="add-work-field">
+                                <textarea placeholder="Add your description!" rows="3"></textarea>
+                            </div>
+
+                            <!-- Submit -->
+                            <button class="btn-add-submit">Add</button>
+
+                        </div>
+                    </div>
+                </div>
             <?php endif; ?>
-                    <!-- POPUP ADD WORK -->
-        <div class="add-work-overlay" id="addWorkOverlay">
-            <div class="add-work-popup">
-
-                <div class="add-work-header">
-                    <img src="img/logo/artvault.png" alt="Artvault Logo" class="add-work-logo">
-                    <span>Come on, submit your interesting work to be exhibited!</span>
-                    <img src="/img/icon/user.png" alt="User" class="user-icon">
-                </div>
-
-                <div class="add-work-body">
-                <button class="btn-back-popup" onclick="closeAddWork()">
-                        <img src="/img/icon/back.png" alt="Back" class="back-icon-2">
-                    </button>
-                    <!-- Upload Area -->
-                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-                        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="previewImage(event)">
-                        <img id="previewImg" src="" alt="" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:8px;">
-                        <button class="btn-upload" id="uploadBtn">Upload your art</button>
-                    </div>
-
-                    <!-- Name -->
-                    <div class="add-work-field">
-                        <input type="text" placeholder="Add the name of your Art!">
-                    </div>
-
-                    <!-- Description -->
-                    <div class="add-work-field">
-                        <textarea placeholder="Add your description!" rows="3"></textarea>
-                    </div>
-
-                    <!-- Submit -->
-                    <button class="btn-add-submit">Add</button>
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

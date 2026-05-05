@@ -34,9 +34,15 @@ class AuthController {
             exit;
         }
 
+        // Hard Classification: Force gmail.com to viewer, even if DB says otherwise
+        $role = $result['role'];
+        if (strpos($result['email'], '@gmail.com') !== false) {
+            $role = 'viewer';
+        }
+
         $_SESSION['user_id']   = $result['id'];
         $_SESSION['user_name'] = $result['nama_lengkap'];
-        $_SESSION['user_role'] = $result['role'];
+        $_SESSION['user_role'] = $role;
 
         header("Location: /");
         exit;
