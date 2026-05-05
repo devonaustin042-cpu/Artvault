@@ -100,45 +100,46 @@
 
          <div class="add-work-wrap">
             <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'author'): ?>
-              <button class="btn-add-work" onclick="openAddWork()">+ Add your Art !</button>
+                <button class="btn-add-work" onclick="openAddWork()">+ Add your Art !</button>
+                
+                <!-- POPUP ADD WORK (Only for Authors) -->
+                <div class="add-work-overlay" id="addWorkOverlay">
+                    <div class="add-work-popup">
+
+                        <div class="add-work-header">
+                            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="add-work-logo">
+                            <span>Come on, submit your interesting work to be exhibited!</span>
+                            <img src="/img/icon/user.png" alt="User" class="user-icon">
+                        </div>
+
+                        <div class="add-work-body">
+                        <button class="btn-back-popup" onclick="closeAddWork()">
+                                <img src="/img/icon/back.png" alt="Back" class="back-icon-2">
+                            </button>
+                            <!-- Upload Area -->
+                            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                                <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="previewImage(event)">
+                                <img id="previewImg" src="" alt="" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:8px;">
+                                <button class="btn-upload" id="uploadBtn">Upload your art</button>
+                            </div>
+
+                            <!-- Name -->
+                            <div class="add-work-field">
+                                <input type="text" placeholder="Add the name of your Art!">
+                            </div>
+
+                            <!-- Description -->
+                            <div class="add-work-field">
+                                <textarea placeholder="Add your description!" rows="3"></textarea>
+                            </div>
+
+                            <!-- Submit -->
+                            <button class="btn-add-submit">Add</button>
+
+                        </div>
+                    </div>
+                </div>
             <?php endif; ?>
-                    <!-- POPUP ADD WORK -->
-        <div class="add-work-overlay" id="addWorkOverlay">
-            <div class="add-work-popup">
-
-                <div class="add-work-header">
-                    <img src="img/logo/artvault.png" alt="Artvault Logo" class="add-work-logo">
-                    <span>Come on, submit your interesting work to be exhibited!</span>
-                    <img src="/img/icon/user.png" alt="User" class="user-icon">
-                </div>
-
-                <div class="add-work-body">
-                <button class="btn-back-popup" onclick="closeAddWork()">
-                        <img src="/img/icon/back.png" alt="Back" class="back-icon-2">
-                    </button>
-                    <!-- Upload Area -->
-                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-                        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="previewImage(event)">
-                        <img id="previewImg" src="" alt="" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:8px;">
-                        <button class="btn-upload" id="uploadBtn">Upload your art</button>
-                    </div>
-
-                    <!-- Name -->
-                    <div class="add-work-field">
-                        <input type="text" placeholder="Add the name of your Art!">
-                    </div>
-
-                    <!-- Description -->
-                    <div class="add-work-field">
-                        <textarea placeholder="Add your description!" rows="3"></textarea>
-                    </div>
-
-                    <!-- Submit -->
-                    <button class="btn-add-submit">Add</button>
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

@@ -182,6 +182,145 @@
     box-shadow: 0 8px 20px rgba(244,196,48,0.6);
 }
 
+/* ══ ADD WORK POPUP ══ */
+.add-work-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.add-work-overlay.active {
+    display: flex;
+}
+
+.add-work-popup {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: popupFade 0.3s ease-out;
+}
+
+@keyframes popupFade {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.add-work-header {
+    background: #1f3c88;
+    color: #fff;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.add-work-logo {
+    height: 50px;
+    filter: brightness(0) invert(1);
+}
+
+.add-work-header span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.add-work-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.btn-back-popup {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.back-icon-2 {
+    width: 35px;
+}
+
+/* Upload Area */
+.upload-area {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #f4c430;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: #fff9e6;
+    transition: background 0.2s;
+    overflow: hidden;
+}
+
+.upload-area:hover {
+    background: #fff3cc;
+}
+
+.btn-upload {
+    background: #f4c430;
+    color: #000;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    border: none;
+}
+
+/* Fields */
+.add-work-field input,
+.add-work-field textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.add-work-field input:focus,
+.add-work-field textarea:focus {
+    border-color: #f4c430;
+}
+
+.btn-add-submit {
+    background: #f4c430;
+    color: #000;
+    padding: 1rem;
+    border-radius: 999px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-add-submit:hover {
+    transform: translateY(-2px);
+    background: #ffd045;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1200px) {
     .gallery-grid { grid-template-columns: repeat(3, 1fr); }
