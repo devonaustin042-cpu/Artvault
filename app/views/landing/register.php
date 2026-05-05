@@ -119,6 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p class="text-gray-600 text-sm">Already have account? <a href="/login" class="text-yellow-600 font-bold hover:underline">Log in</a></p>
             </div>
         </div>
+        
+    <div class="Box-1"></div>
 
         <!-- FOOTER -->
         <footer class="footer">

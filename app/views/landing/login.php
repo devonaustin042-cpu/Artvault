@@ -109,6 +109,8 @@
             </div>
         </div>
 
+    <div class="Box-1"></div>
+
         <!-- FOOTER --> 
         <footer class="footer">
             <div class="footer-main">
