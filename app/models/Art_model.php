@@ -7,7 +7,7 @@ class Art_model extends Database {
         $query = "SELECT artworks.*, users.full_name as author_name 
                   FROM artworks 
                   LEFT JOIN users ON artworks.user_id = users.id 
-                  ORDER BY artworks.tanggal_upload DESC";
+                  ORDER BY artworks.upload_time DESC";
         $stmt = $this->dbh->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

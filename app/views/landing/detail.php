@@ -73,12 +73,12 @@
  
             <!-- Gambar -->
             <div class="art-detail-img-wrap">
-                <img src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['judul']; ?>" class="art-detail-img">
+                <img src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" class="art-detail-img">
             </div>
  
             <!-- Info -->
             <div class="art-detail-info">
-                <h1 class="art-detail-title"><?= $art['judul']; ?></h1>
+                <h1 class="art-detail-title"><?= $art['title']; ?></h1>
                 <p class="art-detail-author">by <?= $art['author_name']; ?></p>
                 <hr class="art-detail-divider">
  
@@ -86,13 +86,13 @@
  
                 <!-- Teks pendek -->
                 <div class="art-desc-short" id="descShort">
-                    <p><?= substr($art['deskripsi'], 0, 100); ?>...</p>
+                    <p><?= substr($art['description'], 0, 100); ?>...</p>
                     <button class="btn-read-more" onclick="toggleDesc()">Read For More...</button>
                 </div>
  
                 <!-- Teks panjang -->
                 <div class="art-desc-full" id="descFull" style="display:none;">
-                    <p><?= $art['deskripsi']; ?></p>
+                    <p><?= $art['description']; ?></p>
                     <button class="btn-read-more" onclick="toggleDesc()">Show Less</button>
                 </div>
 
