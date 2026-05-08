@@ -84,10 +84,10 @@
             <?php foreach ($artworks as $row): ?>
             <a href="/art/<?= $row['id']; ?>" class="art-card">
                 <div class="art-img-container">
-                    <img src="/img/gallery/<?= $row['file_path']; ?>" alt="<?= $row['judul']; ?>">
+                    <img src="/img/gallery/<?= $row['file_path']; ?>" alt="<?= $row['title']; ?>">
                 </div>
                 <div class="art-info">
-                    <p class="art-title"><?= $row['judul']; ?></p>
+                    <p class="art-title"><?= $row['title']; ?></p>
                     <p class="art-author">Made by : <?= $row['author_name']; ?></p>
                     <div class="art-like">
                         <img src="/img/icon/like.png" class="art-like-img">
