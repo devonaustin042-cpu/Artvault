@@ -1,7 +1,7 @@
 <?php
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (empty($_POST['nama_lengkap']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirm_password'])) {
+    if (empty($_POST['full_name']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirm_password'])) {
         $error = 'Semua field harus diisi.';
     } elseif ($_POST['password'] !== $_POST['confirm_password']) {
         $error = 'Password tidak cocok.';
@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-black">
                             <i class="fa-solid fa-id-card"></i>
                         </span>
-                        <input type="text" name="nama_lengkap" placeholder="Enter Full Name"
-                            value="<?= htmlspecialchars($_POST['nama_lengkap'] ?? '') ?>"
+                        <input type="text" name="full_name" placeholder="Enter Full Name"
+                            value="<?= htmlspecialchars($_POST['full_name'] ?? '') ?>"
                             class="w-full py-3.5 pl-12 pr-4 border border-black rounded-full focus:outline-none focus:ring-1 focus:ring-yellow-500 text-sm" required>
                     </div>
 

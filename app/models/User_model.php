@@ -16,10 +16,10 @@ class User_model extends Database {
             $is_author = (strpos($data['email'], '@ski.sch.id') !== false);
             $role = $is_author ? 'author' : 'viewer';
 
-            $query = "INSERT INTO users (nama_lengkap, email, password, role) VALUES (:nama_lengkap, :email, :password, :role)";
+            $query = "INSERT INTO users (full_name, email, password, role) VALUES (:full_name, :email, :password, :role)";
             $stmt = $this->dbh->prepare($query);
             
-            $stmt->bindParam(':nama_lengkap', $data['nama_lengkap']);
+            $stmt->bindParam(':full_name', $data['full_name']);
             $stmt->bindParam(':email', $data['email']);
             $stmt->bindParam(':password', $hashed_password);
             $stmt->bindParam(':role', $role);

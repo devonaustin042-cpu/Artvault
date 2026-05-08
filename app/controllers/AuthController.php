@@ -41,7 +41,7 @@ class AuthController {
         }
 
         $_SESSION['user_id']   = $result['id'];
-        $_SESSION['user_name'] = $result['nama_lengkap'];
+        $_SESSION['user_name'] = $result['full_name'];
         $_SESSION['user_role'] = $role;
 
         header("Location: /");

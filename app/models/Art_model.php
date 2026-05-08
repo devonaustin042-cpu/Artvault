@@ -4,7 +4,7 @@ require_once __DIR__ . '/../core/Database.php';
 class Art_model extends Database {
     
     public function getAllArtworks() {
-        $query = "SELECT artworks.*, users.nama_lengkap as author_name 
+        $query = "SELECT artworks.*, users.full_name as author_name 
                   FROM artworks 
                   LEFT JOIN users ON artworks.user_id = users.id 
                   ORDER BY artworks.tanggal_upload DESC";
@@ -14,7 +14,7 @@ class Art_model extends Database {
     }
 
     public function getArtworkById($id) {
-        $query = "SELECT artworks.*, users.nama_lengkap as author_name 
+        $query = "SELECT artworks.*, users.full_name as author_name 
                   FROM artworks 
                   LEFT JOIN users ON artworks.user_id = users.id 
                   WHERE artworks.id = :id";
