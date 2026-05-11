@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artvault - Contact</title>
+    <title>Artvault - About</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -18,10 +18,10 @@
         </div>
 
         <ul class="nav-menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/gallery">Gallery</a></li>
-            <li><a href="/contact" class="active">Contact</a></li>
-            <li><a href="/about">About</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -58,101 +58,185 @@
         }
     </script>
 
-    <div class="Box-1"></div>
+<!-- CONTACT SECTION -->
+<section class="bg-[#f3f3f3] min-h-screen py-10">
 
-    <section class="about-section">
-...
-</body>
-</html>
-            Have questions or want to collaborate? Feel free to reach out to us through any of the following channels. We're always happy to hear from you!
-            </p>
-            <div style="margin-top: 2rem; text-align: left; display: inline-block;">
-                <p><strong>Email:</strong> Artvault@gmail.com</p>
-                <p><strong>Phone:</strong> +62 897 3871 170</p>
-                <p><strong>Location:</strong> Pontianak, Kalimantan Barat, Indonesia</p>
-            </div>
-        </div>
-    </section>
+    <!-- TITLE -->
+    <div class="text-center">
+        <h1 class="text-[55px] font-serif font-bold text-black uppercase tracking-wide">
+            CONTACT US
+        </h1>
 
-    <div class="Box-1"></div>
+        <p class="mt-2 text-[20px] text-black">
+            If any problem occurs, you can contact us!
+        </p>
+    </div>
 
-    <!-- FOOTER --> 
-    <footer class="footer">
-        <div class="footer-brand">
-            <div class="footer-brand-top">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
-                <span class="footer-brand-name">Artvault</span>
-            </div>
-        </div>
-        <div class="footer-main">
-            <!-- Navigation -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/gallery">Gallery</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
+    <!-- CONTACT CONTENT -->
+    <div class="max-w-[1450px] mx-auto mt-10 px-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-            <!-- Contact -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Contact</h4>
-                <ul class="footer-contact">
-                    <li>
-                        <span class="contact-icon">
-                            <img src="/img/icon/mail.png" alt="Email Icon" class="contact-icon-img">
-                        </span>
-                        <span>Artvault@gmail.com</span>
-                    </li>
-                    <li>
-                        <span class="contact-icon">
-                            <img src="/img/icon/location.png" alt="Location Icon" class="contact-icon-img">
-                        </span>
-                        <span>Pontianak, Kalimantan Barat, Indonesia</span>
-                    </li>
-                    <li>
-                        <span class="contact-icon">
-                            <img src="/img/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
-                        </span>
-                        <span>+62 897 3871 170</span>
-                    </li>
-                </ul>
-            </div>
+        <!-- LEFT FORM -->
+        <div class="lg:col-span-2 bg-[#e9e9e9] rounded-[15px] px-10 py-8">
 
-            <!-- Help & Center -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Help & Center</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Customer Support</a></li>
-                    <li><a href="#">Terms and Services</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Cancellation and Refund Policy</a></li>
-                </ul>
-            </div>
+            <!-- TITLE -->
+            <h2 class="text-[22px] font-bold text-black">
+                Send Message
+            </h2>
 
-            <!-- Logo + Sosmed -->
-            <div class="footer-col footer-social-col">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
-                <div class="footer-social">
-                    <p class="footer-follow">Follow Us</p>
-                    <div class="social-icons">
-                        <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
-                        <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
-                    </div>
+            <!-- LINE -->
+            <div class="w-full h-[3px] bg-[#9c9c9c] mt-3 mb-7"></div>
+
+            <!-- FORM -->
+            <form>
+
+                <!-- FULL NAME -->
+                <div class="mb-6">
+                    <label class="block text-[17px] text-black mb-2">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        class="w-full h-[52px] border border-[#bcbcbc] rounded-[5px] px-4 bg-white outline-none"
+                    >
                 </div>
+
+                <!-- EMAIL -->
+                <div class="mb-6">
+                    <label class="block text-[17px] text-black mb-2">
+                        Email / WhatsApp No.
+                    </label>
+
+                    <input
+                        type="text"
+                        class="w-full h-[52px] border border-[#bcbcbc] rounded-[5px] px-4 bg-white outline-none"
+                    >
+                </div>
+
+                <!-- MESSAGE -->
+                <div>
+                    <label class="block text-[17px] text-black mb-2">
+                        Message / Description
+                    </label>
+
+                    <textarea
+                        class="w-full h-[140px] border border-[#bcbcbc] rounded-[5px] p-4 bg-white outline-none resize-none"
+                    ></textarea>
+                </div>
+
+                <!-- BUTTON -->
+                <div class="flex justify-center mt-6">
+
+                    <button
+                        type="submit"
+                        class="bg-[#f2c230] hover:bg-[#ddb421] transition-all duration-300 
+                               text-black text-[20px] font-bold 
+                               px-16 py-3 rounded-[15px] shadow-md"
+                    >
+                        Send Message
+                    </button>
+
+                </div>
+
+            </form>
+        </div>
+
+        <!-- RIGHT CONTACT INFO -->
+        <div class="bg-[#e9e9e9] rounded-[15px] px-8 py-7 h-fit">
+
+            <!-- TITLE -->
+            <h2 class="text-[22px] font-bold text-black">
+                Contact Information
+            </h2>
+
+            <!-- LINE -->
+            <div class="w-full h-[1px] bg-[#b8b8d8] mt-3 mb-8"></div>
+
+            <!-- ITEMS -->
+            <div class="space-y-9">
+
+                <!-- SCHOOL -->
+                <div class="flex items-center gap-5">
+
+                    <img
+                        src="../../public/img/icon/edu-con.png"
+                        alt="School"
+                        class="w-[28px] h-[28px]"
+                    >
+
+                    <p class="text-[17px] text-black">
+                        SMK Immanuel Pontianak
+                    </p>
+
+                </div>
+
+                <!-- ADDRESS -->
+                <div class="flex items-center gap-5">
+
+                    <img
+                        src="/img/icon/location.png"
+                        alt="Location"
+                        class="w-[28px] h-[28px]"
+                    >
+
+                    <p class="text-[17px] text-black">
+                        JL Sutoyo No 99
+                    </p>
+
+                </div>
+
+                <!-- EMAIL -->
+                <div class="flex items-center gap-5">
+
+                    <img
+                        src="/img/icon/email.png"
+                        alt="Email"
+                        class="w-[28px] h-[28px]"
+                    >
+
+                    <p class="text-[17px] text-black">
+                        Skim@SKI.SCH.ID
+                    </p>
+
+                </div>
+
+                <!-- PHONE -->
+                <div class="flex items-center gap-5">
+
+                    <img
+                        src="/img/icon/phone.png"
+                        alt="Phone"
+                        class="w-[28px] h-[28px]"
+                    >
+
+                    <p class="text-[17px] text-black">
+                        0811-222-333-444
+                    </p>
+
+                </div>
+
+                <!-- TIME -->
+                <div class="flex items-center gap-5">
+
+                    <img
+                        src="/img/icon/time.png"
+                        alt="Time"
+                        class="w-[28px] h-[28px]"
+                    >
+
+                    <p class="text-[17px] text-black">
+                        Monday - Sunday, 07.00 - 17.00
+                    </p>
+
+                </div>
+
             </div>
+
         </div>
 
-        <!-- Bottom Bar -->
-        <div class="footer-bottom">
-            <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
-        </div>
-    </footer>
+    </div>
 
-    <script src="/js/script.js"></script>
+</section>
+
 </body>
 </html>
