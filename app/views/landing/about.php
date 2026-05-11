@@ -18,10 +18,10 @@
         </div>
 
         <ul class="nav-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/gallery">Gallery</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about" class="active">About</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -46,17 +46,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function toggleLogoutPopup() {
-            const popup = document.getElementById('logoutPopup');
-            if (popup.style.display === 'none' || popup.style.display === '') {
-                popup.style.display = 'flex';
-            } else {
-                popup.style.display = 'none';
-            }
-        }
-    </script>
 
     <div class="Box-1"></div>
 
