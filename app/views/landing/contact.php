@@ -49,11 +49,8 @@
     </div>
 
 
-<!-- MAIN CONTENT  -->
-<body class="bg-[#f3f3f3]">
-
   <!-- CONTACT SECTION -->
-  <section class="max-w-[1400px] mx-auto pt-10 pb-30 px-30">
+  <section class="max-w-[1400px] mx-auto pt-10 pb-30 px-30 space-y-10">
 
     <!-- TITLE -->
     <div class="text-center">
@@ -125,7 +122,7 @@
       </div>
 
       <!-- RIGHT -->
-      <div class="w-full xl:w-[390px] bg-[#e9e9e9] rounded-[20px] px-8 py-7">
+      <div class="w-full xl:w-[390px] bg-[#e9e9e9] rounded-[20px] p-8">
 
         <!-- TITLE -->
         <h2 class="text-[27px] font-bold text-black">
@@ -264,13 +261,13 @@
             </div>
         </div>
 
+        <script src="/js/script.js"></script>
         <!-- Bottom Bar -->
         <div class="footer-bottom">
             <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
         </div>
     </footer>
 
-    <script src="/js/script.js"></script>
 
 </body>
 </html>
