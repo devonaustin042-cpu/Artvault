@@ -98,7 +98,8 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`, `created_at
 (17, 'tes', '123@gmail.com', '$2y$10$HdaCJfE.BgX/Xx/df3EMS.zlzVa/3wbyJOfq4cK7BfqVXyjh8FSEy', 'viewer', '2026-05-08 04:05:14'),
 (18, 'tes', 'tes123@ski.sch.id', '$2y$10$U2VGtOxVCVSgZMniZiZDReWGoUGNnp9mWUL3T7J8wWyTy5aGmuYry', 'author', '2026-05-08 04:05:54'),
 (19, 'felix', 'snack@gmail.com', '$2y$10$QdrAQN5LlROV8eOW1xmDxOjMVrXxYZ3hQZJwFqTh.jM5mN7oViIaK', 'viewer', '2026-05-08 04:06:33'),
-(20, 'felix', 'snack@ski.sch.id', '$2y$10$IGLpdWTZf8oeu2aJ/qHbvOnfI2cG40lKJYfHL3iRK9N.0Di5AjShC', 'author', '2026-05-08 04:07:04');
+(20, 'felix', 'snack@ski.sch.id', '$2y$10$IGLpdWTZf8oeu2aJ/qHbvOnfI2cG40lKJYfHL3iRK9N.0Di5AjShC', 'author', '2026-05-08 04:07:04'),
+(21, 'Flazened Admin', 'flazened@ski.sch.id', '$2y$10$8KpZG/jCsulygGUP/qLt5.CdDj9jM8uQ3SVNooEaQU.mjHndKwWlW', 'author', '2026-05-12 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -145,7 +146,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
