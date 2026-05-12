@@ -27,9 +27,28 @@
 - **Database:** Connect via `app/core/Database.php`. Credentials should be handled with care (currently root:123).
 - **Routing:** Managed in `public/index.php` via `App\Core\Router`.
 
-## 4. Design Guidelines
-- **Color Palette:**
-  - Primary Blue: `#1f3c88` (Gradient based).
-  - Gold Accent: `#f4c430`.
-  - Text Dark: `#333`.
-- **Navbar/Footer:** Standardized across all views. Navbar height is 100px with a specific gradient.
+## 5. Artwork & Author Mapping (Figma Reference)
+To ensure data consistency with the design, use the following mapping for artwork authors. All author accounts MUST use the `@ski.sch.id` domain to be granted the `author` role.
+
+| Artwork Title | File Name | Author Name (Real Name) | Suggested Email |
+|---------------|-----------|-------------------------|-----------------|
+| Claymonster | Claymonster.png | Chisa Evelyn | chisa@ski.sch.id |
+| Koi Pond | Koi-Pond.png | Odin Madun | odin@ski.sch.id |
+| Trash Hunt | Trash-Hunt.png | Viktor Wembu | viktor@ski.sch.id |
+| Cherish the moment | Cherish-the-moment.png | Daniel Caesar | daniel@ski.sch.id |
+| Ayo punya cita-cita | Ayo-punya-cita-cita.png | Faysal Pratama | faysal@ski.sch.id |
+| Billie Eilish | Billie-Eilish.png | Depon Vintjai | depon@ski.sch.id |
+| A positive spin on... | A-positive-spin-on.png | Tang Yau Hoong | tang@ski.sch.id |
+| Menggapai Indonesia | Menggapai-Indonesia.png | Marcello Adil | marcello@ski.sch.id |
+| Vibrant River | Vibrant-River.png | Reyfan Andika | reyfan@ski.sch.id |
+| Anonymous Protagonist | Anonymous-Protagonis.png | Felicia Chiao | felicia@ski.sch.id |
+| A Chill Doomsday | A-Chill-Doomsday.png | Nicholas Jo | nicholas@ski.sch.id |
+| Melody in Guitar | Melody-in-Guitar.png | Jo Halimawan | jo@ski.sch.id |
+
+## 6. Development Notes
+- **User Roles:** 
+  - Domain `@ski.sch.id` -> `role: author` (Can upload/edit artworks).
+  - Other domains (e.g., `@gmail.com`) -> `role: viewer` (Can only view/like).
+- **Password Standard:** For development accounts, use `Password123!` unless specified otherwise.
+- **Database Sync:** [COMPLETED] 12 Real Author accounts and artworks have been synced to `db_gallery_sekolah`.
+- **Author Identity:** The "Made by" text in the gallery now dynamically pulls the real names of authors from the database (e.g., Chisa Evelyn instead of Viewer Amboi).
