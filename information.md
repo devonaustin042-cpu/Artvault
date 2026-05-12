@@ -17,7 +17,7 @@
 ## 2. Directory Structure Rules
 - **CSS Source:** All CSS edits MUST be made in `app/resources/css/`.
   - Main styling: `input.css`.
-  - Modular styling: `detail.css`, `gallery.css` (imported in `input.css`).
+  - Modular styling: `detail.css`, `gallery.css`, `contact.css` (imported in `input.css`).
 - **Static Assets:** Images, icons, and final CSS reside in `public/`.
 - **Views:** All `.php` files in `app/views/landing/` should point to `/css/index.css` for their styling.
 

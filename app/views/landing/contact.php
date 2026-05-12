@@ -50,138 +50,75 @@
 
 
   <!-- CONTACT SECTION -->
-  <section class="max-w-[1400px] mx-auto pt-10 pb-30 px-30 space-y-10">
+  <section class="contact-section">
 
     <!-- TITLE -->
-    <div class="text-center">
-      <h1 class="title-font text-[64px] leading-none font-bold text-black">
-        CONTACT US
-      </h1>
-
-      <p class="text-[20px] text-[#222] mt-4">
-        If any problem occurs, you can contact us!
-      </p>
+    <div class="contact-header">
+      <h1>CONTACT US</h1>
+      <p>If any problem occurs, you can contact us!</p>
     </div>
 
     <!-- CONTENT -->
-    <div class="flex flex-col xl:flex-row justify-center items-start gap-[40px] mt-10">
+    <div class="contact-content">
 
-      <!-- LEFT -->
-      <div class="w-full xl:w-[760px] bg-[#e9e9e9] rounded-[20px] px-20 py-20">
+      <!-- LEFT: SEND MESSAGE -->
+      <div class="contact-form-box">
+        <h2>Send Message</h2>
+        <div class="divider"></div>
 
-        <!-- TITLE -->
-        <h2 class="text-[28px] font-bold text-black">
-          Send Message
-        </h2>
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
 
-        <!-- LINE -->
-        <div class="w-full h-[4px] bg-[#9797a8] mt-3 mb-8"></div>
+          <div class="form-group">
+            <label for="contact">Email / WhatsApp No.</label>
+            <input type="text" id="contact" name="contact" placeholder="Email or Phone" required>
+          </div>
 
-        <!-- INPUT -->
-        <div class="mb-6">
-          <label class="block text-[20px] text-[#222] mb-3">
-            Full Name
-          </label>
+          <div class="form-group">
+            <label for="message">Message / Description</label>
+            <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+          </div>
 
-          <input 
-            type="text"
-            class="w-full h-[58px] border border-[#bdbdbd] rounded-[5px] bg-white px-4 outline-none"
-          >
-        </div>
-
-        <!-- INPUT -->
-        <div class="mb-6">
-          <label class="block text-[20px] text-[#222] mb-3">
-            Email / WhatsApp No.
-          </label>
-
-          <input 
-            type="text"
-            class="w-full h-[58px] border border-[#bdbdbd] rounded-[5px] bg-white px-4 outline-none"
-          >
-        </div>
-
-        <!-- TEXTAREA -->
-        <div>
-          <label class="block text-[20px] text-[#222] mb-3">
-            Message / Description
-          </label>
-
-          <textarea
-            class="w-full h-[160px] border border-[#bdbdbd] rounded-[5px] bg-white p-4 resize-none outline-none"
-          ></textarea>
-        </div>
-
-        <!-- BUTTON -->
-        <div class="flex justify-center mt-7">
-          <button class="w-[300px] h-[68px] rounded-[18px] bg-[#f1c52d] text-black text-[22px] font-bold hover:opacity-90 transition">
-            Send Message
-          </button>
-        </div>
-
+          <div class="btn-send-container">
+            <button type="submit" class="btn-send">Send Message</button>
+          </div>
+        </form>
       </div>
 
-      <!-- RIGHT -->
-      <div class="w-full xl:w-[390px] bg-[#e9e9e9] rounded-[20px] p-8">
+      <!-- RIGHT: CONTACT INFO -->
+      <div class="contact-info-box">
+        <h2>Contact Information</h2>
+        <div class="divider"></div>
 
-        <!-- TITLE -->
-        <h2 class="text-[27px] font-bold text-black">
-          Contact Information
-        </h2>
-
-        <!-- LINE -->
-        <div class="w-full h-[3px] bg-[#8f88d9] mt-3 mb-8"></div>
-
-        <!-- ITEMS -->
-        <div class="space-y-8">
-
-          <!-- ITEM -->
-          <div class="flex items-center gap-6">
-            <i class="fa-solid fa-graduation-cap text-[38px] text-[#233f97] w-[42px]"></i>
-
-            <p class="text-[18px] text-[#222] leading-relaxed">
-              SMK Immanuel Pontianak
-            </p>
+        <div class="info-items">
+          <div class="info-item">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <p>SMK Immanuel Pontianak</p>
           </div>
 
-          <!-- ITEM -->
-          <div class="flex items-center gap-6">
-            <i class="fa-solid fa-location-dot text-[38px] text-[#233f97] w-[42px]"></i>
-
-            <p class="text-[18px] text-[#222] leading-relaxed">
-              JL Sutoyo No 99
-            </p>
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <p>JL Sutoyo No 99</p>
           </div>
 
-          <!-- ITEM -->
-          <div class="flex items-center gap-6">
-            <i class="fa-solid fa-envelope text-[38px] text-[#233f97] w-[42px]"></i>
-
-            <p class="text-[18px] text-[#222] leading-relaxed">
-              Skim@SKI.SCH.ID
-            </p>
+          <div class="info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <p>Skim@SKI.SCH.ID</p>
           </div>
 
-          <!-- ITEM -->
-          <div class="flex items-center gap-6">
-            <i class="fa-solid fa-phone text-[38px] text-[#233f97] w-[42px]"></i>
-
-            <p class="text-[18px] text-[#222] leading-relaxed">
-              0811-222-333-444
-            </p>
+          <div class="info-item">
+            <i class="fa-solid fa-phone"></i>
+            <p>0811-222-333-444</p>
           </div>
 
-          <!-- ITEM -->
-          <div class="flex items-center gap-6">
-            <i class="fa-solid fa-clock text-[38px] text-[#233f97] w-[42px]"></i>
-
-            <p class="text-[18px] text-[#222] leading-relaxed">
-              Monday - Sunday, 07.00 - 17.00
-            </p>
+          <div class="info-item">
+            <i class="fa-solid fa-clock"></i>
+            <p>Monday - Sunday,<br>07.00 - 17.00</p>
           </div>
-
         </div>
-
       </div>
 
     </div>
