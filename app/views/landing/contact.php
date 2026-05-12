@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body>
 
@@ -47,36 +48,86 @@
         </div>
     </div>
 
-    <script>
-        function toggleLogoutPopup() {
-            const popup = document.getElementById('logoutPopup');
-            if (popup.style.display === 'none' || popup.style.display === '') {
-                popup.style.display = 'flex';
-            } else {
-                popup.style.display = 'none';
-            }
-        }
-    </script>
 
-    <div class="Box-1"></div>
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
 
-    <section class="about-section">
-...
-</body>
-</html>
-            Have questions or want to collaborate? Feel free to reach out to us through any of the following channels. We're always happy to hear from you!
-            </p>
-            <div style="margin-top: 2rem; text-align: left; display: inline-block;">
-                <p><strong>Email:</strong> Artvault@gmail.com</p>
-                <p><strong>Phone:</strong> +62 897 3871 170</p>
-                <p><strong>Location:</strong> Pontianak, Kalimantan Barat, Indonesia</p>
-            </div>
+    <!-- TITLE -->
+    <div class="contact-header">
+      <h1>CONTACT US</h1>
+      <p>If any problem occurs, you can contact us!</p>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="contact-content">
+
+      <!-- LEFT: SEND MESSAGE -->
+      <div class="contact-form-box">
+        <h2>Send Message</h2>
+        <div class="divider"></div>
+
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact">Email / WhatsApp No.</label>
+            <input type="text" id="contact" name="contact" placeholder="Email or Phone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message / Description</label>
+            <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+          </div>
+
+          <div class="btn-send-container">
+            <button type="submit" class="btn-send">Send Message</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT: CONTACT INFO -->
+      <div class="contact-info-box">
+        <h2>Contact Information</h2>
+        <div class="divider"></div>
+
+        <div class="info-items">
+          <div class="info-item">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <p>SMK Immanuel Pontianak</p>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <p>JL Sutoyo No 99</p>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <p>Skim@SKI.SCH.ID</p>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-phone"></i>
+            <p>0811-222-333-444</p>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-clock"></i>
+            <p>Monday - Sunday,<br>07.00 - 17.00</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <div class="Box-1"></div>
+    </div>
 
-    <!-- FOOTER --> 
+  </section>
+
+
+  <!-- FOOTER --> 
+   <div class="Box-1"></div>
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
@@ -147,12 +198,13 @@
             </div>
         </div>
 
+        <script src="/js/script.js"></script>
         <!-- Bottom Bar -->
         <div class="footer-bottom">
             <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
         </div>
     </footer>
 
-    <script src="/js/script.js"></script>
+
 </body>
 </html>

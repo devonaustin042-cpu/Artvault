@@ -18,10 +18,10 @@
         </div>
 
         <ul class="nav-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/gallery" class="active">Gallery</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery" class="active">Gallery</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -29,7 +29,7 @@
                 <a href="javascript:void(0)" onclick="toggleLogoutPopup()"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-                <button class="btn btn-signup" onclick="location.href='/signup'">Sign Up</button>
+                <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
             <?php endif; ?>
         </div>
     </nav>
@@ -46,17 +46,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function toggleLogoutPopup() {
-            const popup = document.getElementById('logoutPopup');
-            if (popup.style.display === 'none' || popup.style.display === '') {
-                popup.style.display = 'flex';
-            } else {
-                popup.style.display = 'none';
-            }
-        }
-    </script>
 
     <!-- GALLERY -->
     <div class="gallery-page">

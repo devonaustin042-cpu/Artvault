@@ -1,8 +1,6 @@
 <?php
 namespace App\Core;
 
-use App\Controllers\StudentController;
-
 class Router
 {
     private array $routes = [];
@@ -24,6 +22,10 @@ class Router
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         foreach($this->routes as $route){
+            if ($route['method'] !== $method) {
+                continue;
+            }
+
             $pattern = str_replace(
                 '{id}',
                 '([0-9]+)',
