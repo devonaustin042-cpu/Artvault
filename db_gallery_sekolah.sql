@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1deb3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 08, 2026 at 04:20 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Generation Time: May 12, 2026 at 09:20 AM
+-- Server version: 8.0.45-0ubuntu0.24.04.1
+-- PHP Version: 8.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,14 +42,18 @@ CREATE TABLE `artworks` (
 --
 
 INSERT INTO `artworks` (`id`, `user_id`, `category_id`, `title`, `description`, `file_path`, `upload_time`) VALUES
-(1, 1, NULL, 'Claymonster', 'A creative clay monster sculpture.', 'Claymonster.png', '2026-05-04 04:15:04'),
-(2, 2, NULL, 'Koi Pond', 'A serene view of a koi pond.', 'Koi-Pond.png', '2026-05-04 04:15:04'),
-(3, 1, NULL, 'Trash Hunt', 'An imaginative urban scene of a trash hunt.', 'Trash-Hunt.png', '2026-05-04 04:15:04'),
-(4, 2, NULL, 'Cherish the moment', 'A beautiful capture of a cherished moment.', 'Cherish-the-moment.png', '2026-05-04 04:15:04'),
-(5, 1, NULL, 'Ayo punya cita-cita', 'Inspirational art about having dreams.', 'Ayo-punya-cita-cita.png', '2026-05-04 04:15:04'),
-(6, 2, NULL, 'Billie Eilish', 'A portrait of the famous singer.', 'Billie-Eilish.png', '2026-05-04 04:15:04'),
-(7, 1, NULL, 'Vibrant River', 'A colorful and vibrant river landscape.', 'Vibrant-River.png', '2026-05-04 04:15:04'),
-(8, 2, NULL, 'Anonymous Protagonis', 'Unique character art by Felicia Chiao.', 'Anonymous-Protagonis.png', '2026-05-04 04:15:04');
+(9, 21, NULL, 'Claymonster', 'A creative clay monster sculpture.', 'Claymonster.png', '2026-05-12 01:29:07'),
+(10, 22, NULL, 'Koi Pond', 'A serene view of a koi pond.', 'Koi-Pond.png', '2026-05-12 01:29:07'),
+(11, 23, NULL, 'Trash Hunt', 'An imaginative urban scene of a trash hunt.', 'Trash-Hunt.png', '2026-05-12 01:29:07'),
+(12, 24, NULL, 'Cherish the moment', 'A beautiful capture of a cherished moment.', 'Cherish-the-moment.png', '2026-05-12 01:29:07'),
+(13, 25, NULL, 'Ayo punya cita-cita', 'Inspirational art about having dreams.', 'Ayo-punya-cita-cita.png', '2026-05-12 01:29:07'),
+(14, 26, NULL, 'Billie Eilish', 'A portrait of the famous singer.', 'Billie-Eilish.png', '2026-05-12 01:29:07'),
+(15, 27, NULL, 'A positive spin on n', 'Creative light bulb art.', 'A-positive-spin-on.png', '2026-05-12 01:29:07'),
+(16, 28, NULL, 'Menggapai Indonesia', 'Digital illustration about Indonesian dreams.', 'Menggapai-Indonesia.png', '2026-05-12 01:29:07'),
+(17, 29, NULL, 'Vibrant River', 'A colorful and vibrant river landscape.', 'Vibrant-River.png', '2026-05-12 01:29:07'),
+(18, 30, NULL, 'Anonymous Protagonis', 'Unique character art by Felicia Chiao.', 'Anonymous-Protagonis.png', '2026-05-12 01:29:07'),
+(19, 31, NULL, 'A Chill Doomsday', 'Atmospheric scene in a vehicle.', 'A-Chill-Doomsday.png', '2026-05-12 01:29:07'),
+(20, 32, NULL, 'Melody in Guitar', 'Expressive sketch of a person with a guitar.', 'Melody-in-Guitar.png', '2026-05-12 01:29:07');
 
 -- --------------------------------------------------------
 
@@ -73,7 +77,7 @@ CREATE TABLE `users` (
   `full_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('viewer','author') DEFAULT 'viewer',
+  `role` enum('viewer','author','admin') DEFAULT 'viewer',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -99,7 +103,21 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`, `created_at
 (18, 'tes', 'tes123@ski.sch.id', '$2y$10$U2VGtOxVCVSgZMniZiZDReWGoUGNnp9mWUL3T7J8wWyTy5aGmuYry', 'author', '2026-05-08 04:05:54'),
 (19, 'felix', 'snack@gmail.com', '$2y$10$QdrAQN5LlROV8eOW1xmDxOjMVrXxYZ3hQZJwFqTh.jM5mN7oViIaK', 'viewer', '2026-05-08 04:06:33'),
 (20, 'felix', 'snack@ski.sch.id', '$2y$10$IGLpdWTZf8oeu2aJ/qHbvOnfI2cG40lKJYfHL3iRK9N.0Di5AjShC', 'author', '2026-05-08 04:07:04'),
-(21, 'Flazened Admin', 'flazened@ski.sch.id', '$2y$10$8KpZG/jCsulygGUP/qLt5.CdDj9jM8uQ3SVNooEaQU.mjHndKwWlW', 'author', '2026-05-12 00:00:00');
+(21, 'Chisa Evelyn', 'chisa@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(22, 'Odin Madun', 'odin@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(23, 'Viktor Wembu', 'viktor@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(24, 'Daniel Caesar', 'daniel@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(25, 'Faysal Pratama', 'faysal@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(26, 'Depon Vintjai', 'depon@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(27, 'Tang Yau Hoong', 'tang@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(28, 'Marcello Adil', 'marcello@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(29, 'Reyfan Andika', 'reyfan@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(30, 'Felicia Chiao', 'felicia@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(31, 'Nicholas Jo', 'nicholas@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(32, 'Jo Halimawan', 'jo@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07'),
+(33, 'Flazened Admin', 'flazened@ski.sch.id', '$2y$10$3b.deZ8aho5giYhKRIe0SOIrf.z9yPvSiwUKxAL83ry49EL9lzsri', 'author', '2026-05-12 02:36:58'),
+(35, 'System Admin', 'admin@ski.sch.id', '$2y0$Z4J68ixrI6IDJuGIJW4AWu7iBM9LCH3sCSS/BJnx4UU0t6qRlOS06', 'admin', '2026-05-12 02:49:00'),
+(38, 'siapa', 'abc@gmail.com', '$2y$10$D0ykgc1oo8TaAU09Bnzhker/rRJrs3Zw5dAvIdyLfrx48NQrqBHVS', 'viewer', '2026-05-12 02:53:54');
 
 --
 -- Indexes for dumped tables
@@ -134,7 +152,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `artworks`
 --
 ALTER TABLE `artworks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -146,7 +164,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables
