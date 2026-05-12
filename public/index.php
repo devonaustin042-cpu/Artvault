@@ -32,8 +32,16 @@ $router->add('GET', '/author/gallery', 'ArtController', 'gallery');
 $router->add('GET', '/author/art/{id}', 'ArtController', 'detail');
 $router->add('GET', '/author/home', 'HomeController', 'index');
 
-// Admin Route
+// Admin Routes
 $router->add('GET', '/admin', 'AdminController', 'index');
+$router->add('GET', '/admin/users', 'AdminController', 'users');
+$router->add('GET', '/admin/users/edit/{id}', 'AdminController', 'editUser');
+$router->add('POST', '/admin/users/update/{id}', 'AdminController', 'postEditUser');
+$router->add('GET', '/admin/users/delete/{id}', 'AdminController', 'deleteUser');
+$router->add('GET', '/admin/artworks', 'AdminController', 'artworks');
+$router->add('GET', '/admin/artworks/edit/{id}', 'AdminController', 'editArtwork');
+$router->add('POST', '/admin/artworks/update/{id}', 'AdminController', 'postEditArtwork');
+$router->add('GET', '/admin/artworks/delete/{id}', 'AdminController', 'deleteArtwork');
 
 // Auth Routes
 $router->add('GET', '/login', 'AuthController', 'login');
