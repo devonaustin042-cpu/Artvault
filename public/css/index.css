@@ -1477,7 +1477,7 @@ body {
 }
 .margin-pembatas-sementara {
   margin-top: 1000px;
-  // INI SAMPE 1000 karna untuk halaman utama belum lengkap (WAJIB DIBACA YAAAAA UNTUK ENTE DIMASADEPAN)// height: 0px;
+  height: 0px;
 }
 .box-2 {
   background: linear-gradient(to right, #1f3c88 0%, #2a3f70 50%, #3e4052 100%);

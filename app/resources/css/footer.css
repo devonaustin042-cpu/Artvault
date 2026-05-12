@@ -1,0 +1,181 @@
+
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+.footer {
+    background: #ffffff;
+    border-top: 1px solid #e0e4ed;
+    font-family: 'Lato', sans-serif;
+}
+
+.footer-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2.5rem 3rem;
+    flex-wrap: wrap;
+}
+
+/* Brand (kiri atas) */
+.footer-brand {
+    min-width: 140px;
+}
+
+.footer-brand-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: -40px;
+    margin-right: 20px;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+    height: 120px;
+    margin-right: -30px;
+    margin-bottom: -20px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-brand-name {
+    font-size: 1.3rem;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    color: #1a1a2e;
+    letter-spacing: 0.02em;
+}
+
+/* Columns */
+.footer-col {
+    min-width: 140px;
+}
+
+.footer-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+
+/* Nav Links */
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.footer-links a {
+    color: #3a4a5c;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #1f3c88;
+}
+
+/* Contact List */
+.footer-contact {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: #3a4a5c;
+    line-height: 1.5;
+}
+
+.contact-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    height: 20px;
+    width: 20px;
+}
+
+.contact-icon-img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Social Column */
+.footer-social-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo-big {
+    height: 200px;
+    margin-top: -120px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-follow {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.social-icons a img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-icons a:hover img {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    background: linear-gradient(to right, #1f3c88 0%, #2a3f70 50%, #3e4052 100%);
+    text-align: center;
+    padding: 0.9rem 1rem;
+}
+
+.footer-bottom p {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-main {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .footer-social-col {
+        align-items: flex-start;
+    }
+}
+
