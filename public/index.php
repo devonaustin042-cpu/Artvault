@@ -9,7 +9,9 @@ if (!is_writable(session_save_path())) {
     session_save_path($sessionPath);
 }
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../app/core/Router.php';
 
 use App\Core\Router;
@@ -29,6 +31,9 @@ $router->add('GET', '/art/{id}', 'ArtController', 'detail');
 $router->add('GET', '/author/gallery', 'ArtController', 'gallery');
 $router->add('GET', '/author/art/{id}', 'ArtController', 'detail');
 $router->add('GET', '/author/home', 'HomeController', 'index');
+
+// Admin Route
+$router->add('GET', '/admin', 'AdminController', 'index');
 
 // Auth Routes
 $router->add('GET', '/login', 'AuthController', 'login');

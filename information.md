@@ -52,3 +52,6 @@ To ensure data consistency with the design, use the following mapping for artwor
 - **Password Standard:** For development accounts, use `Password123!` unless specified otherwise.
 - **Database Sync:** [COMPLETED] 12 Real Author accounts and artworks have been synced to `db_gallery_sekolah`.
 - **Author Identity:** The "Made by" text in the gallery now dynamically pulls the real names of authors from the database (e.g., Chisa Evelyn instead of Viewer Amboi).
+
+
+YOU SHALL Rewrite information.md with newest information so the next AI agent will know how to code in this directory and minimize bug risk.

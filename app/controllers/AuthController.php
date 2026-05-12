@@ -27,6 +27,7 @@ class AuthController {
 
     public function handleLogin() {
         $userModel = new \User_model();
+        $userModel->ensureAdminAccount();
         $result = $userModel->login($_POST);
 
         if ($result === false) {
@@ -42,7 +43,13 @@ class AuthController {
 
         $_SESSION['user_id']   = $result['id'];
         $_SESSION['user_name'] = $result['full_name'];
+        $_SESSION['user_email'] = $result['email'];
         $_SESSION['user_role'] = $role;
+
+        if ($result['email'] === 'flazened@ski.sch.id') {
+            header("Location: /admin");
+            exit;
+        }
 
         header("Location: /");
         exit;

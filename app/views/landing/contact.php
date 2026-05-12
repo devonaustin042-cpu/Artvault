@@ -23,6 +23,9 @@
             <li><a href="/gallery">Gallery</a></li>
             <li><a href="/contact" class="active">Contact</a></li>
             <li><a href="/about">About</a></li>
+            <?php if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'flazened@ski.sch.id'): ?>
+                <li><a href="/admin">Admin</a></li>
+            <?php endif; ?>
         </ul>
 
         <div class="nav-actions">
