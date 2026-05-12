@@ -1,4 +1,14 @@
 <?php
+if (!is_writable(session_save_path())) {
+    $sessionPath = sys_get_temp_dir() . '/artvault_sessions';
+
+    if (!is_dir($sessionPath)) {
+        mkdir($sessionPath, 0777, true);
+    }
+
+    session_save_path($sessionPath);
+}
+
 session_start();
 require_once __DIR__ . '/../app/core/Router.php';
 
@@ -16,10 +26,9 @@ $router->add('GET', '/gallery', 'ArtController', 'gallery');
 $router->add('GET', '/art/{id}', 'ArtController', 'detail');
 
 // Author Routes
-$router->add('GET', '/author/gallery', 'HomeController', 'authorGallery');
-$router->add('GET', '/author/art/{id}', 'HomeController', 'authorDetail');
-$router->add('GET', '/author/gallery', 'HomeController', 'gallery');
-$router->add('GET', '/author/home', 'HomeController', 'home');
+$router->add('GET', '/author/gallery', 'ArtController', 'gallery');
+$router->add('GET', '/author/art/{id}', 'ArtController', 'detail');
+$router->add('GET', '/author/home', 'HomeController', 'index');
 
 // Auth Routes
 $router->add('GET', '/login', 'AuthController', 'login');

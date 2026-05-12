@@ -52,10 +52,10 @@
   display: flex;
   gap: 24px;
 }
-.art-card {
+.art-of-the-day .art-card {
   flex: 1;
 }
-.art-card img {
+.art-of-the-day .art-card img {
   width: 100%;
   border-radius: 12px;
   object-fit: cover;
@@ -161,4 +161,33 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@media (max-width: 900px) {
+  .about-section {
+    flex-direction: column;
+    padding: 40px 24px;
+  }
+
+  .about-text h1 {
+    font-size: 2.4rem;
+  }
+
+  .about-text p {
+    font-size: 1.2rem;
+  }
+
+  .about-image img {
+    height: auto;
+    padding-right: 0;
+  }
+
+  .art-of-the-day {
+    height: auto;
+    padding: 40px 24px;
+  }
+
+  .art-grid {
+    flex-direction: column;
+  }
+}
  
