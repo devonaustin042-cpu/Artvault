@@ -27,7 +27,6 @@ class AuthController {
 
     public function handleLogin() {
         $userModel = new \User_model();
-        $userModel->ensureAdminAccount();
         $result = $userModel->login($_POST);
 
         if ($result === false) {
@@ -35,22 +34,20 @@ class AuthController {
             exit;
         }
 
-        // Hard Classification: Force gmail.com to viewer, even if DB says otherwise
-        $role = $result['role'];
-        if (strpos($result['email'], '@gmail.com') !== false) {
-            $role = 'viewer';
-        }
-
         $_SESSION['user_id']   = $result['id'];
         $_SESSION['user_name'] = $result['full_name'];
         $_SESSION['user_email'] = $result['email'];
-        $_SESSION['user_role'] = $role;
-
-        if ($result['email'] === 'flazened@ski.sch.id') {
+        
+        $role = $result['role'];
+        
+        // Special redirect for Flazened or Admin role
+        if ($result['email'] === 'flazened@ski.sch.id' || $role === 'admin') {
+            $_SESSION['user_role'] = 'admin';
             header("Location: /admin");
             exit;
         }
 
+        $_SESSION['user_role'] = $role;
         header("Location: /");
         exit;
     }
