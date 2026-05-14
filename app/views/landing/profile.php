@@ -60,15 +60,32 @@
                             <button onclick="toggleSettingsPopup()" class="btn-close-settings">&times;</button>
                         </div>
                         <ul class="settings-list">
-                            <li><a href="/logout" class="settings-item exit"><img src="/img/icon/sampah.png" style="width:20px; filter: invert(1);"> Exit Account</a></li>
+                            <li><a href="javascript:void(0)" onclick="toggleLogoutConfirm()" class="settings-item exit"><img src="/img/icon/sampah.png" style="width:20px; filter: invert(1);"> Exit Account</a></li>
                             <li><a href="#" class="settings-item">Edit Profile</a></li>
                             <li><a href="#" class="settings-item">Edit Background</a></li>
                             <li><a href="#" class="settings-item">Change Password</a></li>
                             <li><a href="#" class="settings-item">Change Name</a></li>
                         </ul>
-                    </div>
-                </div>
-            <?php endif; ?>
+                        </div>
+                        </div>
+
+                        <!-- LOGOUT CONFIRM POPUP -->
+                        <div id="logoutConfirmPopup" class="settings-popup-overlay">
+                        <div class="settings-popup-content logout-confirm">
+                        <div class="logout-confirm-body">
+                            <div class="logout-icon-wrap">
+                                <img src="/img/icon/user.png" alt="Logout">
+                            </div>
+                            <h3>Logout?</h3>
+                            <p>Are you sure you want to log out of Artvault?</p>
+                            <div class="logout-confirm-actions">
+                                <button onclick="location.href='/logout'" class="btn-confirm-logout">Logout</button>
+                                <button onclick="toggleLogoutConfirm()" class="btn-cancel-logout">Cancel</button>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        <?php endif; ?>
 
             <div class="profile-info-card">
                 <div class="profile-avatar-wrap">
@@ -219,7 +236,11 @@
             const popup = document.getElementById('settingsPopup');
             popup.classList.toggle('active');
         }
-        </script>
 
+        function toggleLogoutConfirm() {
+            const popup = document.getElementById('logoutConfirmPopup');
+            popup.classList.toggle('active');
+        }
+        </script>
 </body>
 </html>

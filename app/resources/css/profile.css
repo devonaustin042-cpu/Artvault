@@ -313,3 +313,73 @@
 .settings-item:last-child {
     border-bottom: none;
 }
+
+/* Logout Confirm Specific */
+.logout-confirm {
+    max-width: 350px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.logout-confirm-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logout-icon-wrap {
+    width: 70px;
+    height: 70px;
+    background: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.logout-icon-wrap img {
+    width: 40px;
+    opacity: 0.8;
+}
+
+.logout-confirm h3 {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+}
+
+.logout-confirm p {
+    color: #666;
+    margin: 0;
+}
+
+.logout-confirm-actions {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-confirm-logout {
+    flex: 1;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-cancel-logout {
+    flex: 1;
+    background: #eee;
+    color: #333;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
