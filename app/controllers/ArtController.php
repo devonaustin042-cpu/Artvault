@@ -32,6 +32,9 @@ class ArtController {
 
     public function about()
     {
+        require_once __DIR__ . '/../models/Art_model.php';
+        $artModel = new \Art_model();
+        $artworks = array_slice($artModel->getAllArtworks(), 0, 4);
         require_once __DIR__ . '/../views/landing/about.php';
     }
     
