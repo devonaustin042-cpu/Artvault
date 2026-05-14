@@ -11,6 +11,16 @@ class ArtController {
         $artModel = new \Art_model();
         $artworks = $artModel->getAllArtworks($categoryId);
         $categories = $artModel->getCategories();
+
+        $likedArtIds = [];
+        if (isset($_SESSION['user_id'])) {
+            foreach ($artworks as $art) {
+                if ($artModel->isLikedByUser($art['id'], $_SESSION['user_id'])) {
+                    $likedArtIds[] = $art['id'];
+                }
+            }
+        }
+
         require_once __DIR__ . '/../views/landing/gallery.php';
     }
 
@@ -84,6 +94,12 @@ class ArtController {
         $categories = $artModel->getCategories();
         $otherArtworks = $artModel->getOtherArtworks($id, 4);
         $comments = $artModel->getCommentsByArtworkId($id);
+
+        $isLiked = false;
+        if (isset($_SESSION['user_id'])) {
+            $isLiked = $artModel->isLikedByUser($id, $_SESSION['user_id']);
+        }
+
         require_once __DIR__ . '/../views/landing/detail.php';
     }
 
@@ -108,6 +124,33 @@ class ArtController {
             header('Location: /art/' . $artworkId);
             exit;
         }
+    }
+
+    public function toggleLike($artworkId)
+    {
+        header('Content-Type: application/json');
+        
+        if (!isset($_SESSION['user_id'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Please login to like this art.']);
+            exit;
+        }
+
+        $userId = $_SESSION['user_id'];
+        $artModel = new \Art_model();
+        
+        $result = $artModel->toggleLike($artworkId, $userId);
+        
+        if ($result) {
+            $art = $artModel->getArtworkById($artworkId);
+            echo json_encode([
+                'status' => 'success', 
+                'like_status' => $result,
+                'like_count' => $art['like_count']
+            ]);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to toggle like.']);
+        }
+        exit;
     }
 
     public function updateArt($id)
