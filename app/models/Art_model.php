@@ -116,7 +116,8 @@ class Art_model extends Database {
     }
 
     public function getOtherArtworks($excludeId, $limit = 4) {
-        $query = "SELECT artworks.*, users.full_name as author_name 
+        $query = "SELECT artworks.*, users.full_name as author_name,
+                  (SELECT COUNT(*) FROM likes WHERE artwork_id = artworks.id) as like_count
                   FROM artworks 
                   LEFT JOIN users ON artworks.user_id = users.id 
                   WHERE artworks.id != :excludeId 
@@ -125,6 +126,33 @@ class Art_model extends Database {
         $stmt = $this->dbh->prepare($query);
         $stmt->bindParam(':excludeId', $excludeId);
         $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getUserArtworks($userId) {
+        $query = "SELECT artworks.*, users.full_name as author_name,
+                  (SELECT COUNT(*) FROM likes WHERE artwork_id = artworks.id) as like_count
+                  FROM artworks 
+                  LEFT JOIN users ON artworks.user_id = users.id 
+                  WHERE artworks.user_id = :user_id 
+                  ORDER BY artworks.upload_time DESC";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getUserFavorites($userId) {
+        $query = "SELECT artworks.*, users.full_name as author_name,
+                  (SELECT COUNT(*) FROM likes WHERE artwork_id = artworks.id) as like_count
+                  FROM artworks 
+                  JOIN likes ON artworks.id = likes.artwork_id
+                  LEFT JOIN users ON artworks.user_id = users.id 
+                  WHERE likes.user_id = :user_id 
+                  ORDER BY likes.created_at DESC";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':user_id', $userId);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
