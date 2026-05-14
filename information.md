@@ -1,4 +1,4 @@
-# ARTVAULT - Technical Standards (Updated)
+# ARTVAULT - Technical Standards (Latest Update)
 
 ## 1. Tech Stack
 - **Backend:** PHP Custom MVC
@@ -7,26 +7,40 @@
 - **Interactions:** Vanilla JS with Fetch API (AJAX)
 
 ## 2. Authentication & Authorization
-- **Admin:** `flazened@ski.sch.id` (Password: `123`) has full access to all features.
+- **Admin:** `flazened@ski.sch.id` (Password: `123`) has full access.
 - **Roles:** `viewer`, `author`, `admin`.
 - **Ownership Rule:** Only the original uploader (Owner) or an Admin can Edit or Delete an artwork.
-- **Session Data:** Stores `user_id`, `user_name`, `user_email`, and `user_role`.
+- **User IDs:** Standardized 8-digit format starting from `80000000` (stored as `student_id`).
 
-## 3. Directory & Assets
-- **CSS Source:** `app/resources/css/` (Build to `public/css/index.css`).
-- **Images:** Stored in `public/img/gallery/` with unique filenames (`uniqid`).
-- **Icons:** Located in `public/img/icon/`.
+## 3. Key Features
+### User Profile
+- **Personalized Header:** Banner image and Avatar support.
+- **Social Stats:** Following count, Follower count, and Total Likes received.
+- **Badges/Tags:** Dynamic badges (e.g., "Author", "Experienced User") visible on profile.
+- **Tabbed Content:** Navigation between "Draft", "Your Art", and "Favorite".
+- **Settings Menu:** Gear icon popup with options for Exit Account, Profile/Background editing, and Security updates.
+- **Security:** Confirmation popup for Logout action.
 
-## 4. Key Features
-- **Gallery:** Dynamic filtering by categories.
-- **Art Management:** Fully functional Upload, Edit, and Delete (with file cleanup).
-- **Categories (English):** Painting, Digital Art, Sculpture, Sketch, Photography, Illustration.
-- **Social Interaction:**
-    - **Like System:** Real-time toggle (AJAX) with blue "pop" animation.
-    - **Comment System:** Users can leave and view comments on artworks.
-- **Detail Page:** Features "View other art too!" with 4 random artwork suggestions.
+### Social Interaction
+- **Advanced Commenting:**
+    - **Threaded Replies:** Support for parent-child comment structure (replies).
+    - **Emoji Picker:** Integrated emoji selection bar for comments and replies.
+- **Like System:**
+    - Real-time toggle using AJAX.
+    - Interactive blue "pop" animation and status synchronization across Gallery and Detail pages.
 
-## 5. UI/UX Standards
-- **Theme Color:** Linear Gradient Header (#1F3C88 to #3E4052) and Artvault Gold (#f4c430).
-- **Pop-ups:** Redesigned based on Figma standards for Add and Edit actions.
-- **Layout Safety:** Implemented `word-break` and `min-width` rules to prevent UI breakage from long strings.
+### Art Management
+- **Gallery:** Dynamic category filtering (Painting, Digital Art, etc.).
+- **Operations:** Fully functional Upload, Edit, and Delete with automated file system cleanup.
+- **Suggestions:** "View other art too!" section on detail pages featuring random artwork recommendations.
+
+## 4. UI/UX Standards
+- **Color Palette:**
+    - **Primary:** Deep Purple/Navy Gradient (`#1F3C88` to `#3E4052`).
+    - **Secondary:** Artvault Gold (`#f4c430`).
+- **Responsiveness:** Implemented `min-width` and `word-break` safety rules to handle long text (e.g., in descriptions or comments).
+- **Navigation:** Navbar user icon now links directly to the `/profile` route.
+
+## 5. Directory Structure
+- **CSS:** `app/resources/css/` (Sources) -> `public/css/index.css` (Build).
+- **Images:** `public/img/gallery/` (Artworks), `public/img/banner/` (Profile Banners), `public/img/icon/` (System Icons).
