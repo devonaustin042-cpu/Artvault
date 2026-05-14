@@ -78,4 +78,47 @@ class User_model extends Database {
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+
+    public function getUserTags($userId) {
+        $query = "SELECT * FROM user_tags WHERE user_id = :user_id";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getFollowStats($userId) {
+        $stats = [];
+        
+        $q1 = "SELECT COUNT(*) FROM follows WHERE following_id = :user_id";
+        $s1 = $this->dbh->prepare($q1);
+        $s1->bindParam(':user_id', $userId);
+        $s1->execute();
+        $stats['followers'] = $s1->fetchColumn();
+
+        $q2 = "SELECT COUNT(*) FROM follows WHERE follower_id = :user_id";
+        $s2 = $this->dbh->prepare($q2);
+        $s2->bindParam(':user_id', $userId);
+        $s2->execute();
+        $stats['following'] = $s2->fetchColumn();
+
+        $q3 = "SELECT COUNT(*) FROM likes 
+               JOIN artworks ON likes.artwork_id = artworks.id 
+               WHERE artworks.user_id = :user_id";
+        $s3 = $this->dbh->prepare($q3);
+        $s3->bindParam(':user_id', $userId);
+        $s3->execute();
+        $stats['total_likes'] = $s3->fetchColumn();
+
+        return $stats;
+    }
+
+    public function isFollowing($followerId, $followingId) {
+        $query = "SELECT COUNT(*) FROM follows WHERE follower_id = :follower_id AND following_id = :following_id";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':follower_id', $followerId);
+        $stmt->bindParam(':following_id', $followingId);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
+    }
 }

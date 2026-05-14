@@ -55,5 +55,10 @@ $router->add('POST', '/post-register', 'AuthController', 'handleSignUp');
 $router->add('POST', '/post-login', 'AuthController', 'handleLogin');
 $router->add('GET', '/logout', 'AuthController', 'logout');
 
+// User Routes
+$router->add('GET', '/profile', 'UserController', 'profile');
+$router->add('GET', '/profile/{id}', 'UserController', 'profile');
+$router->add('POST', '/follow/{id}', 'UserController', 'toggleFollow');
+
 $router->run();
 ?>
