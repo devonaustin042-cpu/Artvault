@@ -102,11 +102,66 @@
                     <button class="btn-read-more" onclick="toggleDesc()">Show Less</button>
                 </div>
 
-                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'author'): ?>
+                <?php if (isset($_SESSION['user_id']) && ($_SESSION['user_id'] == $art['user_id'] || $_SESSION['user_role'] === 'admin')): ?>
                 <div class="art-detail-actions">
                     <button class="btn-edit" onclick="openEditWork()">Edit</button>
                     <span class="art-action-or">or</span>
-                    <button class="btn-delete" onclick="confirmDelete()">Delete</button>
+                    <button class="btn-delete" onclick="confirmDelete(<?= $art['id']; ?>)">Delete</button>
+                </div>
+
+                <!-- POPUP EDIT WORK -->
+                <div class="add-work-overlay" id="editWorkOverlay">
+                    <div class="add-work-popup">
+                        <div class="add-work-header">
+                            <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="add-work-logo">
+                            <div class="header-user-icon">
+                                <img src="/img/icon/user.png" alt="User">
+                            </div>
+                        </div>
+
+                        <div class="add-work-container">
+                            <form action="/art/update/<?= $art['id']; ?>" method="POST" enctype="multipart/form-data" class="add-work-form">
+                                <!-- Upload Section -->
+                                <div class="upload-section">
+                                    <div class="upload-preview-box" onclick="document.getElementById('editFileInput').click()">
+                                        <input type="file" name="art_image" id="editFileInput" accept="image/*" style="display:none" onchange="previewEditImage(event)">
+                                        <img id="editPreviewImg" src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" style="display:block;">
+                                        <button type="button" class="btn-add-photo">Change photo</button>
+                                    </div>
+                                </div>
+
+                                <!-- Inputs Section -->
+                                <div class="form-inputs">
+                                    <div class="input-group">
+                                        <input type="text" name="title" placeholder="Title..." value="<?= $art['title']; ?>" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <textarea name="description" placeholder="Description..." rows="5"><?= $art['description']; ?></textarea>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Category</label>
+                                        <div class="select-wrapper">
+                                            <select name="category_id">
+                                                <option value="">No Category</option>
+                                                <?php foreach($categories as $cat): ?>
+                                                    <option value="<?= $cat['id']; ?>" <?= $art['category_id'] == $cat['id'] ? 'selected' : ''; ?>>
+                                                        <?= $cat['category_name']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-submit-art">Save Changes</button>
+                                    <span class="action-or">Or</span>
+                                    <button type="button" class="btn-cancel-art" onclick="closeEditWork()">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <?php endif; ?>
             </div>
@@ -201,6 +256,27 @@
             } else {
                 full.style.display = 'none';
                 short.style.display = 'block';
+            }
+        }
+
+        function openEditWork() {
+            document.getElementById('editWorkOverlay').classList.add('active');
+        }
+
+        function closeEditWork() {
+            document.getElementById('editWorkOverlay').classList.remove('active');
+        }
+
+        function previewEditImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const preview = document.getElementById('editPreviewImg');
+            preview.src = URL.createObjectURL(file);
+        }
+
+        function confirmDelete(id) {
+            if (confirm('Are you sure you want to delete this artwork? This action cannot be undone.')) {
+                location.href = '/art/delete/' + id;
             }
         }
     </script>

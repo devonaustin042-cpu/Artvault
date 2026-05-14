@@ -40,9 +40,13 @@
   margin-bottom: 4rem;
 }
 
+.art-detail-img-wrap, .art-detail-info {
+  flex: 1;
+  min-width: 0; /* Mencegah konten panjang mendorong lebar flex item */
+}
+
 /* Image Section */
 .art-detail-img-wrap {
-  flex: 1;
   background: #f0f0f0;
   padding: 20px;
   border-radius: 4px;
@@ -115,6 +119,8 @@
   line-height: 1.6;
   color: #333;
   margin-bottom: 1rem;
+  word-break: break-word; /* Memotong kata yang terlalu panjang */
+  overflow-wrap: break-word;
 }
 
 .btn-read-more {

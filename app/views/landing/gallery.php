@@ -58,12 +58,22 @@
 
         <div class="gallery-topbar">
             <div class="filter-category">
-                <button class="btn-filter">
+                <button class="btn-filter" onclick="location.href='/gallery'">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 6H21M6 12H18M10 18H14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
-                <button class="btn-category">Category</button>
+                <div class="category-dropdown">
+                    <button class="btn-category" onclick="toggleCategoryMenu()">
+                        <?= isset($_GET['category']) ? 'Filtered' : 'Category' ?>
+                    </button>
+                    <div id="categoryMenu" class="category-menu">
+                        <a href="/gallery">All Categories</a>
+                        <?php foreach($categories as $cat): ?>
+                            <a href="/gallery?category=<?= $cat['id'] ?>"><?= $cat['category_name'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
             <div class="search-box">
                 <input type="text" placeholder="Search....">
@@ -94,43 +104,63 @@
         </div>
 
          <div class="add-work-wrap">
-            <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'author'): ?>
+            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'author' || $_SESSION['user_role'] === 'admin')): ?>
                 <button class="btn-add-work" onclick="openAddWork()">+ Add your Art !</button>
                 
-                <!-- POPUP ADD WORK (Only for Authors) -->
+                <!-- POPUP ADD WORK -->
                 <div class="add-work-overlay" id="addWorkOverlay">
                     <div class="add-work-popup">
-
                         <div class="add-work-header">
-                            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="add-work-logo">
-                            <span>Come on, submit your interesting work to be exhibited!</span>
-                            <img src="/img/icon/user.png" alt="User" class="user-icon">
+                            <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="add-work-logo">
+                            <div class="header-user-icon">
+                                <img src="/img/icon/user.png" alt="User">
+                            </div>
                         </div>
 
-                        <div class="add-work-body">
-                        <button class="btn-back-popup" onclick="closeAddWork()">
-                                <img src="/img/icon/back.png" alt="Back" class="back-icon-2">
-                            </button>
-                            <!-- Upload Area -->
-                            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-                                <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="previewImage(event)">
-                                <img id="previewImg" src="" alt="" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:8px;">
-                                <button class="btn-upload" id="uploadBtn">Upload your art</button>
-                            </div>
+                        <div class="add-work-container">
+                            <form action="/art/upload" method="POST" enctype="multipart/form-data" class="add-work-form">
+                                <!-- Upload Section -->
+                                <div class="upload-section">
+                                    <div class="upload-preview-box" onclick="document.getElementById('fileInput').click()">
+                                        <input type="file" name="art_image" id="fileInput" accept="image/*" style="display:none" onchange="previewImage(event)" required>
+                                        <div id="uploadPlaceholder" class="upload-placeholder">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 16L8.586 11.414C9.367 10.633 10.633 10.633 11.414 11.414L16 16M14 14L15.586 12.414C16.367 11.633 17.633 11.633 18.414 12.414L20 14M14 8H14.01M6 20H18C19.1046 20 20 19.1046 20 18V6C20 4.89543 19.1046 4 18 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20Z" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <img id="previewImg" src="" alt="" style="display:none;">
+                                        <button type="button" class="btn-add-photo">Add photo</button>
+                                    </div>
+                                </div>
 
-                            <!-- Name -->
-                            <div class="add-work-field">
-                                <input type="text" placeholder="Add the name of your Art!">
-                            </div>
+                                <!-- Inputs Section -->
+                                <div class="form-inputs">
+                                    <div class="input-group">
+                                        <input type="text" name="title" placeholder="Title..." required>
+                                    </div>
+                                    <div class="input-group">
+                                        <textarea name="description" placeholder="Description..." rows="5"></textarea>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Category</label>
+                                        <div class="select-wrapper">
+                                            <select name="category_id">
+                                                <option value="">No Category</option>
+                                                <?php foreach($categories as $cat): ?>
+                                                    <option value="<?= $cat['id']; ?>"><?= $cat['category_name']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <!-- Description -->
-                            <div class="add-work-field">
-                                <textarea placeholder="Add your description!" rows="3"></textarea>
-                            </div>
-
-                            <!-- Submit -->
-                            <button class="btn-add-submit">Add</button>
-
+                                <!-- Actions -->
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-submit-art">Upload Art</button>
+                                    <span class="action-or">Or</span>
+                                    <button type="button" class="btn-cancel-art" onclick="closeAddWork()">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -201,7 +231,24 @@
         </div>
     </footer>
     <script>
-            function openAddWork() {
+            function toggleCategoryMenu() {
+        document.getElementById("categoryMenu").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('.btn-category')) {
+            var dropdowns = document.getElementsByClassName("category-menu");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    });
+
+    function openAddWork() {
         document.getElementById('addWorkOverlay').classList.add('active');
     }
 
@@ -213,11 +260,11 @@
         const file = event.target.files[0];
         if (!file) return;
         const preview = document.getElementById('previewImg');
-        const uploadBtn = document.getElementById('uploadBtn');
+        const placeholder = document.getElementById('uploadPlaceholder');
+        
         preview.src = URL.createObjectURL(file);
         preview.style.display = 'block';
-        uploadBtn.style.display = 'none';
-        
+        placeholder.style.display = 'none';
     }
     </script>
     

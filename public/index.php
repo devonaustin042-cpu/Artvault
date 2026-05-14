@@ -26,6 +26,9 @@ $router->add('GET', '/gallery', 'ArtController', 'gallery');
 
 // Gallery Routes
 $router->add('GET', '/art/{id}', 'ArtController', 'detail');
+$router->add('POST', '/art/upload', 'ArtController', 'uploadArt');
+$router->add('POST', '/art/update/{id}', 'ArtController', 'updateArt');
+$router->add('GET', '/art/delete/{id}', 'ArtController', 'deleteArt');
 
 // Author Routes
 $router->add('GET', '/author/gallery', 'ArtController', 'gallery');
