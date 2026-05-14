@@ -86,9 +86,9 @@
             <div class="art-detail-info">
                 <div class="art-detail-title-row">
                     <h1 class="art-detail-title"><?= $art['title']; ?></h1>
-                    <div class="art-detail-likes">
+                    <div class="art-detail-likes <?= $isLiked ? 'liked' : '' ?>" onclick="toggleLike(<?= $art['id']; ?>, this)">
                         <img src="/img/icon/like.png" alt="Like">
-                        <span>78</span>
+                        <span><?= $art['like_count']; ?></span>
                     </div>
                 </div>
                 <p class="art-detail-author">by: <?= $art['author_name']; ?></p>
@@ -319,6 +319,33 @@
             } else {
                 full.style.display = 'none';
                 short.style.display = 'block';
+            }
+        }
+
+        async function toggleLike(artworkId, element) {
+            try {
+                const response = await fetch('/art/like/' + artworkId, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    const span = element.querySelector('span');
+                    span.innerText = data.like_count;
+                    
+                    if (data.like_status === 'liked') {
+                        element.classList.add('liked');
+                    } else {
+                        element.classList.remove('liked');
+                    }
+                } else if (data.status === 'error') {
+                    alert(data.message);
+                    if (data.message.includes('login')) {
+                        window.location.href = '/login';
+                    }
+                }
+            } catch (error) {
+                console.error('Error toggling like:', error);
             }
         }
 

@@ -4,7 +4,8 @@ require_once __DIR__ . '/../core/Database.php';
 class Art_model extends Database {
     
     public function getAllArtworks($categoryId = null) {
-        $query = "SELECT artworks.*, users.full_name as author_name 
+        $query = "SELECT artworks.*, users.full_name as author_name,
+                  (SELECT COUNT(*) FROM likes WHERE artwork_id = artworks.id) as like_count
                   FROM artworks 
                   LEFT JOIN users ON artworks.user_id = users.id";
         
@@ -25,7 +26,8 @@ class Art_model extends Database {
     }
 
     public function getArtworkById($id) {
-        $query = "SELECT artworks.*, users.full_name as author_name 
+        $query = "SELECT artworks.*, users.full_name as author_name,
+                  (SELECT COUNT(*) FROM likes WHERE artwork_id = artworks.id) as like_count
                   FROM artworks 
                   LEFT JOIN users ON artworks.user_id = users.id 
                   WHERE artworks.id = :id";
@@ -33,6 +35,34 @@ class Art_model extends Database {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function isLikedByUser($artworkId, $userId) {
+        $query = "SELECT COUNT(*) FROM likes WHERE artwork_id = :artwork_id AND user_id = :user_id";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':artwork_id', $artworkId);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function toggleLike($artworkId, $userId) {
+        if ($this->isLikedByUser($artworkId, $userId)) {
+            $query = "DELETE FROM likes WHERE artwork_id = :artwork_id AND user_id = :user_id";
+            $status = 'unliked';
+        } else {
+            $query = "INSERT INTO likes (artwork_id, user_id) VALUES (:artwork_id, :user_id)";
+            $status = 'liked';
+        }
+        
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':artwork_id', $artworkId);
+        $stmt->bindParam(':user_id', $userId);
+        
+        if ($stmt->execute()) {
+            return $status;
+        }
+        return false;
     }
 
     public function getCategories() {

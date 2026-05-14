@@ -94,9 +94,9 @@
                 <div class="art-info">
                     <p class="art-title"><?= $row['title']; ?></p>
                     <p class="art-author">Made by : <?= $row['author_name']; ?></p>
-                    <div class="art-like">
+                    <div class="art-like <?= in_array($row['id'], $likedArtIds) ? 'liked' : '' ?>" onclick="event.preventDefault(); toggleLike(<?= $row['id']; ?>, this)">
                         <img src="/img/icon/like.png" class="art-like-img">
-                        <span>25</span>
+                        <span><?= $row['like_count']; ?></span>
                     </div>
                 </div>
             </a>
@@ -233,6 +233,33 @@
     <script>
             function toggleCategoryMenu() {
         document.getElementById("categoryMenu").classList.toggle("show");
+    }
+
+    async function toggleLike(artworkId, element) {
+        try {
+            const response = await fetch('/art/like/' + artworkId, {
+                method: 'POST'
+            });
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                const span = element.querySelector('span');
+                span.innerText = data.like_count;
+                
+                if (data.like_status === 'liked') {
+                    element.classList.add('liked');
+                } else {
+                    element.classList.remove('liked');
+                }
+            } else if (data.status === 'error') {
+                alert(data.message);
+                if (data.message.includes('login')) {
+                    window.location.href = '/login';
+                }
+            }
+        } catch (error) {
+            console.error('Error toggling like:', error);
+        }
     }
 
     // Close the dropdown if the user clicks outside of it
