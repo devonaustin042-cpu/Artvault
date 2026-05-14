@@ -112,12 +112,15 @@ class ArtController {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $commentText = $_POST['comment_text'] ?? '';
+            $parentId = $_POST['parent_id'] ?? null;
+            
             if (!empty(trim($commentText))) {
                 $artModel = new \Art_model();
                 $data = [
                     'artwork_id' => $artworkId,
                     'user_id' => $_SESSION['user_id'],
-                    'comment_text' => $commentText
+                    'comment_text' => $commentText,
+                    'parent_id' => $parentId !== '' ? $parentId : null
                 ];
                 $artModel->addComment($data);
             }

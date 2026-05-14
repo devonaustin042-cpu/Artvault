@@ -241,6 +241,12 @@
   .inset-y-0 {
     inset-block: calc(var(--spacing) * 0);
   }
+  .start {
+    inset-inline-start: var(--spacing);
+  }
+  .end {
+    inset-inline-end: var(--spacing);
+  }
   .-top-20 {
     top: calc(var(--spacing) * -20);
   }
@@ -1776,10 +1782,33 @@
   border-radius: 50%;
   object-fit: cover;
 }
-.comment-form textarea {
+.textarea-container {
   flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.emoji-picker {
+  display: flex;
+  gap: 8px;
+  padding: 5px 10px;
+  background: #f8f9fa;
+  border-radius: 0 0 12px 12px;
   border: 1.5px solid #e0e0e0;
-  border-radius: 12px;
+  border-top: none;
+}
+.emoji-picker span {
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.1s;
+}
+.emoji-picker span:hover {
+  transform: scale(1.2);
+}
+.comment-form textarea {
+  width: 100%;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px 12px 0 0;
   padding: 1rem;
   font-size: 1rem;
   outline: none;
@@ -1789,6 +1818,9 @@
   transition: border-color 0.2s;
 }
 .comment-form textarea:focus {
+  border-color: var(--gold);
+}
+.comment-form textarea:focus + .emoji-picker {
   border-color: var(--gold);
 }
 .btn-post-comment {
@@ -1849,9 +1881,53 @@
   font-weight: 700;
   font-size: 1rem;
 }
+.btn-reply-toggle {
+  background: none;
+  border: none;
+  color: #1f3c88;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 5px;
+}
 .comment-date {
   color: #999;
   font-size: 0.85rem;
+}
+.replies-list {
+  margin-left: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  border-left: 2px solid #f0f0f0;
+  padding-left: 1rem;
+}
+.reply-item .comment-avatar.sm {
+  width: 35px;
+  height: 35px;
+}
+.reply-form-container {
+  margin-left: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.reply-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.btn-sm {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+}
+.btn-cancel-reply {
+  background: none;
+  border: none;
+  color: #666;
+  font-weight: 700;
+  cursor: pointer;
 }
 .comment-text {
   font-size: 1rem;
