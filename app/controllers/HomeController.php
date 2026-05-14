@@ -17,3 +17,4 @@ class HomeController {
         require_once __DIR__ . '/../views/landing/contact.php';
     }
 }
+

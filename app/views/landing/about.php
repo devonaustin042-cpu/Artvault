@@ -53,29 +53,244 @@
         </div>
     </div>
 
-    <div class="Box-1"></div>
+    <!-- HERO BANNER -->
+    <section class="hero" style="margin-bottom: 40px;">
+        <img src="/img/banner/about-us.png" alt="Artvault Banner" class="w-full h-auto">
+    </section>
 
-    <section class="about-section">
-...
-</body>
-</html>
-            More than just a storage space, Artvault serves as the primary platform for
-            young creators to appreciate their work. We believe that schools are not just
-            places to learn, but also suburban fields where brilliant ideas grow.
-            Here, every stroke of art, line of code, and string of words created by
-            students has a life and a story of its own. We dedicate this website to
-            ensuring that their hard work and imagination are not lost to time, but rather
-            live forever as a legacy of achievement worthy of celebration and recognition.
+    
+    <section style="border: 2px solid #1F3C88; border-radius: 16px; padding: 40px; background: #faf8f4;">
+        <div class="w-full text-center">
+            <p class="font-serif text-[#2c1f14] text-base md:text-lg leading-relaxed mb-5">
+                More than just a storage space, <strong class="font-semibold text-[#5a3e2b]">Artvault</strong> serves as the primary platform
+                for young creators to appreciate their work. We believe that schools are not just places
+                to learn, but also <span class="italic text-[#9b7355]">suburban fields where brilliant ideas grow.</span>
             </p>
-        </div>
-        <div class="about-image">
-            <img src="/img/gallery/homeimg.png" alt="Colorful classroom">
+
+            <p class="font-serif text-[#2c1f14] text-base md:text-lg leading-relaxed" >
+                Here, every stroke of art, line of code, and string of words created by students has
+                a life and a story of its own. We dedicate this website to ensuring that their hard work
+                and imagination are not lost to time, but rather
+                <span class="italic text-[#9b7355]">live forever as a legacy of achievement worthy of celebration and recognition.</span>
+            </p>
         </div>
     </section>
 
-    <div class="Box-1"></div>
+    
 
-    <!-- FOOTER --> 
+    <section style="display: flex; align-items: center; background: #f3f4f6; width: 100%; padding: 40px 60px; gap: 40px;">
+
+    <!-- Gambar Kiri -->
+        <div style="flex-shrink: 0; width: 580px; height: 580px;">
+            <img src="/img/banner/left-about.png" alt="Who We Are" 
+                style="width: 100%; height: 100%; border-radius: 16px; border: 4px solid #1F3C88; object-fit: cover;">
+        </div>
+
+    <!-- Konten Kanan -->
+        <div style="display: flex; flex-direction: column; gap: 16px; flex: 1;">
+        
+            <div>
+                <h2 style="font-size: 3.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">Who We Are</h2>
+                <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0;">
+            </div>
+
+            <p style="color: #333; font-size: 1.75rem; line-height: 1.8; margin: 0;">
+                We are students passionate about technology, design, and digital creativity. 
+                Coming from the TKJ environment, we came together to build this platform to 
+                showcase work that is not only innovative but also has a story behind it.
+            </p>
+
+            <a href="#" 
+                style="display: inline-flex; width: fit-content; align-items: center; gap: 10px; border: 2px solid #1F3C88; color: #1F3C88; font-weight: 600; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease;"
+                onmouseover="this.style.background='#F4C430'; this.style.color='#fff'; this.style.borderColor='#F4C430';"
+                onmouseout="this.style.background='transparent'; this.style.color='#1F3C88'; this.style.borderColor='#1F3C88';">
+                    Get to know us →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section style="background: #f3f4f6; width: 100%; padding: 50px 60px;">
+
+        <!-- Judul -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">Mission & Vision</h2>
+            <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0 auto;">
+        </div>
+
+        <!-- Kartu -->
+        <div style="display: flex; gap: 30px; justify-content: center;">
+
+            <!-- Mission -->
+            <div style="background: #6b8cba; border-radius: 16px; padding: 30px; display: flex; align-items: center; gap: 20px; width: 45%;">
+                <!-- Icon Target -->
+                <div style="flex-shrink: 0;">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="28" stroke="#f0c040" stroke-width="4" fill="none"/>
+                        <circle cx="30" cy="30" r="18" stroke="#f0c040" stroke-width="4" fill="none"/>
+                        <circle cx="30" cy="30" r="8" fill="#f0c040"/>
+                    </svg>
+                </div>
+                <p style="color: #fff; font-size: 1rem; line-height: 1.7; margin: 0; text-align: right;">
+                    To be a place of appreciation and inspiration for everyone through innovative and useful creative work.
+                </p>
+            </div>
+
+            <!-- Vision -->
+            <div style="background: #6b8cba; border-radius: 16px; padding: 30px; display: flex; align-items: center; gap: 20px; width: 45%;">
+                <!-- Icon Eye -->
+                <div style="flex-shrink: 0;">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="30" cy="30" rx="26" ry="16" stroke="#f0c040" stroke-width="4" fill="none"/>
+                        <circle cx="30" cy="30" r="8" fill="none" stroke="#f0c040" stroke-width="4"/>
+                        <circle cx="30" cy="30" r="3" fill="#f0c040"/>
+                    </svg>
+                </div>
+                <p style="color: #fff; font-size: 1rem; line-height: 1.7; margin: 0; text-align: right;">
+                    Become a widely known digital creator and have a positive impact on young creators in the future.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section style="background: #f3f4f6; width: 100%; padding: 50px 60px;">
+
+        <!-- Judul -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">What We Showcase</h2>
+            <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0 auto;">
+        </div>
+
+        <!-- Grid 4 Karya -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+
+            <!-- Kartu 1 -->
+            <div>
+                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Handmade</p>
+                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
+                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
+                        <img src="/img/gallery/claymonster.png" alt="Claymonster" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 12px;">
+                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Claymonster</p>
+                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Chisa Evelyn</p>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <span style="font-size: 0.85rem; color: #333;">25</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Kartu 2 -->
+            <div>
+                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Digital art</p>
+                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
+                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
+                        <img src="/img/gallery/A-Chill-Doomsday.png" alt="A Chill Doomsday" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 12px;">
+                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">A Chill Doomsday</p>
+                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Nicholas Jo</p>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <span style="font-size: 0.85rem; color: #333;">324</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Kartu 3 -->
+            <div>
+                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Painting art</p>
+                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
+                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
+                        <img src="/img/gallery/Mercusuar.png" alt="Mercusuar" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 12px;">
+                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Mercusuar</p>
+                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Nicholas Jo</p>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <span style="font-size: 0.85rem; color: #333;">92</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Kartu 4 -->
+            <div>
+                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Hand drawn</p>
+                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #1F3C88;">
+                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
+                        <img src="/img/gallery/Melody-in-Guitar.png" alt="Melody in Guitar" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 12px;">
+                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Melody in Guitar</p>
+                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Jo Halimawan</p>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <span style="font-size: 0.85rem; color: #333;">106</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section style="background: #f3f4f6; width: 100%; padding: 50px 60px;">
+
+    <!-- Judul -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 2.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">Our Values</h2>
+        <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0 auto;">
+    </div>
+
+    <!-- 3 Kolom -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: start;">
+
+        <!-- Creative -->
+        <div style="display: flex; align-items: flex-start; gap: 20px;">
+            <div style="flex-shrink: 0; font-size: 4rem;">💡</div>
+            <div>
+                <h3 style="font-size: 1.8rem; font-weight: 800; color: #1a1a1a; margin: 0 0 10px 0;">Creative</h3>
+                <p style="font-size: 1.1rem; color: #444; line-height: 1.7; margin: 0;">Always looking for new ideas and daring to express them.</p>
+            </div>
+        </div>
+
+        <!-- Collaboration -->
+        <div style="display: flex; align-items: flex-start; gap: 20px;">
+            <div style="flex-shrink: 0; font-size: 4rem;">👥</div>
+            <div>
+                <h3 style="font-size: 1.8rem; font-weight: 800; color: #1a1a1a; margin: 0 0 10px 0;">Collaboration</h3>
+                <p style="font-size: 1.1rem; color: #444; line-height: 1.7; margin: 0;">Work together and support each other in creating work</p>
+            </div>
+        </div>
+
+        <!-- Innovation -->
+        <div style="display: flex; align-items: flex-start; gap: 20px;">
+            <div style="flex-shrink: 0; font-size: 4rem;">🚀</div>
+            <div>
+                <h3 style="font-size: 1.8rem; font-weight: 800; color: #1a1a1a; margin: 0 0 10px 0;">Innovation</h3>
+                <p style="font-size: 1.1rem; color: #444; line-height: 1.7; margin: 0;">Keep learning and creating useful solutions</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+    
+<!-- FOOTER --> 
+   <div class="Box-1"></div>
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
@@ -146,12 +361,21 @@
             </div>
         </div>
 
+        <script src="/js/script.js"></script>
         <!-- Bottom Bar -->
         <div class="footer-bottom">
             <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
         </div>
     </footer>
+    
 
-    <script src="/js/script.js"></script>
+   
+
+
+
+
+    
+
+    
 </body>
 </html>
