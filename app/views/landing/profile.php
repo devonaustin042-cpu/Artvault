@@ -43,6 +43,33 @@
                 <img src="/img/icon/back.png" alt="Back">
             </a>
 
+            <!-- SETTINGS BUTTON -->
+            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user['id']): ?>
+                <button class="btn-settings-profile" onclick="toggleSettingsPopup()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+
+                <!-- SETTINGS POPUP -->
+                <div id="settingsPopup" class="settings-popup-overlay">
+                    <div class="settings-popup-content">
+                        <div class="settings-popup-header">
+                            <h3>Settings</h3>
+                            <button onclick="toggleSettingsPopup()" class="btn-close-settings">&times;</button>
+                        </div>
+                        <ul class="settings-list">
+                            <li><a href="/logout" class="settings-item exit"><img src="/img/icon/sampah.png" style="width:20px; filter: invert(1);"> Exit Account</a></li>
+                            <li><a href="#" class="settings-item">Edit Profile</a></li>
+                            <li><a href="#" class="settings-item">Edit Background</a></li>
+                            <li><a href="#" class="settings-item">Change Password</a></li>
+                            <li><a href="#" class="settings-item">Change Name</a></li>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+
             <div class="profile-info-card">
                 <div class="profile-avatar-wrap">
                     <img src="/img/icon/<?= $user['avatar_path']; ?>" alt="Avatar" class="profile-avatar">
@@ -184,9 +211,15 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        async function toggleFollow(userId) {
+        function toggleFollow(userId) {
             // Future implementation for following
         }
-    </script>
+
+        function toggleSettingsPopup() {
+            const popup = document.getElementById('settingsPopup');
+            popup.classList.toggle('active');
+        }
+        </script>
+
 </body>
 </html>

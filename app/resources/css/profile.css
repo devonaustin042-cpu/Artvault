@@ -198,3 +198,118 @@
     .profile-info-card { flex-direction: column; align-items: center; text-align: center; }
     .profile-stats { margin: 2rem auto; justify-content: center; }
 }
+
+/* Settings Button */
+.btn-settings-profile {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+    color: #1a1a4b;
+    transition: all 0.2s;
+}
+
+.btn-settings-profile:hover {
+    transform: rotate(45deg);
+    background: #f4c430;
+}
+
+/* Settings Popup Overlay */
+.settings-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.settings-popup-overlay.active {
+    display: flex;
+}
+
+/* Settings Popup Content */
+.settings-popup-content {
+    background: #fff;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: popupFade 0.2s ease-out;
+}
+
+.settings-popup-header {
+    background: linear-gradient(90deg, #1F3C88 0%, #3E4052 100%);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-popup-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.btn-close-settings {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.settings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.settings-item:hover {
+    background: #f8f9fa;
+    color: #1f3c88;
+}
+
+.settings-item.exit {
+    color: #ff4d4d;
+}
+
+.settings-item.exit:hover {
+    background: #fff5f5;
+}
+
+.settings-item:last-child {
+    border-bottom: none;
+}
