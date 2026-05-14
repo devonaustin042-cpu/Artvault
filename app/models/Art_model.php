@@ -134,7 +134,7 @@ class Art_model extends Database {
                   FROM comments 
                   JOIN users ON comments.user_id = users.id 
                   WHERE comments.artwork_id = :artwork_id 
-                  ORDER BY comments.created_at DESC";
+                  ORDER BY comments.created_at ASC";
         $stmt = $this->dbh->prepare($query);
         $stmt->bindParam(':artwork_id', $artworkId);
         $stmt->execute();
@@ -142,12 +142,13 @@ class Art_model extends Database {
     }
 
     public function addComment($data) {
-        $query = "INSERT INTO comments (artwork_id, user_id, comment_text) 
-                  VALUES (:artwork_id, :user_id, :comment_text)";
+        $query = "INSERT INTO comments (artwork_id, user_id, comment_text, parent_id) 
+                  VALUES (:artwork_id, :user_id, :comment_text, :parent_id)";
         $stmt = $this->dbh->prepare($query);
         $stmt->bindParam(':artwork_id', $data['artwork_id']);
         $stmt->bindParam(':user_id', $data['user_id']);
         $stmt->bindParam(':comment_text', $data['comment_text']);
+        $stmt->bindValue(':parent_id', $data['parent_id'] ?? null, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }

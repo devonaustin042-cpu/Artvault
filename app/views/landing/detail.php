@@ -179,10 +179,21 @@
             <h3 class="comment-heading">Comments (<?= count($comments); ?>)</h3>
             
             <?php if (isset($_SESSION['user_id'])): ?>
-                <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form">
+                <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form" id="mainCommentForm">
                     <div class="comment-input-wrap">
                         <img src="/img/icon/user.png" alt="User" class="comment-user-avatar">
-                        <textarea name="comment_text" placeholder="Add a comment..." required></textarea>
+                        <div class="textarea-container">
+                            <textarea name="comment_text" id="mainCommentText" placeholder="Add a comment..." required></textarea>
+                            <div class="emoji-picker">
+                                <span onclick="addEmoji('😀', 'mainCommentText')">😀</span>
+                                <span onclick="addEmoji('😍', 'mainCommentText')">😍</span>
+                                <span onclick="addEmoji('🔥', 'mainCommentText')">🔥</span>
+                                <span onclick="addEmoji('👏', 'mainCommentText')">👏</span>
+                                <span onclick="addEmoji('🎨', 'mainCommentText')">🎨</span>
+                                <span onclick="addEmoji('❤️', 'mainCommentText')">❤️</span>
+                                <span onclick="addEmoji('✨', 'mainCommentText')">✨</span>
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn-post-comment">Post Comment</button>
                 </form>
@@ -191,20 +202,68 @@
             <?php endif; ?>
 
             <div class="comments-list">
-                <?php foreach($comments as $comment): ?>
-                    <div class="comment-item">
-                        <img src="/img/icon/user.png" alt="User" class="comment-avatar">
-                        <div class="comment-content">
-                            <div class="comment-header">
-                                <span class="comment-author"><?= $comment['user_name']; ?></span>
-                                <span class="comment-date"><?= date('M d, Y', strtotime($comment['created_at'])); ?></span>
+                <?php 
+                // Separate parents and children
+                $parents = array_filter($comments, function($c) { return is_null($c['parent_id']); });
+                $children = array_filter($comments, function($c) { return !is_null($c['parent_id']); });
+                
+                foreach($parents as $comment): ?>
+                    <div class="comment-group">
+                        <div class="comment-item" id="comment-<?= $comment['id']; ?>">
+                            <img src="/img/icon/user.png" alt="User" class="comment-avatar">
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author"><?= $comment['user_name']; ?></span>
+                                    <span class="comment-date"><?= date('M d, Y', strtotime($comment['created_at'])); ?></span>
+                                </div>
+                                <p class="comment-text"><?= nl2br(htmlspecialchars($comment['comment_text'])); ?></p>
+                                <?php if (isset($_SESSION['user_id'])): ?>
+                                    <button class="btn-reply-toggle" onclick="toggleReplyForm(<?= $comment['id']; ?>)">Reply</button>
+                                <?php endif; ?>
                             </div>
-                            <p class="comment-text"><?= nl2br(htmlspecialchars($comment['comment_text'])); ?></p>
+                        </div>
+
+                        <!-- Reply Form (Hidden) -->
+                        <div id="reply-form-<?= $comment['id']; ?>" class="reply-form-container" style="display: none;">
+                            <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form reply-form">
+                                <input type="hidden" name="parent_id" value="<?= $comment['id']; ?>">
+                                <div class="comment-input-wrap">
+                                    <textarea name="comment_text" id="replyText-<?= $comment['id']; ?>" placeholder="Reply to <?= $comment['user_name']; ?>..." required></textarea>
+                                    <div class="emoji-picker">
+                                        <span onclick="addEmoji('😀', 'replyText-<?= $comment['id']; ?>')">😀</span>
+                                        <span onclick="addEmoji('😍', 'replyText-<?= $comment['id']; ?>')">😍</span>
+                                        <span onclick="addEmoji('🔥', 'replyText-<?= $comment['id']; ?>')">🔥</span>
+                                        <span onclick="addEmoji('👏', 'replyText-<?= $comment['id']; ?>')">👏</span>
+                                    </div>
+                                </div>
+                                <div class="reply-actions">
+                                    <button type="submit" class="btn-post-comment btn-sm">Post Reply</button>
+                                    <button type="button" class="btn-cancel-reply" onclick="toggleReplyForm(<?= $comment['id']; ?>)">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Sub-comments (Replies) -->
+                        <div class="replies-list">
+                            <?php 
+                            $replies = array_filter($children, function($c) use ($comment) { return $c['parent_id'] == $comment['id']; });
+                            foreach($replies as $reply): ?>
+                                <div class="comment-item reply-item">
+                                    <img src="/img/icon/user.png" alt="User" class="comment-avatar sm">
+                                    <div class="comment-content">
+                                        <div class="comment-header">
+                                            <span class="comment-author"><?= $reply['user_name']; ?></span>
+                                            <span class="comment-date"><?= date('M d, Y', strtotime($reply['created_at'])); ?></span>
+                                        </div>
+                                        <p class="comment-text"><?= nl2br(htmlspecialchars($reply['comment_text'])); ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
                 
-                <?php if (empty($comments)): ?>
+                <?php if (empty($parents)): ?>
                     <p class="no-comments">No comments yet. Be the first to comment!</p>
                 <?php endif; ?>
             </div>
@@ -368,6 +427,25 @@
             if (confirm('Are you sure you want to delete this artwork? This action cannot be undone.')) {
                 location.href = '/art/delete/' + id;
             }
+        }
+
+        function toggleReplyForm(commentId) {
+            const form = document.getElementById('reply-form-' + commentId);
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+
+        function addEmoji(emoji, targetId) {
+            const textarea = document.getElementById(targetId);
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            textarea.value = text.substring(0, start) + emoji + text.substring(end);
+            textarea.focus();
+            textarea.selectionStart = textarea.selectionEnd = start + emoji.length;
         }
     </script>
     <script src="/js/script.js"></script>
