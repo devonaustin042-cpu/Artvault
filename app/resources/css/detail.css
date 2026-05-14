@@ -173,6 +173,143 @@
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+/* Comment Section */
+.comment-section {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.comment-heading {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.comment-form {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comment-input-wrap {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.comment-user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-form textarea {
+    flex: 1;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+    min-height: 80px;
+    font-family: 'Lato', sans-serif;
+    transition: border-color 0.2s;
+}
+
+.comment-form textarea:focus {
+    border-color: var(--gold);
+}
+
+.btn-post-comment {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-post-comment:hover {
+    transform: translateY(-2px);
+}
+
+.login-to-comment {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.login-to-comment a {
+    color: #1f3c88;
+    text-decoration: underline;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.comment-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.comment-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-content {
+    flex: 1;
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.comment-date {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.comment-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+.no-comments {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+}
+
 /* View Other Art Bar */
 .view-other-bar {
   background: var(--gold);

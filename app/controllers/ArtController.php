@@ -82,7 +82,32 @@ class ArtController {
         }
 
         $categories = $artModel->getCategories();
+        $otherArtworks = $artModel->getOtherArtworks($id, 4);
+        $comments = $artModel->getCommentsByArtworkId($id);
         require_once __DIR__ . '/../views/landing/detail.php';
+    }
+
+    public function postComment($artworkId)
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $commentText = $_POST['comment_text'] ?? '';
+            if (!empty(trim($commentText))) {
+                $artModel = new \Art_model();
+                $data = [
+                    'artwork_id' => $artworkId,
+                    'user_id' => $_SESSION['user_id'],
+                    'comment_text' => $commentText
+                ];
+                $artModel->addComment($data);
+            }
+            header('Location: /art/' . $artworkId);
+            exit;
+        }
     }
 
     public function updateArt($id)

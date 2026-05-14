@@ -84,15 +84,21 @@
  
             <!-- Info -->
             <div class="art-detail-info">
-                <h1 class="art-detail-title"><?= $art['title']; ?></h1>
-                <p class="art-detail-author">by <?= $art['author_name']; ?></p>
+                <div class="art-detail-title-row">
+                    <h1 class="art-detail-title"><?= $art['title']; ?></h1>
+                    <div class="art-detail-likes">
+                        <img src="/img/icon/like.png" alt="Like">
+                        <span>78</span>
+                    </div>
+                </div>
+                <p class="art-detail-author">by: <?= $art['author_name']; ?></p>
                 <hr class="art-detail-divider">
  
                 <p class="art-detail-label">Description :</p>
  
                 <!-- Teks pendek -->
                 <div class="art-desc-short" id="descShort">
-                    <p><?= substr($art['description'], 0, 100); ?>...</p>
+                    <p><?= substr($art['description'], 0, 150); ?>...</p>
                     <button class="btn-read-more" onclick="toggleDesc()">Read For More...</button>
                 </div>
  
@@ -166,6 +172,63 @@
                 <?php endif; ?>
             </div>
  
+        </div>
+
+        <!-- COMMENT SECTION -->
+        <div class="comment-section">
+            <h3 class="comment-heading">Comments (<?= count($comments); ?>)</h3>
+            
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form">
+                    <div class="comment-input-wrap">
+                        <img src="/img/icon/user.png" alt="User" class="comment-user-avatar">
+                        <textarea name="comment_text" placeholder="Add a comment..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-post-comment">Post Comment</button>
+                </form>
+            <?php else: ?>
+                <p class="login-to-comment">Please <a href="/login">Log In</a> to leave a comment.</p>
+            <?php endif; ?>
+
+            <div class="comments-list">
+                <?php foreach($comments as $comment): ?>
+                    <div class="comment-item">
+                        <img src="/img/icon/user.png" alt="User" class="comment-avatar">
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author"><?= $comment['user_name']; ?></span>
+                                <span class="comment-date"><?= date('M d, Y', strtotime($comment['created_at'])); ?></span>
+                            </div>
+                            <p class="comment-text"><?= nl2br(htmlspecialchars($comment['comment_text'])); ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                
+                <?php if (empty($comments)): ?>
+                    <p class="no-comments">No comments yet. Be the first to comment!</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW OTHER ART -->
+    <div class="view-other-bar">
+        <h3>View other art too!</h3>
+    </div>
+
+    <div class="other-artworks-container">
+        <div class="other-artworks-grid">
+            <?php foreach($otherArtworks as $other): ?>
+            <a href="/art/<?= $other['id']; ?>" class="other-art-card">
+                <div class="other-art-img-wrap">
+                    <img src="/img/gallery/<?= $other['file_path']; ?>" alt="<?= $other['title']; ?>">
+                </div>
+                <div class="other-art-info">
+                    <h4><?= $other['title']; ?></h4>
+                    <p>Made by: <?= $other['author_name']; ?></p>
+                </div>
+            </a>
+            <?php endforeach; ?>
         </div>
     </div>
 

@@ -84,4 +84,40 @@ class Art_model extends Database {
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+
+    public function getOtherArtworks($excludeId, $limit = 4) {
+        $query = "SELECT artworks.*, users.full_name as author_name 
+                  FROM artworks 
+                  LEFT JOIN users ON artworks.user_id = users.id 
+                  WHERE artworks.id != :excludeId 
+                  ORDER BY RAND() 
+                  LIMIT :limit";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':excludeId', $excludeId);
+        $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCommentsByArtworkId($artworkId) {
+        $query = "SELECT comments.*, users.full_name as user_name 
+                  FROM comments 
+                  JOIN users ON comments.user_id = users.id 
+                  WHERE comments.artwork_id = :artwork_id 
+                  ORDER BY comments.created_at DESC";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':artwork_id', $artworkId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function addComment($data) {
+        $query = "INSERT INTO comments (artwork_id, user_id, comment_text) 
+                  VALUES (:artwork_id, :user_id, :comment_text)";
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':artwork_id', $data['artwork_id']);
+        $stmt->bindParam(':user_id', $data['user_id']);
+        $stmt->bindParam(':comment_text', $data['comment_text']);
+        return $stmt->execute();
+    }
 }
