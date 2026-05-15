@@ -1,6 +1,6 @@
 (() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const transitionDelay = prefersReducedMotion ? 0 : 180;
+    const transitionDelay = prefersReducedMotion ? 0 : 100;
     let isShowing = false;
     let navigationTimer;
 
@@ -10,16 +10,15 @@
             inset: 0;
             z-index: 9999;
             display: grid;
+            min-height: 100dvh;
             place-items: center;
-            padding: 2rem;
-            background:
-                radial-gradient(circle at 50% 42%, rgba(244, 196, 48, 0.16), transparent 28rem),
-                linear-gradient(135deg, rgba(31, 60, 136, 0.98) 0%, rgba(42, 63, 112, 0.98) 48%, rgba(62, 64, 82, 0.98) 100%);
-            color: #ffffff;
+            padding: max(1.5rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) max(1.5rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+            background: rgba(246, 247, 251, 0.98);
+            color: #1f2937;
             opacity: 0;
             pointer-events: none;
             visibility: hidden;
-            transition: opacity 0.28s ease, visibility 0.28s ease;
+            transition: opacity 0.22s ease, visibility 0.22s ease;
         }
 
         .artvault-loader.is-visible {
@@ -30,99 +29,110 @@
 
         .artvault-loader__content {
             display: flex;
-            width: min(320px, 86vw);
+            width: min(280px, 82vw);
             flex-direction: column;
             align-items: center;
             text-align: center;
+            opacity: 0;
+            transform: translateY(8px) scale(0.985);
+            transition: opacity 0.22s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .artvault-loader.is-visible .artvault-loader__content {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
         .artvault-loader__mark {
-            position: relative;
             display: grid;
-            width: 132px;
-            height: 132px;
+            width: clamp(76px, 20vw, 96px);
+            height: clamp(76px, 20vw, 96px);
             place-items: center;
-            margin-bottom: 1.4rem;
-        }
-
-        .artvault-loader__ring {
-            position: absolute;
-            inset: 0;
-            border: 3px solid rgba(255, 255, 255, 0.18);
-            border-top-color: #f4c430;
-            border-radius: 50%;
-            animation: artvault-loader-spin 1s linear infinite;
-        }
-
-        .artvault-loader__ring::after {
-            content: "";
-            position: absolute;
-            inset: 12px;
-            border: 2px solid rgba(244, 196, 48, 0.18);
-            border-bottom-color: #ffffff;
-            border-radius: 50%;
-            animation: artvault-loader-spin 1.45s linear infinite reverse;
+            margin-bottom: clamp(0.9rem, 3vw, 1.15rem);
+            border: 1px solid rgba(255, 255, 255, 0.86);
+            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(233, 237, 246, 0.92));
+            box-shadow: 0 18px 46px rgba(31, 60, 136, 0.14), 0 1px 2px rgba(31, 41, 55, 0.08);
         }
 
         .artvault-loader__logo {
-            width: 92px;
-            height: 92px;
+            width: clamp(52px, 14vw, 66px);
+            height: clamp(52px, 14vw, 66px);
             object-fit: contain;
-            filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
         }
 
         .artvault-loader__title {
             margin: 0;
             font-family: 'Cinzel', Georgia, serif;
-            font-size: clamp(1.8rem, 8vw, 3rem);
+            font-size: clamp(1.55rem, 6vw, 2.3rem);
             font-weight: 700;
             letter-spacing: 0;
-            line-height: 1.1;
-            color: #f4c430;
-            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+            line-height: 1.08;
+            color: #1f3c88;
         }
 
         .artvault-loader__text {
-            margin: 0.5rem 0 1.2rem;
+            margin: 0.35rem 0 1rem;
             font-family: 'Lato', Arial, sans-serif;
-            font-size: 0.95rem;
+            font-size: clamp(0.82rem, 2.8vw, 0.92rem);
             font-weight: 700;
             letter-spacing: 0;
-            color: rgba(255, 255, 255, 0.78);
+            color: #6b7280;
         }
 
         .artvault-loader__bar {
-            width: 100%;
-            height: 6px;
+            width: min(176px, 62vw);
+            height: 4px;
             overflow: hidden;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+            background: rgba(31, 60, 136, 0.12);
         }
 
         .artvault-loader__bar::before {
             content: "";
             display: block;
-            width: 45%;
+            width: 38%;
             height: 100%;
             border-radius: inherit;
-            background: linear-gradient(90deg, transparent, #f4c430, #ffffff);
-            animation: artvault-loader-progress 1.1s ease-in-out infinite;
-        }
-
-        @keyframes artvault-loader-spin {
-            to { transform: rotate(360deg); }
+            background: linear-gradient(90deg, #1f3c88, #f4c430);
+            animation: artvault-loader-progress 1.05s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            will-change: transform;
         }
 
         @keyframes artvault-loader-progress {
-            0% { transform: translateX(-120%); }
-            100% { transform: translateX(240%); }
+            0% { transform: translateX(-110%); }
+            100% { transform: translateX(280%); }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .artvault-loader {
+                background: rgba(20, 24, 34, 0.98);
+                color: #f9fafb;
+            }
+
+            .artvault-loader__mark {
+                border-color: rgba(255, 255, 255, 0.12);
+                background: linear-gradient(145deg, rgba(46, 55, 76, 0.96), rgba(25, 31, 44, 0.94));
+                box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+            }
+
+            .artvault-loader__title {
+                color: #f4c430;
+            }
+
+            .artvault-loader__text {
+                color: rgba(249, 250, 251, 0.68);
+            }
+
+            .artvault-loader__bar {
+                background: rgba(255, 255, 255, 0.14);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
             .artvault-loader,
-            .artvault-loader__ring,
-            .artvault-loader__ring::after,
+            .artvault-loader__content,
             .artvault-loader__bar::before {
                 animation: none;
                 transition: none;
@@ -149,11 +159,10 @@
             loader.innerHTML = `
                 <div class="artvault-loader__content">
                     <div class="artvault-loader__mark" aria-hidden="true">
-                        <span class="artvault-loader__ring"></span>
-                        <img class="artvault-loader__logo" src="/img/logo/Artvault-white.png" alt="">
+                        <img class="artvault-loader__logo" src="/img/logo/Artvault.png" alt="">
                     </div>
                     <h2 class="artvault-loader__title">Artvault</h2>
-                    <p class="artvault-loader__text">Opening the next gallery</p>
+                    <p class="artvault-loader__text">Loading page</p>
                     <div class="artvault-loader__bar" aria-hidden="true"></div>
                 </div>
             `;
