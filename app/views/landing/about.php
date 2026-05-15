@@ -49,16 +49,7 @@
     <section style="border: 2px solid #1F3C88; border-radius: 16px; padding: 40px; background: #faf8f4;">
         <div class="w-full text-center">
             <p class="font-serif text-[#2c1f14] text-base md:text-lg leading-relaxed mb-5">
-                More than just a storage space, <strong class="font-semibold text-[#5a3e2b]">Artvault</strong> serves as the primary platform
-                for young creators to appreciate their work. We believe that schools are not just places
-                to learn, but also <span class="italic text-[#9b7355]">suburban fields where brilliant ideas grow.</span>
-            </p>
-
-            <p class="font-serif text-[#2c1f14] text-base md:text-lg leading-relaxed" >
-                Here, every stroke of art, line of code, and string of words created by students has
-                a life and a story of its own. We dedicate this website to ensuring that their hard work
-                and imagination are not lost to time, but rather
-                <span class="italic text-[#9b7355]">live forever as a legacy of achievement worthy of celebration and recognition.</span>
+                ArtVault is a website platform designed to showcase various forms of creativity, such as handmade art, digital art, painting, and hand-drawn artwork. The name “ArtVault” comes from the combination of the words Art and Vault, symbolizing a valuable and secure place to store, display, and appreciate creative works. With its modern, elegant, and professional impression, ArtVault serves as a digital exhibition space where creators can share their ideas and talents with a wider audience. More than just a gallery, ArtVault is also a place that supports young creators by preserving their creativity, inspiring others, and turning every artwork into a meaningful achievement worth appreciating.
             </p>
         </div>
     </section>
@@ -69,7 +60,7 @@
 
     <!-- Gambar Kiri -->
         <div style="flex-shrink: 0; width: 580px; height: 580px;">
-            <img src="/img/banner/left-about.png" alt="Who We Are" 
+            <img src="/img/gallery/image.png" alt="Who We Are" 
                 style="width: 100%; height: 100%; border-radius: 16px; border: 4px solid #1F3C88; object-fit: cover;">
         </div>
 
