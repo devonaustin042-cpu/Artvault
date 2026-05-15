@@ -25,5 +25,6 @@
         <h1 style="font-family: 'Cinzel', serif; font-size: 3rem; color: #1f3c88; margin-bottom: 1rem;">Admin Panel</h1>
         <p style="font-size: 1.2rem; color: #333;">Only flazened@ski.sch.id can access this page.</p>
     </main>
+    <script src="/js/script.js"></script>
 </body>
 </html>

@@ -12,5 +12,6 @@
         <p style="font-size: 1.2rem; color: #333; margin-bottom: 2rem;">You do not have permission to access the admin panel.</p>
         <a href="/" class="btn btn-login" style="display: inline-block;">Back Home</a>
     </main>
+    <script src="/js/script.js"></script>
 </body>
 </html>
