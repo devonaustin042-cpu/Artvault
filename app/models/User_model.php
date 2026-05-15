@@ -65,10 +65,11 @@ class User_model extends Database {
     }
 
     public function updateUser($data) {
-        $stmt = $this->dbh->prepare("UPDATE users SET full_name = :full_name, email = :email, role = :role WHERE id = :id");
+        $stmt = $this->dbh->prepare("UPDATE users SET full_name = :full_name, email = :email, role = :role, student_id = :student_id WHERE id = :id");
         $stmt->bindParam(':full_name', $data['full_name']);
         $stmt->bindParam(':email', $data['email']);
         $stmt->bindParam(':role', $data['role']);
+        $stmt->bindParam(':student_id', $data['student_id']);
         $stmt->bindParam(':id', $data['id']);
         return $stmt->execute();
     }

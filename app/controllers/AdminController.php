@@ -43,20 +43,24 @@ class AdminController {
     }
 
     public function editUser($id) {
-        $data['user'] = $this->userModel->getUserById($id);
-        if (!$data['user']) die("User not found");
-        require_once __DIR__ . '/../views/admin/users/edit.php';
+        header('Location: /admin/users');
+        exit;
     }
 
     public function postEditUser($id) {
+        $allowedRoles = ['viewer', 'author', 'admin'];
+        $role = in_array($_POST['role'] ?? '', $allowedRoles, true) ? $_POST['role'] : 'viewer';
+
         $data = [
             'id' => $id,
-            'full_name' => htmlspecialchars($_POST['full_name']),
-            'email' => htmlspecialchars($_POST['email']),
-            'role' => $_POST['role']
+            'full_name' => trim($_POST['full_name'] ?? ''),
+            'email' => trim($_POST['email'] ?? ''),
+            'student_id' => trim($_POST['student_id'] ?? ''),
+            'role' => $role
         ];
         if ($this->userModel->updateUser($data)) {
             header('Location: /admin/users');
+            exit;
         } else {
             echo "Update failed";
         }
@@ -65,6 +69,7 @@ class AdminController {
     public function deleteUser($id) {
         if ($this->userModel->deleteUser($id)) {
             header('Location: /admin/users');
+            exit;
         } else {
             echo "Failed to delete user.";
         }
@@ -73,23 +78,49 @@ class AdminController {
     // Artwork Management
     public function artworks() {
         $data['artworks'] = $this->artModel->getAllArtworks();
+        $data['categories'] = $this->artModel->getCategories();
         require_once __DIR__ . '/../views/admin/artworks/index.php';
     }
 
     public function editArtwork($id) {
-        $data['art'] = $this->artModel->getArtworkById($id);
-        if (!$data['art']) die("Artwork not found");
-        require_once __DIR__ . '/../views/admin/artworks/edit.php';
+        header('Location: /admin/artworks');
+        exit;
     }
 
     public function postEditArtwork($id) {
+        $art = $this->artModel->getArtworkById($id);
+        if (!$art) {
+            die("Artwork not found");
+        }
+
         $data = [
-            'id' => $id,
-            'title' => htmlspecialchars($_POST['title']),
-            'description' => htmlspecialchars($_POST['description'])
+            'title' => trim($_POST['title'] ?? ''),
+            'description' => trim($_POST['description'] ?? ''),
+            'category_id' => $_POST['category_id'] ?? null
         ];
-        if ($this->artModel->updateArtwork($data)) {
+
+        if (isset($_FILES['art_image']) && $_FILES['art_image']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['art_image'];
+            $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+            $allowed = ['jpg', 'jpeg', 'png'];
+
+            if (in_array($fileExt, $allowed, true)) {
+                $newFileName = uniqid('', true) . "." . $fileExt;
+                $fileDestination = __DIR__ . '/../../public/img/gallery/' . $newFileName;
+
+                if (move_uploaded_file($file['tmp_name'], $fileDestination)) {
+                    $oldFilePath = __DIR__ . '/../../public/img/gallery/' . $art['file_path'];
+                    if (!empty($art['file_path']) && file_exists($oldFilePath)) {
+                        unlink($oldFilePath);
+                    }
+                    $data['file_path'] = $newFileName;
+                }
+            }
+        }
+
+        if ($this->artModel->updateArtwork($id, $data)) {
             header('Location: /admin/artworks');
+            exit;
         } else {
             echo "Update failed";
         }
@@ -98,6 +129,7 @@ class AdminController {
     public function deleteArtwork($id) {
         if ($this->artModel->deleteArtwork($id)) {
             header('Location: /admin/artworks');
+            exit;
         } else {
             echo "Failed to delete artwork.";
         }
