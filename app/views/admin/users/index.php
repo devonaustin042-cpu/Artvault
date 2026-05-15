@@ -11,6 +11,7 @@
         body { font-family: 'Lato', sans-serif; background-color: #f8f9fa; }
         .title-font { font-family: 'Cinzel', serif; }
         .sidebar-gradient { background: linear-gradient(180deg, #1f3c88 0%, #162a61 100%); }
+        .modal-open { overflow: hidden; }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden">
@@ -92,11 +93,14 @@
                                     <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
                                         <i class="fa-solid fa-user"></i>
                                     </div>
-                                    <span class="font-bold text-gray-800"><?= $user['full_name']; ?></span>
+                                    <div class="min-w-0">
+                                        <span class="block font-bold text-gray-800 break-words"><?= htmlspecialchars($user['full_name']); ?></span>
+                                        <span class="block text-xs font-bold text-gray-400">ID: <?= htmlspecialchars($user['student_id'] ?? ''); ?></span>
+                                    </div>
                                 </div>
                             </td>
                             <td class="px-8 py-6 text-gray-600 italic">
-                                <?= $user['email']; ?>
+                                <?= htmlspecialchars($user['email']); ?>
                             </td>
                             <td class="px-8 py-6">
                                 <?php if ($user['role'] === 'admin'): ?>
@@ -113,15 +117,26 @@
                             </td>
                             <td class="px-8 py-6">
                                 <div class="flex justify-center gap-3">
+                                    <button type="button"
+                                            class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:text-white transition shadow-sm"
+                                            aria-label="Edit <?= htmlspecialchars($user['full_name']); ?>"
+                                            onclick='openUserEditModal(<?= json_encode([
+                                                'id' => $user['id'],
+                                                'full_name' => $user['full_name'],
+                                                'email' => $user['email'],
+                                                'student_id' => $user['student_id'] ?? '',
+                                                'role' => $user['role']
+                                            ], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT); ?>)'>
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
                                     <?php if ($user['role'] !== 'admin'): ?>
-                                        <a href="/admin/users/edit/<?= $user['id']; ?>" class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:text-white transition shadow-sm">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </a>
                                         <a href="/admin/users/delete/<?= $user['id']; ?>" class="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center hover:bg-red-600 hover:text-white transition shadow-sm" onclick="return confirm('Erase this user account?')">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
                                     <?php else: ?>
-                                        <span class="text-xs text-gray-400 font-bold italic tracking-wider">System Locked</span>
+                                        <span class="w-10 h-10 bg-gray-50 text-gray-300 rounded-xl flex items-center justify-center shadow-sm" title="Admin deletion is locked">
+                                            <i class="fa-solid fa-lock"></i>
+                                        </span>
                                     <?php endif; ?>
                                 </div>
                             </td>
@@ -133,5 +148,85 @@
         </div>
     </main>
 
+    <div id="userEditModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/60 px-4 backdrop-blur-sm">
+        <div class="w-full max-w-xl rounded-2xl bg-white shadow-2xl border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between bg-[#1f3c88] px-8 py-5 text-white">
+                <div>
+                    <h3 class="title-font text-xl font-bold">Edit User</h3>
+                    <p class="text-xs text-white/70">Update account identity and access role.</p>
+                </div>
+                <button type="button" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition" onclick="closeUserEditModal()" aria-label="Close edit panel">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="userEditForm" method="POST" class="p-8 space-y-5">
+                <div>
+                    <label for="editFullName" class="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Full Name</label>
+                    <input id="editFullName" name="full_name" type="text" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 outline-none focus:border-[#1f3c88] focus:ring-4 focus:ring-blue-50">
+                </div>
+
+                <div>
+                    <label for="editEmail" class="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Email</label>
+                    <input id="editEmail" name="email" type="email" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 outline-none focus:border-[#1f3c88] focus:ring-4 focus:ring-blue-50">
+                </div>
+
+                <div>
+                    <label for="editStudentId" class="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Student ID</label>
+                    <input id="editStudentId" name="student_id" type="text" required minlength="8" maxlength="20" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 outline-none focus:border-[#1f3c88] focus:ring-4 focus:ring-blue-50">
+                </div>
+
+                <div>
+                    <label for="editRole" class="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Role</label>
+                    <select id="editRole" name="role" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 outline-none focus:border-[#1f3c88] focus:ring-4 focus:ring-blue-50">
+                        <option value="viewer">Viewer</option>
+                        <option value="author">Author</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-3">
+                    <button type="button" class="px-5 py-3 rounded-xl bg-gray-100 text-gray-600 font-bold hover:bg-gray-200 transition" onclick="closeUserEditModal()">Cancel</button>
+                    <button type="submit" class="px-6 py-3 rounded-xl bg-[#f4c430] text-[#1f3c88] font-black hover:bg-[#e7b728] transition shadow-sm">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const userEditModal = document.getElementById('userEditModal');
+        const userEditForm = document.getElementById('userEditForm');
+
+        function openUserEditModal(user) {
+            userEditForm.action = `/admin/users/update/${user.id}`;
+            document.getElementById('editFullName').value = user.full_name || '';
+            document.getElementById('editEmail').value = user.email || '';
+            document.getElementById('editStudentId').value = user.student_id || '';
+            document.getElementById('editRole').value = user.role || 'viewer';
+            userEditModal.classList.remove('hidden');
+            userEditModal.classList.add('flex');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeUserEditModal() {
+            userEditModal.classList.add('hidden');
+            userEditModal.classList.remove('flex');
+            document.body.classList.remove('modal-open');
+        }
+
+        userEditModal.addEventListener('click', function (event) {
+            if (event.target === userEditModal) {
+                closeUserEditModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !userEditModal.classList.contains('hidden')) {
+                closeUserEditModal();
+            }
+        });
+    </script>
 </body>
 </html>

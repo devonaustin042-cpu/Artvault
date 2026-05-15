@@ -11,6 +11,7 @@
         body { font-family: 'Lato', sans-serif; background-color: #f8f9fa; }
         .title-font { font-family: 'Cinzel', serif; }
         .sidebar-gradient { background: linear-gradient(180deg, #1f3c88 0%, #162a61 100%); }
+        .modal-open { overflow: hidden; }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden">
@@ -87,11 +88,20 @@
                     <!-- Content -->
                     <div class="p-8 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="title-font text-xl font-bold text-gray-800 leading-tight"><?= $art['title']; ?></h3>
+                            <h3 class="title-font text-xl font-bold text-gray-800 leading-tight"><?= htmlspecialchars($art['title']); ?></h3>
                             <div class="flex gap-2">
-                                <a href="/admin/artworks/edit/<?= $art['id']; ?>" class="w-9 h-9 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
+                                <button type="button"
+                                        class="w-9 h-9 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:text-white transition"
+                                        aria-label="Edit <?= htmlspecialchars($art['title']); ?>"
+                                        onclick='openArtworkEditModal(<?= json_encode([
+                                            'id' => $art['id'],
+                                            'title' => $art['title'],
+                                            'description' => $art['description'] ?? '',
+                                            'category_id' => $art['category_id'] ?? '',
+                                            'file_path' => $art['file_path'] ?? ''
+                                        ], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT); ?>)'>
                                     <i class="fa-solid fa-pen text-sm"></i>
-                                </a>
+                                </button>
                                 <a href="/admin/artworks/delete/<?= $art['id']; ?>" class="w-9 h-9 bg-red-50 text-red-600 rounded-xl flex items-center justify-center hover:bg-red-600 hover:text-white transition" onclick="return confirm('Erase this artwork?')">
                                     <i class="fa-solid fa-trash-can text-sm"></i>
                                 </a>
@@ -101,7 +111,7 @@
                         <div class="space-y-3 mt-auto">
                             <div class="flex items-center gap-3 text-sm text-gray-500 bg-gray-50 p-3 rounded-2xl border border-gray-100">
                                 <i class="fa-solid fa-user-nib text-[#1f3c88]"></i>
-                                <span class="font-bold text-gray-700"><?= $art['author_name']; ?></span>
+                                <span class="font-bold text-gray-700"><?= htmlspecialchars($art['author_name']); ?></span>
                             </div>
                             <div class="flex items-center gap-3 text-xs text-gray-400 pl-3">
                                 <i class="fa-regular fa-clock"></i>
@@ -115,5 +125,104 @@
         </div>
     </main>
 
+    <div id="artworkEditModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/60 px-4 backdrop-blur-sm">
+        <div class="w-full max-w-2xl rounded-2xl bg-white shadow-2xl border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between bg-[#1f3c88] px-8 py-5 text-white">
+                <div>
+                    <h3 class="title-font text-xl font-bold">Edit Artwork</h3>
+                    <p class="text-xs text-white/70">Update gallery title, category, and description.</p>
+                </div>
+                <button type="button" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition" onclick="closeArtworkEditModal()" aria-label="Close edit panel">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="artworkEditForm" method="POST" enctype="multipart/form-data" class="p-8 grid gap-6 md:grid-cols-[180px_1fr]">
+                <div class="space-y-3">
+                    <div class="rounded-2xl overflow-hidden bg-gray-100 border border-gray-200 h-44">
+                        <img id="editArtworkPreview" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <label for="editArtworkImage" class="flex items-center justify-center gap-2 w-full rounded-xl bg-blue-50 px-4 py-3 text-sm font-black text-blue-600 hover:bg-blue-100 transition cursor-pointer">
+                        <i class="fa-solid fa-image"></i>
+                        Change Image
+                    </label>
+                    <input id="editArtworkImage" name="art_image" type="file" accept="image/png,image/jpeg" class="hidden" onchange="previewAdminArtworkImage(event)">
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <label for="editArtworkTitle" class="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Title</label>
+                        <input id="editArtworkTitle" name="title" type="text" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 outline-none focus:border-[#1f3c88] focus:ring-4 focus:ring-blue-50">
+                    </div>
+
+                    <div>
+                        <label for="editArtworkCategory" class="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Category</label>
+                        <select id="editArtworkCategory" name="category_id" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 outline-none focus:border-[#1f3c88] focus:ring-4 focus:ring-blue-50">
+                            <?php foreach ($data['categories'] as $category): ?>
+                                <option value="<?= $category['id']; ?>"><?= htmlspecialchars($category['category_name']); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="editArtworkDescription" class="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Description</label>
+                        <textarea id="editArtworkDescription" name="description" rows="4" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 outline-none focus:border-[#1f3c88] focus:ring-4 focus:ring-blue-50"></textarea>
+                    </div>
+
+                    <div class="flex justify-end gap-3 pt-2">
+                        <button type="button" class="px-5 py-3 rounded-xl bg-gray-100 text-gray-600 font-bold hover:bg-gray-200 transition" onclick="closeArtworkEditModal()">Cancel</button>
+                        <button type="submit" class="px-6 py-3 rounded-xl bg-[#f4c430] text-[#1f3c88] font-black hover:bg-[#e7b728] transition shadow-sm">
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const artworkEditModal = document.getElementById('artworkEditModal');
+        const artworkEditForm = document.getElementById('artworkEditForm');
+
+        function openArtworkEditModal(artwork) {
+            artworkEditForm.action = `/admin/artworks/update/${artwork.id}`;
+            document.getElementById('editArtworkTitle').value = artwork.title || '';
+            document.getElementById('editArtworkDescription').value = artwork.description || '';
+            document.getElementById('editArtworkCategory').value = artwork.category_id || '';
+            document.getElementById('editArtworkPreview').src = `/img/gallery/${artwork.file_path || ''}`;
+            document.getElementById('editArtworkPreview').alt = artwork.title || 'Artwork preview';
+            document.getElementById('editArtworkImage').value = '';
+            artworkEditModal.classList.remove('hidden');
+            artworkEditModal.classList.add('flex');
+            document.body.classList.add('modal-open');
+        }
+
+        function previewAdminArtworkImage(event) {
+            const file = event.target.files[0];
+            if (!file) {
+                return;
+            }
+
+            document.getElementById('editArtworkPreview').src = URL.createObjectURL(file);
+        }
+
+        function closeArtworkEditModal() {
+            artworkEditModal.classList.add('hidden');
+            artworkEditModal.classList.remove('flex');
+            document.body.classList.remove('modal-open');
+        }
+
+        artworkEditModal.addEventListener('click', function (event) {
+            if (event.target === artworkEditModal) {
+                closeArtworkEditModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !artworkEditModal.classList.contains('hidden')) {
+                closeArtworkEditModal();
+            }
+        });
+    </script>
 </body>
 </html>
