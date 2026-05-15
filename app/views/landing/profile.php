@@ -11,27 +11,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-logo">
-            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
-        </div>
-        <ul class="nav-menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/gallery">Gallery</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-        <div class="nav-actions">
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
-            <?php else: ?>
-                <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
-                <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
-            <?php endif; ?>
-        </div>
-    </nav>
-
     <div class="profile-page">
         <!-- HEADER -->
         <div class="profile-header">
