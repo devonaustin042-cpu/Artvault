@@ -221,5 +221,6 @@
             popup.classList.toggle('active');
         }
         </script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
