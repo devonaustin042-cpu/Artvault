@@ -1,56 +1,84 @@
-# ARTVAULT - Technical Standards (Latest Update)
+# ARTVAULT - Technical Standards (Updated May 19, 2026)
 
-## 1. Tech Stack
-- **Backend:** PHP Custom MVC
-- **Frontend:** Tailwind CSS v4
-- **Database:** MySQL (`db_gallery_sekolah`)
-- **Interactions:** Vanilla JS with Fetch API (AJAX)
+## 1. Project Overview
+Artvault is a specialized web-based gallery platform for school art exhibitions. It allows students to showcase their work, interact with others through likes and comments, and follow their favorite artists.
 
-## 2. Authentication & Authorization
-- **Admin:** `flazened@ski.sch.id` (Password: `123`) has full access.
-- **Roles:** `viewer`, `author`, `admin`.
-- **Ownership Rule:** Only the original uploader (Owner) or an Admin can Edit or Delete an artwork.
-- **User IDs:** Standardized 8-digit format starting from `80000000` (stored as `student_id`).
+## 2. Tech Stack
+- **Backend:** PHP Custom MVC (Namespace: `App\Controllers`, `App\Core`)
+- **Frontend:** Tailwind CSS v4 (Compiled from `app/resources/css/input.css` to `public/css/index.css`)
+- **Database:** MySQL (`db_gallery_sekolah`) using PDO with persistent connections.
+- **Interactions:** Vanilla JS with Fetch API for AJAX (Likes, Follows) and a custom page loader.
 
-## 3. Key Features
-### User Profile
-- **Personalized Header:** Banner image and Avatar support.
-- **Social Stats:** Following count, Follower count, and Total Likes received.
-- **Badges/Tags:** Dynamic badges (e.g., "Author", "Experienced User") visible on profile.
-- **Tabbed Content:** Navigation between "Draft", "Your Art", and "Favorite".
-- **Settings Menu:** Gear icon popup with options for Exit Account, Profile/Background editing, and Security updates.
-- **Security:** Confirmation popup for Logout action.
+## 3. Core Architecture
+- **Router:** Custom regex-based router supporting dynamic parameters like `{id}`. Located in `app/core/Router.php`.
+- **Database Wrapper:** Base `Database` class in `app/core/Database.php` providing the PDO connection.
+- **Models:**
+    - `Art_model`: Handles artworks, categories, likes, and threaded comments.
+    - `User_model`: Handles registration, authentication, user profiles, stats, and follow system.
+- **Controllers:**
+    - `HomeController`: Manages landing pages (Home, About, Contact).
+    - `AuthController`: Handles registration, login, and session management.
+    - `ArtController`: Manages gallery display, detail view, artwork CRUD, and social interactions.
+    - `UserController`: Handles user profiles, stats, and follow/unfollow logic.
+    - `AdminController`: Provides a protected dashboard for system-wide user and artwork management.
 
-### Social Interaction
-- **Advanced Commenting:**
-    - **Threaded Replies:** Support for parent-child comment structure (replies).
-    - **Emoji Picker:** Integrated emoji selection bar for comments and replies.
-- **Like System:**
-    - Real-time toggle using AJAX.
-    - Interactive blue "pop" animation and status synchronization across Gallery and Detail pages.
+## 4. Database Schema (`db_gallery_sekolah`)
+- **`users`**: Stores user data, credentials, roles (`viewer`, `author`, `admin`), and profile paths (avatar/banner).
+- **`artworks`**: Stores artwork metadata, file paths, and associations to users and categories.
+- **`categories`**: Lookup table for artwork types (e.g., Painting, Digital Art).
+- **`comments`**: Stores user comments on artworks, supporting nested/threaded replies via `parent_id`.
+- **`likes`**: Junction table for the many-to-many relationship between users and artworks.
+- **`follows`**: Junction table for user-to-user follows.
+- **`user_tags`**: Dynamic badges/tags assigned to users.
+
+## 5. Route Mapping
+| Method | URI | Controller | Action |
+|---|---|---|---|
+| GET | `/` | HomeController | `index` |
+| GET | `/gallery` | ArtController | `gallery` |
+| GET | `/art/{id}` | ArtController | `detail` |
+| POST | `/art/upload` | ArtController | `uploadArt` |
+| POST | `/art/update/{id}` | ArtController | `updateArt` |
+| GET | `/art/delete/{id}` | ArtController | `deleteArt` |
+| POST | `/art/comment/{id}`| ArtController | `postComment` |
+| POST | `/art/like/{id}` | ArtController | `toggleLike` (AJAX) |
+| GET | `/admin` | AdminController | `index` |
+| GET | `/admin/users` | AdminController | `users` |
+| POST | `/admin/users/update/{id}` | AdminController | `postEditUser` |
+| GET | `/login` | AuthController | `login` |
+| POST | `/post-login` | AuthController | `handleLogin` |
+| GET | `/profile` | UserController | `profile` |
+| POST | `/follow/{id}` | UserController | `toggleFollow` (AJAX) |
+
+## 6. Key Features & Business Logic
+### Authentication & Roles
+- **Standard Roles:** `viewer` (can like/comment), `author` (can upload art), `admin` (full control).
+- **Admin Access:** Special email `flazened@ski.sch.id` or `admin` role grants access to the `/admin` dashboard.
+- **Registration:** Automatically assigns `author` role to emails ending in `@ski.sch.id`.
 
 ### Art Management
-- **Gallery:** Dynamic category filtering (Painting, Digital Art, etc.).
-- **Operations:** Fully functional Upload, Edit, and Delete with automated file system cleanup.
-- **Suggestions:** "View other art too!" section on detail pages featuring random artwork recommendations.
+- **Upload/Edit:** Authors and Admins can manage artworks. File system cleanup (unlinking old images) is performed on edit/delete.
+- **Filtering:** Gallery supports filtering by category via query parameters (e.g., `/gallery?category=1`).
+- **Recommendations:** Detail pages feature a "View other art too!" section with random suggestions.
+
+### Social Interaction
+- **AJAX Likes:** Real-time like/unlike with status synchronization and count updates.
+- **Threaded Comments:** Supports one level of replies with integrated emoji pickers.
+- **Follow System:** Users can follow others; stats (followers, following, total likes) are displayed on profiles.
 
 ### Admin Panel
-- **User Management:** Admin can edit any user account, including admin users, through an in-page popup edit panel.
-- **Editable User Fields:** Full name, email, student ID, and role (`viewer`, `author`, `admin`).
-- **Artwork Management:** Admin artwork cards use an in-page popup edit panel for title, category, description, and optional image replacement.
-- **Route Handling:** Admin edit buttons post to `/admin/users/update/{id}` and `/admin/artworks/update/{id}`; old direct edit routes redirect back to their listing pages.
-- **Deletion Rule:** Admin users remain protected from deletion in the table UI, while non-admin users and artworks can still be deleted by admin.
+- **Integrated Modals:** User and Artwork editing happens via centered overlay popups on the listing pages.
+- **Security:** CSRF-protected routes and strict role checks in `AdminController::__construct`.
 
-## 4. UI/UX Standards
-- **Color Palette:**
-    - **Primary:** Deep Purple/Navy Gradient (`#1F3C88` to `#3E4052`).
-    - **Secondary:** Artvault Gold (`#f4c430`).
-- **Responsiveness:** Implemented `min-width` and `word-break` safety rules to handle long text (e.g., in descriptions or comments).
-- **Admin Modals:** Edit actions use centered overlay popups with click-outside and Escape-key closing behavior.
-- **Navigation:** Navbar user icon now links directly to the `/profile` route.
+## 7. Directory Structure
+- `app/config/`: Configuration files (e.g., `root.php`).
+- `app/core/`: Core engine files (Router, Database).
+- `app/controllers/`: Application business logic.
+- `app/models/`: Data access layer.
+- `app/resources/`: Source frontend assets (CSS, JS).
+- `app/views/`: PHP template files organized by feature (admin, landing).
+- `public/`: Entry point, compiled assets, and uploaded media (`img/gallery`, `img/banner`, `img/profile`).
 
-## 5. Directory Structure
-- **CSS:** `app/resources/css/` (Sources) -> `public/css/index.css` (Build).
-- **Images:** `public/img/gallery/` (Artworks), `public/img/banner/` (Profile Banners), `public/img/icon/` (System Icons).
-- **Admin Views:** `app/views/admin/users/index.php` and `app/views/admin/artworks/index.php` contain the admin edit popup UI.
-- **Admin Logic:** `app/controllers/AdminController.php` handles admin update routes; `app/models/User_model.php` persists editable user fields.
+## 8. Development Commands
+- **Tailwind Watch:** `npm run dev`
+- **Tailwind Build:** `npx @tailwindcss/cli -i ./app/resources/css/input.css -o ./public/css/index.css`
