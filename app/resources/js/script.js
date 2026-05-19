@@ -232,3 +232,131 @@
 
     window.addEventListener('beforeunload', showLoader);
 })();
+
+(() => {
+    const animatedSelectors = [
+        '.about-section',
+        '.motive-section',
+        '.team-section',
+        '.gallery-page',
+        '.art-detail-page',
+        '.other-artworks-container',
+        '.contact-section',
+        '.profile-header',
+        '.profile-tabs-wrap',
+        '.profile-grid-container',
+        '.footer',
+        '.art-card',
+        '.feature-card',
+        '.team-card',
+        '.other-art-card',
+        '.comment-group',
+        '.profile-tag',
+        '.tab-item',
+        '.footer-col',
+        '.info-item',
+        '.form-group',
+        '.gallery-topbar',
+        '.add-work-wrap',
+        '.clipboard-card',
+        '.profile-art-grid > *',
+        '.other-artworks-grid > *',
+        '.team-grid > *',
+        '.art-grid > *',
+        '.contact-content > *',
+        'section[style] > div',
+        'section[style] a[style*="display: block"]',
+        'body > .min-h-screen > div',
+        'body > .min-h-screen > footer',
+        'form.space-y-5 > .relative',
+        '.flex.justify-center.gap-5 > img',
+        'body > .min-h-screen .max-w-lg',
+        'body > .min-h-screen .text-center',
+        'aside',
+        'main > header',
+        'main > .flex-1 > div',
+        '.card-hover',
+        'table tbody tr'
+    ].join(',');
+
+    const motionStyles = `
+        .av-animating {
+            transition:
+                opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.28s ease,
+                background-color 0.28s ease,
+                color 0.28s ease,
+                border-color 0.28s ease;
+            will-change: opacity, transform;
+        }
+
+        .av-animating:not(.av-visible) {
+            opacity: 0;
+            transform: translateY(24px) scale(0.985);
+        }
+
+        .av-animating.av-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .av-animating.av-visible.card-hover:hover {
+            transform: translateY(-5px) scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .av-animating,
+            .av-animating:not(.av-visible),
+            .av-animating.av-visible {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+    `;
+
+    function ensureMotionStyles() {
+        if (document.getElementById('artvault-motion-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'artvault-motion-styles';
+        style.textContent = motionStyles;
+        document.head.appendChild(style);
+    }
+
+    function revealVisibleElements() {
+        ensureMotionStyles();
+        const elements = Array.from(document.querySelectorAll(animatedSelectors));
+
+        if (!('IntersectionObserver' in window)) {
+            elements.forEach((element) => element.classList.add('av-animating', 'av-visible'));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries, entryObserver) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('av-visible');
+                window.setTimeout(() => {
+                    entry.target.style.transitionDelay = '';
+                }, 760);
+                entryObserver.unobserve(entry.target);
+            });
+        }, {
+            rootMargin: '0px 0px -8% 0px',
+            threshold: 0.12
+        });
+
+        elements.forEach((element, index) => {
+            element.classList.add('av-animating');
+            element.style.transitionDelay = `${Math.min(index % 8, 7) * 45}ms`;
+            observer.observe(element);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', revealVisibleElements);
+    } else {
+        revealVisibleElements();
+    }
+})();
