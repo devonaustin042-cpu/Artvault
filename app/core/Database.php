@@ -23,4 +23,8 @@ class Database {
             die("Koneksi Database Gagal: " . $e->getMessage());
         }
     }
+
+    public function prepare($sql) {
+        return $this->dbh->prepare($sql);
+    }
 }
