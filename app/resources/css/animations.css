@@ -1,0 +1,183 @@
+/* Simple Artvault motion and polish layer. No layout changes. */
+:root {
+  --av-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --av-blue-soft: rgba(31, 60, 136, 0.12);
+  --av-gold-soft: rgba(244, 196, 48, 0.24);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  animation: av-page-in 0.36s var(--av-ease) both;
+}
+
+.av-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.52s var(--av-ease), transform 0.52s var(--av-ease);
+}
+
+.av-reveal.av-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar,
+.footer,
+aside,
+main > header {
+  animation: av-soft-drop 0.42s var(--av-ease) both;
+}
+
+.art-card,
+.feature-card,
+.team-card,
+.other-art-card,
+.clipboard-card,
+.profile-info-card,
+.profile-stats,
+.contact-form-box,
+.contact-info-box,
+.card-hover,
+.info-item,
+.comment-group,
+table tbody tr {
+  transition: transform 0.22s var(--av-ease), box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.art-card:hover,
+.feature-card:hover,
+.team-card:hover,
+.other-art-card:hover,
+.clipboard-card:hover,
+.profile-info-card:hover,
+.profile-stats:hover,
+.contact-form-box:hover,
+.contact-info-box:hover,
+.card-hover:hover,
+.info-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px var(--av-blue-soft);
+}
+
+.art-img-container,
+.other-art-img-wrap,
+.profile-banner-wrap,
+.about-image,
+.motive-left,
+section[style] a[style*="display: block"] {
+  overflow: hidden;
+}
+
+.art-img-container img,
+.other-art-img-wrap img,
+.profile-banner,
+.about-image img,
+.motive-left img,
+section[style] a[style*="display: block"] img {
+  transition: transform 0.45s var(--av-ease), filter 0.25s ease;
+}
+
+.art-card:hover .art-img-container img,
+.other-art-card:hover .other-art-img-wrap img,
+.about-image:hover img,
+.motive-left:hover img,
+section[style] a[style*="display: block"]:hover img {
+  transform: scale(1.04);
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  transition-property: background-color, border-color, color, box-shadow, opacity, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+button:hover,
+.btn:hover,
+.btn-large:hover,
+.btn-filter:hover,
+.btn-category:hover,
+.btn-add-work:hover,
+.btn-submit-art:hover,
+.btn-post-comment:hover,
+.btn-send:hover {
+  transform: translateY(-2px);
+}
+
+button:active,
+.btn:active,
+.btn-large:active,
+.btn-filter:active,
+.btn-category:active,
+.btn-add-work:active,
+.btn-submit-art:active,
+.btn-post-comment:active,
+.btn-send:active {
+  transform: translateY(0) scale(0.98);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--av-gold-soft);
+  outline-offset: 3px;
+}
+
+.hero img,
+.art-of-the-day,
+.profile-banner {
+  animation: av-subtle-float 7s ease-in-out infinite alternate;
+}
+
+@keyframes av-page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes av-soft-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes av-subtle-float {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .av-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
