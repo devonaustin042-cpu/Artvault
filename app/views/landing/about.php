@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artvault - About</title>
+    <title>Artvault - About Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/index.css">
 </head>
-<body>
+<body class="about-page">
 
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -45,181 +45,155 @@
     </nav>
 
     <!-- HERO BANNER -->
-    <section class="hero" style="margin-bottom: 40px;">
-        <img src="/assets/banner/about-us.png" alt="Artvault Banner" class="w-full h-auto">
+    <header class="about-hero">
+    </header>
+
+    <!-- INTRO TEXT -->
+    <section class="about-intro-section">
+        <p class="about-intro-text">
+            ArtVault is a website platform designed to showcase various forms of creativity, such as handmade art, digital art, painting, and hand-drawn artwork. The name “ArtVault” comes from the combination of the words Art and Vault, symbolizing a valuable and secure place to store, display, and appreciate creative works. With its modern, elegant, and professional impression, ArtVault serves as a digital exhibition space where creators can share their ideas and talents with a wider audience. More than just a gallery, ArtVault is also a place that supports young creators by preserving their creativity, inspiring others, and turning every artwork into a meaningful achievement worth appreciating.
+        </p>
     </section>
 
-    
-    <section style="border: 2px solid #1F3C88; border-radius: 16px; padding: 40px; background: #faf8f4;">
-        <div class="w-full text-center">
-            <p class="font-serif text-[#2c1f14] text-base md:text-lg leading-relaxed mb-5">
-                ArtVault is a website platform designed to showcase various forms of creativity, such as handmade art, digital art, painting, and hand-drawn artwork. The name “ArtVault” comes from the combination of the words Art and Vault, symbolizing a valuable and secure place to store, display, and appreciate creative works. With its modern, elegant, and professional impression, ArtVault serves as a digital exhibition space where creators can share their ideas and talents with a wider audience. More than just a gallery, ArtVault is also a place that supports young creators by preserving their creativity, inspiring others, and turning every artwork into a meaningful achievement worth appreciating.
-            </p>
+    <!-- WHO WE ARE -->
+    <section class="who-we-are-section">
+        <div class="who-we-are-image">
+            <img src="/assets/banner/about-banner.png" alt="Who We Are">
         </div>
-    </section>
-
-    
-
-    <section style="display: flex; align-items: center; background: #f3f4f6; width: 100%; padding: 40px 60px; gap: 40px;">
-
-    <!-- Gambar Kiri -->
-        <div style="flex-shrink: 0; width: 580px; height: 580px;">
-            <img src="/assets/gallery/image.png" alt="Who We Are" 
-                style="width: 100%; height: 100%; border-radius: 16px; border: 4px solid #1F3C88; object-fit: cover;">
-        </div>
-
-    <!-- Konten Kanan -->
-        <div style="display: flex; flex-direction: column; gap: 16px; flex: 1;">
-        
-            <div>
-                <h2 style="font-size: 3.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">Who We Are</h2>
-                <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0;">
+        <div class="who-we-are-content">
+            <div class="section-title-container">
+                <h2 class="section-title">Who We Are</h2>
+                <hr class="section-underline">
             </div>
-
-            <p style="color: #333; font-size: 1.75rem; line-height: 1.8; margin: 0;">
+            <p class="who-we-are-text">
                 We are students passionate about technology, design, and digital creativity. 
                 Coming from the TKJ environment, we came together to build this platform to 
                 showcase work that is not only innovative but also has a story behind it.
             </p>
-
-            <a href="#" 
-                style="display: inline-flex; width: fit-content; align-items: center; gap: 10px; border: 2px solid #1F3C88; color: #1F3C88; font-weight: 600; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease;"
-                onmouseover="this.style.background='#F4C430'; this.style.color='#fff'; this.style.borderColor='#F4C430';"
-                onmouseout="this.style.background='transparent'; this.style.color='#1F3C88'; this.style.borderColor='#1F3C88';">
-                    Get to know us →
-            </a>
-
+            <a href="/gallery" class="btn-know-us">Get to know us <span>→</span></a>
         </div>
-
     </section>
 
-
-    <section style="background: #f3f4f6; width: 100%; padding: 50px 60px;">
-
-        <!-- Judul -->
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 2.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">Mission & Vision</h2>
-            <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0 auto;">
+    <!-- MISSION & VISION -->
+    <section class="mission-vision-section">
+        <div class="section-title-container">
+            <h2 class="section-title">Mission & Vision</h2>
+            <hr class="section-underline center-underline">
         </div>
-
-        <!-- Kartu -->
-        <div style="display: flex; gap: 30px; justify-content: center;">
-
+        <div class="mission-vision-grid">
             <!-- Mission -->
-            <div style="background: #6b8cba; border-radius: 16px; padding: 30px; display: flex; align-items: center; gap: 20px; width: 45%;">
-                <!-- Icon Target -->
-                <div style="flex-shrink: 0;">
-                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="mv-card">
+                <div class="mv-icon">
+                    <svg width="80" height="80" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="30" cy="30" r="28" stroke="#f0c040" stroke-width="4" fill="none"/>
                         <circle cx="30" cy="30" r="18" stroke="#f0c040" stroke-width="4" fill="none"/>
                         <circle cx="30" cy="30" r="8" fill="#f0c040"/>
                     </svg>
                 </div>
-                <p style="color: #fff; font-size: 1rem; line-height: 1.7; margin: 0; text-align: right;">
+                <p class="mv-text">
                     To be a place of appreciation and inspiration for everyone through innovative and useful creative work.
                 </p>
             </div>
-
             <!-- Vision -->
-            <div style="background: #6b8cba; border-radius: 16px; padding: 30px; display: flex; align-items: center; gap: 20px; width: 45%;">
-                <!-- Icon Eye -->
-                <div style="flex-shrink: 0;">
-                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="30" cy="30" rx="26" ry="16" stroke="#f0c040" stroke-width="4" fill="none"/>
-                        <circle cx="30" cy="30" r="8" fill="none" stroke="#f0c040" stroke-width="4"/>
+            <div class="mv-card">
+                <div class="mv-icon">
+                    <svg width="80" height="80" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 30C5 30 15 12 30 12C45 12 55 30 55 30C55 30 45 48 30 48C15 48 5 30 5 30Z" stroke="#f0c040" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="30" cy="30" r="8" stroke="#f0c040" stroke-width="4"/>
                         <circle cx="30" cy="30" r="3" fill="#f0c040"/>
                     </svg>
                 </div>
-                <p style="color: #fff; font-size: 1rem; line-height: 1.7; margin: 0; text-align: right;">
+                <p class="mv-text">
                     Become a widely known digital creator and have a positive impact on young creators in the future.
                 </p>
             </div>
-
         </div>
-
     </section>
 
-
-    <section style="background: #f3f4f6; width: 100%; padding: 50px 60px;">
-
-        <!-- Judul -->
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 2.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">What We Showcase</h2>
-            <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0 auto;">
+    <!-- WHAT WE SHOWCASE -->
+    <section class="showcase-section">
+        <div class="section-title-container">
+            <h2 class="section-title">What We Showcase</h2>
+            <hr class="section-underline center-underline">
         </div>
-
-        <!-- Grid 4 Karya -->
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-
+        <div class="showcase-grid">
             <?php foreach ($artworks as $art): ?>
-            <div>
-                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;"><?= htmlspecialchars($art['category_name'] ?? 'Uncategorized'); ?></p>
-                <a href="/art/<?= $art['id']; ?>" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb; transition: border-color 0.3s ease;">
-                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/assets/gallery/<?= htmlspecialchars($art['file_path']); ?>" alt="<?= htmlspecialchars($art['title']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="showcase-card-container">
+                <p class="category-label"><?= htmlspecialchars($art['category_name'] ?? 'Uncategorized'); ?></p>
+                <a href="/art/<?= $art['id']; ?>" class="showcase-card">
+                    <div class="showcase-img-wrapper">
+                        <img src="/assets/gallery/<?= htmlspecialchars($art['file_path']); ?>" alt="<?= htmlspecialchars($art['title']); ?>">
                     </div>
-                    <div style="padding: 12px;">
-                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;"><?= htmlspecialchars($art['title']); ?></p>
-                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : <?= htmlspecialchars($art['author_name']); ?></p>
-                        <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
-                            <span style="font-size: 0.85rem; color: #333;"><?= number_format($art['like_count']); ?></span>
+                    <div class="showcase-info">
+                        <h3 class="showcase-title"><?= htmlspecialchars($art['title']); ?></h3>
+                        <p class="showcase-author">Made by : <?= htmlspecialchars($art['author_name']); ?></p>
+                        <div class="showcase-stats">
+                            <img src="/assets/icon/like.png" class="like-icon" alt="Likes">
+                            <span class="like-count"><?= number_format($art['like_count']); ?></span>
                         </div>
                     </div>
                 </a>
             </div>
             <?php endforeach; ?>
-
         </div>
-
     </section>
 
-
-    <section style="background: #f3f4f6; width: 100%; padding: 50px 60px;">
-
-    <!-- Judul -->
-    <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="font-size: 2.3rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">Our Values</h2>
-        <hr style="border: none; border-top: 4px solid #1F3C88; width: 60px; margin: 0 auto;">
-    </div>
-
-    <!-- 3 Kolom -->
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: start;">
-
-        <!-- Creative -->
-        <div style="display: flex; align-items: flex-start; gap: 20px;">
-            <div style="flex-shrink: 0; font-size: 4rem;">💡</div>
-            <div>
-                <h3 style="font-size: 1.8rem; font-weight: 800; color: #1a1a1a; margin: 0 0 10px 0;">Creative</h3>
-                <p style="font-size: 1.1rem; color: #444; line-height: 1.7; margin: 0;">Always looking for new ideas and daring to express them.</p>
+    <!-- OUR VALUES -->
+    <section class="values-section">
+        <div class="section-title-container">
+            <h2 class="section-title">Our Values</h2>
+            <hr class="section-underline center-underline">
+        </div>
+        <div class="values-grid">
+            <!-- Creative -->
+            <div class="value-item">
+                <div class="value-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18h6M10 22h4M12 2v1M5.22 5.22l.71.71M2 12h1M5.22 18.78l.71-.71M18.78 5.22l-.71.71M22 12h-1M18.78 18.78l-.71-.71M9 11.3V8a3 3 0 0 1 6 0v3.3M12 11.3V14"/>
+                        <path d="M12 18a6 6 0 0 1-6-6c0-1.66.67-3.16 1.76-4.24A6.002 6.002 0 0 1 12 6a6 6 0 0 1 6 6c0 1.66-.67 3.16-1.76 4.24A6.002 6.002 0 0 1 12 18Z"/>
+                    </svg>
+                </div>
+                <div class="value-content">
+                    <h3>Creative</h3>
+                    <p>Always looking for new ideas and daring to express them.</p>
+                </div>
+            </div>
+            <!-- Collaboration -->
+            <div class="value-item">
+                <div class="value-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <div class="value-content">
+                    <h3>Collaboration</h3>
+                    <p>Work together and support each other in creating work</p>
+                </div>
+            </div>
+            <!-- Innovation -->
+            <div class="value-item">
+                <div class="value-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                        <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                        <path d="M9 12H4s.5-1 1-4c2 1 3 3 3 3z"/>
+                        <path d="M15 15v5s-1-.5-4-1c1-2 3-3 3-3z"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </div>
+                <div class="value-content">
+                    <h3>Innovation</h3>
+                    <p>Keep learning and creating useful solutions</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Collaboration -->
-        <div style="display: flex; align-items: flex-start; gap: 20px;">
-            <div style="flex-shrink: 0; font-size: 4rem;">👥</div>
-            <div>
-                <h3 style="font-size: 1.8rem; font-weight: 800; color: #1a1a1a; margin: 0 0 10px 0;">Collaboration</h3>
-                <p style="font-size: 1.1rem; color: #444; line-height: 1.7; margin: 0;">Work together and support each other in creating work</p>
-            </div>
-        </div>
-
-        <!-- Innovation -->
-        <div style="display: flex; align-items: flex-start; gap: 20px;">
-            <div style="flex-shrink: 0; font-size: 4rem;">🚀</div>
-            <div>
-                <h3 style="font-size: 1.8rem; font-weight: 800; color: #1a1a1a; margin: 0 0 10px 0;">Innovation</h3>
-                <p style="font-size: 1.1rem; color: #444; line-height: 1.7; margin: 0;">Keep learning and creating useful solutions</p>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-    
-<!-- FOOTER --> 
-   <div class="Box-1"></div>
+    <!-- FOOTER --> 
+    <div class="Box-1"></div>
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
@@ -296,15 +270,6 @@
             <p>Copyright &copy; 2025 Artvault All Rights Reserved</p>
         </div>
     </footer>
-    
-
-   
-
-
-
-
-    
-
     
 </body>
 </html>
