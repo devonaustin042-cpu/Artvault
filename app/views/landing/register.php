@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Tombol Back -->
         <div class="p-6 md:p-10">
             <a href="/" class="inline-block hover:opacity-70 transition">
-                <img src="/img/icon/back.png" alt="Back" class="w-10 h-auto">
+                <img src="/assets/icon/back.png" alt="Back" class="w-10 h-auto">
             </a>
         </div>
 
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Sisi Kiri: Ilustrasi -->
             <div class="hidden md:block w-full md:w-1/2 max-w-lg">
-                <img src="/img/banner/sign-up-banner.png" alt="Sign Up Banner" class="w-full h-auto object-contain">
+                <img src="/assets/banner/sign-up-banner.png" alt="Sign Up Banner" class="w-full h-auto object-contain">
             </div>
 
             <!-- Sisi Kanan: Form -->
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="footer-main">
                 <div class="footer-col footer-brand">
                     <div class="footer-brand-top">
-                        <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
+                        <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
                         <span class="footer-brand-name">Artvault</span>
                     </div>
                 </div>
@@ -143,18 +143,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="footer-col">
                     <h4 class="footer-heading">Contact</h4>
                     <ul class="footer-contact">
-                        <li><img src="/img/icon/mail.png" alt="Email" class="contact-icon-img"><span>Artvault@gmail.com</span></li>
-                        <li><img src="/img/icon/location.png" alt="Location" class="contact-icon-img"><span>Pontianak, Kalimantan Barat</span></li>
-                        <li><img src="/img/icon/telephone.png" alt="Phone" class="contact-icon-img"><span>+62 897 3871 170</span></li>
+                        <li><img src="/assets/icon/mail.png" alt="Email" class="contact-icon-img"><span>Artvault@gmail.com</span></li>
+                        <li><img src="/assets/icon/location.png" alt="Location" class="contact-icon-img"><span>Pontianak, Kalimantan Barat</span></li>
+                        <li><img src="/assets/icon/telephone.png" alt="Phone" class="contact-icon-img"><span>+62 897 3871 170</span></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-social-col">
                     <h4 class="footer-heading">Follow Us</h4>
                     <div class="social-icons">
-                        <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
-                        <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
+                        <a href="#"><img src="/assets/icon/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="/assets/icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="/assets/icon/tiktok.png" alt="TikTok"></a>
+                        <a href="#"><img src="/assets/icon/youtube.png" alt="YouTube"></a>
                     </div>
                 </div>
             </div>

@@ -2405,7 +2405,7 @@ body {
 }
 .art-of-the-day {
   padding: 40px 60px;
-  background: url('/img/banner/background.png') center/cover no-repeat;
+  background: url('/assets/banner/background.png') center/cover no-repeat;
   height: 700px;
   width: 100%;
 }
@@ -2463,7 +2463,7 @@ body {
   font-size: 1.5rem;
 }
 .cta-section {
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/banner/Background-2.png') center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/banner/Background-2.png') center/cover no-repeat;
   padding: 100px 60px;
   text-align: center;
   color: white;
@@ -2613,7 +2613,7 @@ body {
 }
 .art-of-the-day {
   padding: 40px 60px;
-  background: url('/img/banner/background.png') center/cover no-repeat;
+  background: url('/assets/banner/background.png') center/cover no-repeat;
   height: 700px;
   width: 100%;
 }

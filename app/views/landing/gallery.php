@@ -14,7 +14,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
+            <img src="/assets/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
         </div>
 
         <ul class="nav-menu">
@@ -32,7 +32,7 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <a href="/profile"><img src="/assets/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
@@ -76,13 +76,13 @@
             <?php foreach ($artworks as $row): ?>
             <a href="/art/<?= $row['id']; ?>" class="art-card">
                 <div class="art-img-container">
-                    <img src="/img/gallery/<?= $row['file_path']; ?>" alt="<?= $row['title']; ?>">
+                    <img src="/assets/gallery/<?= $row['file_path']; ?>" alt="<?= $row['title']; ?>">
                 </div>
                 <div class="art-info">
                     <p class="art-title"><?= $row['title']; ?></p>
                     <p class="art-author">Made by : <?= $row['author_name']; ?></p>
                     <div class="art-like <?= in_array($row['id'], $likedArtIds) ? 'liked' : '' ?>" onclick="event.preventDefault(); toggleLike(<?= $row['id']; ?>, this)">
-                        <img src="/img/icon/like.png" class="art-like-img">
+                        <img src="/assets/icon/like.png" class="art-like-img">
                         <span><?= $row['like_count']; ?></span>
                     </div>
                 </div>
@@ -98,9 +98,9 @@
                 <div class="add-work-overlay" id="addWorkOverlay">
                     <div class="add-work-popup">
                         <div class="add-work-header">
-                            <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="add-work-logo">
+                            <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="add-work-logo">
                             <div class="header-user-icon">
-                                <img src="/img/icon/user.png" alt="User">
+                                <img src="/assets/icon/user.png" alt="User">
                             </div>
                         </div>
 
@@ -160,7 +160,7 @@
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
                 <span class="footer-brand-name">Artvault</span>
             </div>
         </div>
@@ -178,15 +178,15 @@
                 <h4 class="footer-heading">Contact</h4>
                 <ul class="footer-contact">
                     <li>
-                        <span class="contact-icon"><img src="/img/icon/mail.png" alt="Email" class="contact-icon-img"></span>
+                        <span class="contact-icon"><img src="/assets/icon/mail.png" alt="Email" class="contact-icon-img"></span>
                         <span>Artvault@gmail.com</span>
                     </li>
                     <li>
-                        <span class="contact-icon"><img src="/img/icon/location.png" alt="Location" class="contact-icon-img"></span>
+                        <span class="contact-icon"><img src="/assets/icon/location.png" alt="Location" class="contact-icon-img"></span>
                         <span>Pontianak, Kalimantan Barat, Indonesia</span>
                     </li>
                     <li>
-                        <span class="contact-icon"><img src="/img/icon/telephone.png" alt="Phone" class="contact-icon-img"></span>
+                        <span class="contact-icon"><img src="/assets/icon/telephone.png" alt="Phone" class="contact-icon-img"></span>
                         <span>+62 897 3871 170</span>
                     </li>
                 </ul>
@@ -201,14 +201,14 @@
                 </ul>
             </div>
             <div class="footer-col footer-social-col">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
                 <div class="footer-social">
                     <p class="footer-follow">Follow Us</p>
                     <div class="social-icons">
-                        <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
-                        <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
+                        <a href="#"><img src="/assets/icon/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="/assets/icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="/assets/icon/tiktok.png" alt="TikTok"></a>
+                        <a href="#"><img src="/assets/icon/youtube.png" alt="YouTube"></a>
                     </div>
                 </div>
             </div>

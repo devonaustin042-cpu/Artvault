@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
+            <img src="/assets/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
         </div>
         <ul class="nav-menu">
             <li><a href="/">Home</a></li>

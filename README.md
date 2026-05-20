@@ -42,7 +42,7 @@ Artvault/
     ├── index.php            # Front controller + all route definitions
     ├── css/index.css        # Compiled Tailwind output
     ├── js/script.js         # Compiled JS
-    └── img/
+    └── assets/
         ├── gallery/         # Uploaded artwork images
         ├── profile/         # User avatar uploads
         └── banner/          # User banner uploads
@@ -83,7 +83,7 @@ private $db   = "db_gallery_sekolah";
 
 **4. Create upload directories**
 ```bash
-mkdir -p public/img/gallery public/img/profile public/img/banner
+mkdir -p public/assets/gallery public/assets/profile public/assets/banner
 ```
 
 **5. Install and build Tailwind**
@@ -141,7 +141,7 @@ Registration hashes passwords with `password_hash()`. The email address used at 
 
 ### Artwork Management
 
-Authors upload JPG/JPEG/PNG files via `ArtController::uploadArt()`. The controller generates a unique filename with `uniqid()` and moves the file to `public/img/gallery/`. On edit or delete, the old file is unlinked from disk before the database record is updated.
+Authors upload JPG/JPEG/PNG files via `ArtController::uploadArt()`. The controller generates a unique filename with `uniqid()` and moves the file to `public/assets/gallery/`. On edit or delete, the old file is unlinked from disk before the database record is updated.
 
 Only the artwork owner or an admin can edit or delete a piece — enforced in `updateArt()` and `deleteArt()` by comparing `$art['user_id']` against the session.
 
@@ -191,5 +191,5 @@ Every navigation click triggers a full-screen branded overlay (the `artvault-loa
 
 - `Database.php` has hardcoded credentials. Move these to environment variables or a config file before deploying.
 - The `AdminController` restricts access by checking `$_SESSION['user_role'] === 'admin'` in its constructor — unauthenticated or non-admin requests are immediately redirected to `/login`.
-- Artwork files are stored on disk (`public/img/gallery/`), not in the database. The database holds only the filename.
+- Artwork files are stored on disk (`public/assets/gallery/`), not in the database. The database holds only the filename.
 - The gallery supports category filtering via `?category={id}` query parameters, handled entirely in `Art_model::getAllArtworks()`.

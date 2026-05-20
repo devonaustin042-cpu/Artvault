@@ -14,7 +14,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
+            <img src="/assets/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
         </div>
 
         <ul class="nav-menu">
@@ -32,7 +32,7 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <a href="/profile"><img src="/assets/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
@@ -42,7 +42,7 @@
 
     <!-- HERO BANNER -->
     <section class="hero" style="margin-bottom: 40px;">
-        <img src="/img/banner/about-us.png" alt="Artvault Banner" class="w-full h-auto">
+        <img src="/assets/banner/about-us.png" alt="Artvault Banner" class="w-full h-auto">
     </section>
 
     
@@ -60,7 +60,7 @@
 
     <!-- Gambar Kiri -->
         <div style="flex-shrink: 0; width: 580px; height: 580px;">
-            <img src="/img/gallery/image.png" alt="Who We Are" 
+            <img src="/assets/gallery/image.png" alt="Who We Are" 
                 style="width: 100%; height: 100%; border-radius: 16px; border: 4px solid #1F3C88; object-fit: cover;">
         </div>
 
@@ -152,13 +152,13 @@
                 <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Handmade</p>
                 <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
                     <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/img/gallery/claymonster.png" alt="Claymonster" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="/assets/gallery/claymonster.png" alt="Claymonster" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 12px;">
                         <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Claymonster</p>
                         <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Chisa Evelyn</p>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
                             <span style="font-size: 0.85rem; color: #333;">25</span>
                         </div>
                     </div>
@@ -170,13 +170,13 @@
                 <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Digital art</p>
                 <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
                     <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/img/gallery/A-Chill-Doomsday.png" alt="A Chill Doomsday" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="/assets/gallery/A-Chill-Doomsday.png" alt="A Chill Doomsday" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 12px;">
                         <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">A Chill Doomsday</p>
                         <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Nicholas Jo</p>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
                             <span style="font-size: 0.85rem; color: #333;">324</span>
                         </div>
                     </div>
@@ -188,13 +188,13 @@
                 <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Painting art</p>
                 <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
                     <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/img/gallery/Mercusuar.png" alt="Mercusuar" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="/assets/gallery/Mercusuar.png" alt="Mercusuar" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 12px;">
                         <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Mercusuar</p>
                         <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Nicholas Jo</p>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
                             <span style="font-size: 0.85rem; color: #333;">92</span>
                         </div>
                     </div>
@@ -206,13 +206,13 @@
                 <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Hand drawn</p>
                 <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #1F3C88;">
                     <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/img/gallery/Melody-in-Guitar.png" alt="Melody in Guitar" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="/assets/gallery/Melody-in-Guitar.png" alt="Melody in Guitar" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 12px;">
                         <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Melody in Guitar</p>
                         <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Jo Halimawan</p>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/img/icon/like.png" style="width: 18px; height: 18px;">
+                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
                             <span style="font-size: 0.85rem; color: #333;">106</span>
                         </div>
                     </div>
@@ -272,7 +272,7 @@
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
                 <span class="footer-brand-name">Artvault</span>
             </div>
         </div>
@@ -294,19 +294,19 @@
                 <ul class="footer-contact">
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/mail.png" alt="Email Icon" class="contact-icon-img">
+                            <img src="/assets/icon/mail.png" alt="Email Icon" class="contact-icon-img">
                         </span>
                         <span>Artvault@gmail.com</span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/location.png" alt="Location Icon" class="contact-icon-img">
+                            <img src="/assets/icon/location.png" alt="Location Icon" class="contact-icon-img">
                         </span>
                         <span>Pontianak, Kalimantan Barat, Indonesia</span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
+                            <img src="/assets/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
                         </span>
                         <span>+62 897 3871 170</span>
                     </li>
@@ -326,14 +326,14 @@
 
             <!-- Logo + Sosmed -->
             <div class="footer-col footer-social-col">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
                 <div class="footer-social">
                     <p class="footer-follow">Follow Us</p>
                     <div class="social-icons">
-                        <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
-                        <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
+                        <a href="#"><img src="/assets/icon/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="/assets/icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="/assets/icon/tiktok.png" alt="TikTok"></a>
+                        <a href="#"><img src="/assets/icon/youtube.png" alt="YouTube"></a>
                     </div>
                 </div>
             </div>

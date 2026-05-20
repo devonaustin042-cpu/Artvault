@@ -106,10 +106,10 @@ class AdminController {
 
             if (in_array($fileExt, $allowed, true)) {
                 $newFileName = uniqid('', true) . "." . $fileExt;
-                $fileDestination = __DIR__ . '/../../public/img/gallery/' . $newFileName;
+                $fileDestination = __DIR__ . '/../../public/assets/gallery/' . $newFileName;
 
                 if (move_uploaded_file($file['tmp_name'], $fileDestination)) {
-                    $oldFilePath = __DIR__ . '/../../public/img/gallery/' . $art['file_path'];
+                    $oldFilePath = __DIR__ . '/../../public/assets/gallery/' . $art['file_path'];
                     if (!empty($art['file_path']) && file_exists($oldFilePath)) {
                         unlink($oldFilePath);
                     }

@@ -19,7 +19,7 @@
     <!-- SIDEBAR -->
     <aside class="w-72 sidebar-gradient text-white flex flex-col shadow-2xl z-50">
         <div class="p-8 text-center border-b border-white/10">
-            <img src="/img/logo/Artvault-white.png" alt="Logo" class="w-28 mx-auto mb-4 drop-shadow-lg">
+            <img src="/assets/logo/Artvault-white.png" alt="Logo" class="w-28 mx-auto mb-4 drop-shadow-lg">
             <h1 class="title-font text-2xl font-bold tracking-widest text-[#f4c430]">ADMIN</h1>
         </div>
         
@@ -67,7 +67,7 @@
                     <p class="text-[10px] uppercase tracking-widest text-[#1f3c88] font-bold mt-1">Super Admin</p>
                 </div>
                 <div class="w-12 h-12 rounded-full border-2 border-[#f4c430] p-0.5 shadow-md">
-                    <img src="/img/icon/user.png" alt="Admin" class="w-full h-full rounded-full object-cover">
+                    <img src="/assets/icon/user.png" alt="Admin" class="w-full h-full rounded-full object-cover">
                 </div>
             </div>
         </header>
@@ -79,7 +79,7 @@
                 <div class="bg-white rounded-[32px] shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition duration-500 flex flex-col">
                     <!-- Image Preview -->
                     <div class="relative h-64 overflow-hidden">
-                        <img src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="/assets/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-6">
                             <span class="text-white text-xs font-bold tracking-widest uppercase">ID: #<?= $art['id']; ?></span>
                         </div>
@@ -189,7 +189,7 @@
             document.getElementById('editArtworkTitle').value = artwork.title || '';
             document.getElementById('editArtworkDescription').value = artwork.description || '';
             document.getElementById('editArtworkCategory').value = artwork.category_id || '';
-            document.getElementById('editArtworkPreview').src = `/img/gallery/${artwork.file_path || ''}`;
+            document.getElementById('editArtworkPreview').src = `/assets/gallery/${artwork.file_path || ''}`;
             document.getElementById('editArtworkPreview').alt = artwork.title || 'Artwork preview';
             document.getElementById('editArtworkImage').value = '';
             artworkEditModal.classList.remove('hidden');

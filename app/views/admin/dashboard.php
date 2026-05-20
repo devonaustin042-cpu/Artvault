@@ -20,7 +20,7 @@
     <!-- SIDEBAR -->
     <aside class="w-72 sidebar-gradient text-white flex flex-col shadow-2xl z-50">
         <div class="p-8 text-center border-b border-white/10">
-            <img src="/img/logo/Artvault-white.png" alt="Logo" class="w-28 mx-auto mb-4 drop-shadow-lg">
+            <img src="/assets/logo/Artvault-white.png" alt="Logo" class="w-28 mx-auto mb-4 drop-shadow-lg">
             <h1 class="title-font text-2xl font-bold tracking-widest text-[#f4c430]">ADMIN</h1>
         </div>
         
@@ -68,7 +68,7 @@
                     <p class="text-[10px] uppercase tracking-widest text-[#1f3c88] font-bold mt-1">Super Admin</p>
                 </div>
                 <div class="w-12 h-12 rounded-full border-2 border-[#f4c430] p-0.5 shadow-md">
-                    <img src="/img/icon/user.png" alt="Admin" class="w-full h-full rounded-full object-cover">
+                    <img src="/assets/icon/user.png" alt="Admin" class="w-full h-full rounded-full object-cover">
                 </div>
             </div>
         </header>
