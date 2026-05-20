@@ -3070,6 +3070,27 @@ body {
   transform: rotate(45deg);
   background: #f4c430;
 }
+.btn-follow-profile {
+  background: #1f3c88;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 2.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+.btn-follow-profile:hover {
+  background: #1a1a4b;
+  transform: scale(1.05);
+}
+.btn-follow-profile.following {
+  background: #eee;
+  color: #333;
+  border: 1px solid #ddd;
+}
 .settings-popup-overlay {
   position: fixed;
   top: 0;

@@ -67,9 +67,8 @@
                         <span><?= $art['like_count']; ?></span>
                     </div>
                 </div>
-                <p class="art-detail-author">by: <?= $art['author_name']; ?></p>
-                <hr class="art-detail-divider">
- 
+                <p class="art-detail-author">by: <a href="/profile/<?= $art['user_id']; ?>" style="color: #1f3c88; text-decoration: none; font-weight: 700;"><?= $art['author_name']; ?></a></p>
+                <hr class="art-detail-divider"> 
                 <p class="art-detail-label">Description :</p>
  
                 <!-- Teks pendek -->
@@ -260,7 +259,7 @@
                 </div>
                 <div class="other-art-info">
                     <h4><?= $other['title']; ?></h4>
-                    <p>Made by: <?= $other['author_name']; ?></p>
+                    <p>Made by: <a href="/profile/<?= $other['user_id']; ?>" style="color: inherit; text-decoration: none; font-weight: 700;"><?= $other['author_name']; ?></a></p>
                 </div>
             </a>
             <?php endforeach; ?>

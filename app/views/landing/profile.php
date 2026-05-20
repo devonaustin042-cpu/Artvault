@@ -97,6 +97,13 @@
                             </div>
                         <?php endif; ?>
                     </div>
+
+                    <!-- FOLLOW BUTTON -->
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $user['id']): ?>
+                        <button class="btn-follow-profile <?= $isFollowing ? 'following' : '' ?>" onclick="toggleFollow(<?= $user['id']; ?>, this)">
+                            <?= $isFollowing ? 'Following' : '+ Follow' ?>
+                        </button>
+                    <?php endif; ?>
                 </div>
 
                 <div class="profile-stats">
@@ -105,7 +112,7 @@
                         <span class="stat-label">Following</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-value"><?= $stats['followers']; ?></span>
+                        <span class="stat-value" id="followerCount"><?= $stats['followers']; ?></span>
                         <span class="stat-label">Follower</span>
                     </div>
                     <div class="stat-item">
@@ -119,7 +126,9 @@
         <!-- TABS -->
         <div class="profile-tabs-wrap">
             <div class="profile-tabs">
-                <div class="tab-item" onclick="switchTab('draft')">Draft</div>
+                <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user['id']): ?>
+                    <div class="tab-item" onclick="switchTab('draft')">Draft</div>
+                <?php endif; ?>
                 <div class="tab-item active" onclick="switchTab('your-art')">Your Art</div>
                 <div class="tab-item" onclick="switchTab('favorite')">Favorite</div>
             </div>
@@ -131,19 +140,19 @@
             <div id="your-art" class="tab-content active">
                 <div class="profile-art-grid">
                     <?php foreach($userArtworks as $art): ?>
-                        <a href="/art/<?= $art['id']; ?>" class="art-card">
-                            <div class="art-img-container">
+                        <div class="art-card">
+                            <a href="/art/<?= $art['id']; ?>" class="art-img-container">
                                 <img src="/assets/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>">
-                            </div>
+                            </a>
                             <div class="art-info">
-                                <p class="art-title"><?= $art['title']; ?></p>
-                                <p class="art-author">Made by : <?= $art['author_name']; ?></p>
-                                <div class="art-like" onclick="event.preventDefault(); event.stopPropagation(); toggleLike(<?= $art['id']; ?>, this)">
+                                <a href="/art/<?= $art['id']; ?>" class="art-title"><?= $art['title']; ?></a>
+                                <p class="art-author">Made by : <a href="/profile/<?= $art['user_id']; ?>" style="color: inherit; text-decoration: none; font-weight: 700;"><?= $art['author_name']; ?></a></p>
+                                <div class="art-like" onclick="toggleLike(<?= $art['id']; ?>, this)">
                                     <img src="/assets/icon/like.png" class="art-like-img">
                                     <span><?= $art['like_count']; ?></span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     <?php endforeach; ?>
                     <?php if (empty($userArtworks)): ?>
                         <p style="grid-column: span 4; text-align: center; padding: 3rem; color: #999;">No artworks uploaded yet.</p>
@@ -155,19 +164,19 @@
             <div id="favorite" class="tab-content">
                 <div class="profile-art-grid">
                     <?php foreach($favorites as $art): ?>
-                        <a href="/art/<?= $art['id']; ?>" class="art-card">
-                            <div class="art-img-container">
+                        <div class="art-card">
+                            <a href="/art/<?= $art['id']; ?>" class="art-img-container">
                                 <img src="/assets/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>">
-                            </div>
+                            </a>
                             <div class="art-info">
-                                <p class="art-title"><?= $art['title']; ?></p>
-                                <p class="art-author">Made by : <?= $art['author_name']; ?></p>
-                                <div class="art-like liked" onclick="event.preventDefault(); event.stopPropagation(); toggleLike(<?= $art['id']; ?>, this)">
+                                <a href="/art/<?= $art['id']; ?>" class="art-title"><?= $art['title']; ?></a>
+                                <p class="art-author">Made by : <a href="/profile/<?= $art['user_id']; ?>" style="color: inherit; text-decoration: none; font-weight: 700;"><?= $art['author_name']; ?></a></p>
+                                <div class="art-like liked" onclick="toggleLike(<?= $art['id']; ?>, this)">
                                     <img src="/assets/icon/like.png" class="art-like-img">
                                     <span><?= $art['like_count']; ?></span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     <?php endforeach; ?>
                     <?php if (empty($favorites)): ?>
                         <p style="grid-column: span 4; text-align: center; padding: 3rem; color: #999;">No favorite artworks yet.</p>
@@ -176,9 +185,11 @@
             </div>
 
             <!-- Draft Tab (Static Placeholder) -->
+            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user['id']): ?>
             <div id="draft" class="tab-content">
                 <p style="text-align: center; padding: 5rem; color: #999; font-size: 1.2rem;">Drafts are private and only visible to you.</p>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -215,6 +226,33 @@
                 }
             } catch (error) {
                 console.error('Error toggling like:', error);
+            }
+        }
+
+        async function toggleFollow(userId, element) {
+            try {
+                const response = await fetch('/follow/' + userId, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    if (data.follow_status === 'followed') {
+                        element.classList.add('following');
+                        element.innerText = 'Following';
+                    } else {
+                        element.classList.remove('following');
+                        element.innerText = '+ Follow';
+                    }
+                    document.getElementById('followerCount').innerText = data.follower_count;
+                } else {
+                    alert(data.message);
+                    if (data.message.includes('login')) {
+                        window.location.href = '/login';
+                    }
+                }
+            } catch (error) {
+                console.error('Error toggling follow:', error);
             }
         }
 

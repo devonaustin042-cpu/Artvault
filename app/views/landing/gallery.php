@@ -80,7 +80,7 @@
                 </a>
                 <div class="art-info">
                     <a href="/art/<?= $row['id']; ?>" class="art-title"><?= $row['title']; ?></a>
-                    <p class="art-author">Made by : <?= $row['author_name']; ?></p>
+                    <p class="art-author">Made by : <a href="/profile/<?= $row['user_id']; ?>" style="color: inherit; text-decoration: none; font-weight: 700;"><?= $row['author_name']; ?></a></p>
                     <div class="art-like <?= in_array($row['id'], $likedArtIds) ? 'liked' : '' ?>" onclick="toggleLike(<?= $row['id']; ?>, this)">
                         <img src="/assets/icon/like.png" class="art-like-img">
                         <span><?= $row['like_count']; ?></span>
