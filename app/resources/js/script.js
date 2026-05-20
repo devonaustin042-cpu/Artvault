@@ -181,8 +181,7 @@
 
     function hideLoader() {
         isShowing = false;
-        const loader = document.querySelector('.artvault-loader');
-        if (loader) loader.classList.remove('is-visible');
+        ensureLoader().classList.remove('is-visible');
     }
 
     function shouldHandleLink(link, event) {
@@ -199,6 +198,11 @@
         if (url.origin !== window.location.origin) return false;
         return !(url.pathname === window.location.pathname && url.search === window.location.search && url.hash);
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        ensureLoader();
+        requestAnimationFrame(hideLoader);
+    });
 
     window.addEventListener('pageshow', hideLoader);
 
@@ -227,77 +231,4 @@
     }, true);
 
     window.addEventListener('beforeunload', showLoader);
-})();
-
-(() => {
-    const revealSelectors = [
-        '.hero',
-        '.about-section',
-        '.motive-section',
-        '.team-section',
-        '.gallery-page',
-        '.art-detail-page',
-        '.other-artworks-container',
-        '.contact-section',
-        '.profile-header',
-        '.profile-tabs-wrap',
-        '.profile-grid-container',
-        '.art-card',
-        '.feature-card',
-        '.team-card',
-        '.other-art-card',
-        '.comment-group',
-        '.profile-tag',
-        '.tab-item',
-        '.footer-col',
-        '.info-item',
-        '.form-group',
-        '.gallery-topbar',
-        '.add-work-wrap',
-        '.clipboard-card',
-        '.profile-art-grid > *',
-        '.other-artworks-grid > *',
-        '.team-grid > *',
-        '.art-grid > *',
-        '.contact-content > *',
-        'main > .flex-1 > div',
-        '.card-hover',
-        'table tbody tr'
-    ].join(',');
-
-    function revealPageElements() {
-        const elements = document.querySelectorAll(revealSelectors);
-        if (!elements.length) return;
-
-        if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            elements.forEach((element) => element.classList.add('av-visible'));
-            return;
-        }
-
-        const observer = new IntersectionObserver((entries, entryObserver) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('av-visible');
-                entry.target.addEventListener('transitionend', () => {
-                    entry.target.style.transitionDelay = '';
-                }, { once: true });
-                entryObserver.unobserve(entry.target);
-            });
-        }, {
-            rootMargin: '0px 0px -6% 0px',
-            threshold: 0.08
-        });
-
-        elements.forEach((element, index) => {
-            element.classList.add('av-reveal');
-            element.style.transitionDelay = `${Math.min(index % 6, 5) * 35}ms`;
-            observer.observe(element);
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', revealPageElements, { once: true });
-    } else {
-        revealPageElements();
-    }
 })();
