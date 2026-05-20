@@ -1,7 +1,13 @@
 <?php
+namespace App\Models;
+
 require_once __DIR__ . '/../core/Database.php';
 
-class User_model extends Database {
+use App\Core\Database;
+use PDO;
+use PDOException;
+
+class User extends Database {
     
     public function register($data) {
         if ($data['password'] !== $data['confirm_password']) {

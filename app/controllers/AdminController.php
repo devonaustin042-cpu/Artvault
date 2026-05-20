@@ -1,11 +1,11 @@
 <?php
 namespace App\Controllers;
 
-use User_model;
-use Art_model;
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/Art.php';
 
-require_once __DIR__ . '/../models/User_model.php';
-require_once __DIR__ . '/../models/Art_model.php';
+use App\Models\User;
+use App\Models\Art;
 
 class AdminController {
     private $userModel;
@@ -23,8 +23,8 @@ class AdminController {
             exit;
         }
 
-        $this->userModel = new User_model();
-        $this->artModel = new Art_model();
+        $this->userModel = new User();
+        $this->artModel = new Art();
     }
 
     public function index() {

@@ -1,7 +1,9 @@
 <?php
 namespace App\Controllers;
 
-require_once __DIR__ . '/../models/User_model.php';
+require_once __DIR__ . '/../models/User.php';
+
+use App\Models\User;
 
 class AuthController {
     
@@ -14,7 +16,7 @@ class AuthController {
     }
 
     public function handleSignUp() {
-        $userModel = new \User_model(); 
+        $userModel = new User(); 
         $result = $userModel->register($_POST);
 
         if ($result === "success") {
@@ -26,7 +28,7 @@ class AuthController {
     }
 
     public function handleLogin() {
-        $userModel = new \User_model();
+        $userModel = new User();
         $result = $userModel->login($_POST);
 
         if ($result === false) {
