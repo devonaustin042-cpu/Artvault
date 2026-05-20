@@ -159,7 +159,7 @@ class Art_model extends Database {
     }
 
     public function getCommentsByArtworkId($artworkId) {
-        $query = "SELECT comments.*, users.full_name as user_name 
+        $query = "SELECT comments.*, users.full_name as user_name, users.avatar_path 
                   FROM comments 
                   JOIN users ON comments.user_id = users.id 
                   WHERE comments.artwork_id = :artwork_id 

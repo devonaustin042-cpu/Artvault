@@ -80,6 +80,20 @@ class User_model extends Database {
         return $stmt->execute();
     }
 
+    public function updateAvatar($userId, $filePath) {
+        $stmt = $this->dbh->prepare("UPDATE users SET avatar_path = :avatar_path WHERE id = :id");
+        $stmt->bindParam(':avatar_path', $filePath);
+        $stmt->bindParam(':id', $userId);
+        return $stmt->execute();
+    }
+
+    public function updateBanner($userId, $filePath) {
+        $stmt = $this->dbh->prepare("UPDATE users SET banner_path = :banner_path WHERE id = :id");
+        $stmt->bindParam(':banner_path', $filePath);
+        $stmt->bindParam(':id', $userId);
+        return $stmt->execute();
+    }
+
     public function getUserTags($userId) {
         $query = "SELECT * FROM user_tags WHERE user_id = :user_id";
         $stmt = $this->dbh->prepare($query);
@@ -121,5 +135,26 @@ class User_model extends Database {
         $stmt->bindParam(':following_id', $followingId);
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
+    }
+
+    public function toggleFollow($followerId, $followingId) {
+        $isFollowing = $this->isFollowing($followerId, $followingId);
+
+        if ($isFollowing) {
+            $query = "DELETE FROM follows WHERE follower_id = :f_id AND following_id = :fg_id";
+            $status = 'unfollowed';
+        } else {
+            $query = "INSERT INTO follows (follower_id, following_id) VALUES (:f_id, :fg_id)";
+            $status = 'followed';
+        }
+
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':f_id', $followerId);
+        $stmt->bindParam(':fg_id', $followingId);
+        
+        if ($stmt->execute()) {
+            return $status;
+        }
+        return false;
     }
 }

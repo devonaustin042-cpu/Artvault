@@ -32,7 +32,11 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/assets/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <?php 
+                    $avatar = $_SESSION['user_avatar'] ?? 'user.png';
+                    $avatarPath = (strpos($avatar, 'avatar_') === 0) ? '/assets/users/' . $avatar : '/assets/icon/' . $avatar;
+                ?>
+                <a href="/profile"><img src="<?= $avatarPath; ?>" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
@@ -80,7 +84,7 @@
                 </a>
                 <div class="art-info">
                     <a href="/art/<?= $row['id']; ?>" class="art-title"><?= $row['title']; ?></a>
-                    <p class="art-author">Made by : <?= $row['author_name']; ?></p>
+                    <p class="art-author">Made by : <a href="/profile/<?= $row['user_id']; ?>" style="color: inherit; text-decoration: none; font-weight: 700;"><?= $row['author_name']; ?></a></p>
                     <div class="art-like <?= in_array($row['id'], $likedArtIds) ? 'liked' : '' ?>" onclick="toggleLike(<?= $row['id']; ?>, this)">
                         <img src="/assets/icon/like.png" class="art-like-img">
                         <span><?= $row['like_count']; ?></span>

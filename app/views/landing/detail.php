@@ -32,7 +32,11 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/assets/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <?php 
+                    $avatar = $_SESSION['user_avatar'] ?? 'user.png';
+                    $avatarPath = (strpos($avatar, 'avatar_') === 0) ? '/assets/users/' . $avatar : '/assets/icon/' . $avatar;
+                ?>
+                <a href="/profile"><img src="<?= $avatarPath; ?>" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
@@ -67,9 +71,8 @@
                         <span><?= $art['like_count']; ?></span>
                     </div>
                 </div>
-                <p class="art-detail-author">by: <?= $art['author_name']; ?></p>
-                <hr class="art-detail-divider">
- 
+                <p class="art-detail-author">by: <a href="/profile/<?= $art['user_id']; ?>" style="color: #1f3c88; text-decoration: none; font-weight: 700;"><?= $art['author_name']; ?></a></p>
+                <hr class="art-detail-divider"> 
                 <p class="art-detail-label">Description :</p>
  
                 <!-- Teks pendek -->
@@ -157,7 +160,11 @@
             <?php if (isset($_SESSION['user_id'])): ?>
                 <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form" id="mainCommentForm">
                     <div class="comment-input-wrap">
-                        <img src="/assets/icon/user.png" alt="User" class="comment-user-avatar">
+                        <?php 
+                            $uAvatar = $_SESSION['user_avatar'] ?? 'user.png';
+                            $uAvatarPath = (strpos($uAvatar, 'avatar_') === 0) ? '/assets/users/' . $uAvatar : '/assets/icon/' . $uAvatar;
+                        ?>
+                        <img src="<?= $uAvatarPath; ?>" alt="User" class="comment-user-avatar" style="object-fit: cover;">
                         <div class="textarea-container">
                             <textarea name="comment_text" id="mainCommentText" placeholder="Add a comment..." required></textarea>
                             <div class="emoji-picker">
@@ -179,67 +186,91 @@
 
             <div class="comments-list">
                 <?php 
-                // Separate parents and children
-                $parents = array_filter($comments, function($c) { return is_null($c['parent_id']); });
-                $children = array_filter($comments, function($c) { return !is_null($c['parent_id']); });
-                
-                foreach($parents as $comment): ?>
-                    <div class="comment-group">
-                        <div class="comment-item" id="comment-<?= $comment['id']; ?>">
-                            <img src="/assets/icon/user.png" alt="User" class="comment-avatar">
+                $commentIds = array_flip(array_map('intval', array_column($comments, 'id')));
+                $commentsByParent = [];
+
+                foreach ($comments as $comment) {
+                    $parentId = $comment['parent_id'] === null ? 0 : (int) $comment['parent_id'];
+
+                    if ($parentId !== 0 && !isset($commentIds[$parentId])) {
+                        $parentId = 0;
+                    }
+
+                    $commentsByParent[$parentId][] = $comment;
+                }
+
+                $renderComments = function($parentId, $depth = 0, $visited = []) use (&$renderComments, $commentsByParent, $art) {
+                    if (empty($commentsByParent[$parentId])) {
+                        return;
+                    }
+
+                    foreach($commentsByParent[$parentId] as $comment):
+                        $commentId = (int) $comment['id'];
+
+                        if (isset($visited[$commentId])) {
+                            continue;
+                        }
+
+                        $nextVisited = $visited;
+                        $nextVisited[$commentId] = true;
+                        $isReply = $depth > 0;
+                        $userName = htmlspecialchars($comment['user_name'], ENT_QUOTES, 'UTF-8');
+                        $commentText = nl2br(htmlspecialchars($comment['comment_text'], ENT_QUOTES, 'UTF-8'));
+                ?>
+                    <div class="<?= $isReply ? 'reply-thread' : 'comment-group'; ?>">
+                        <div class="comment-item <?= $isReply ? 'reply-item' : ''; ?>" id="comment-<?= $commentId; ?>">
+                            <?php 
+                                $cAvatar = $comment['avatar_path'] ?? 'user.png';
+                                $cAvatarPath = (strpos($cAvatar, 'avatar_') === 0) ? '/assets/users/' . $cAvatar : '/assets/icon/' . $cAvatar;
+                            ?>
+                            <img src="<?= $cAvatarPath; ?>" alt="User" class="comment-avatar <?= $isReply ? 'sm' : ''; ?>" style="object-fit: cover;">
                             <div class="comment-content">
                                 <div class="comment-header">
-                                    <span class="comment-author"><?= $comment['user_name']; ?></span>
+                                    <span class="comment-author"><?= $userName; ?></span>
                                     <span class="comment-date"><?= date('M d, Y', strtotime($comment['created_at'])); ?></span>
                                 </div>
-                                <p class="comment-text"><?= nl2br(htmlspecialchars($comment['comment_text'])); ?></p>
+                                <p class="comment-text"><?= $commentText; ?></p>
                                 <?php if (isset($_SESSION['user_id'])): ?>
-                                    <button class="btn-reply-toggle" onclick="toggleReplyForm(<?= $comment['id']; ?>)">Reply</button>
+                                    <button class="btn-reply-toggle" onclick="toggleReplyForm(<?= $commentId; ?>)">Reply</button>
                                 <?php endif; ?>
                             </div>
                         </div>
 
-                        <!-- Reply Form (Hidden) -->
-                        <div id="reply-form-<?= $comment['id']; ?>" class="reply-form-container" style="display: none;">
-                            <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form reply-form">
-                                <input type="hidden" name="parent_id" value="<?= $comment['id']; ?>">
-                                <div class="comment-input-wrap">
-                                    <textarea name="comment_text" id="replyText-<?= $comment['id']; ?>" placeholder="Reply to <?= $comment['user_name']; ?>..." required></textarea>
-                                    <div class="emoji-picker">
-                                        <span onclick="addEmoji('😀', 'replyText-<?= $comment['id']; ?>')">😀</span>
-                                        <span onclick="addEmoji('😍', 'replyText-<?= $comment['id']; ?>')">😍</span>
-                                        <span onclick="addEmoji('🔥', 'replyText-<?= $comment['id']; ?>')">🔥</span>
-                                        <span onclick="addEmoji('👏', 'replyText-<?= $comment['id']; ?>')">👏</span>
-                                    </div>
-                                </div>
-                                <div class="reply-actions">
-                                    <button type="submit" class="btn-post-comment btn-sm">Post Reply</button>
-                                    <button type="button" class="btn-cancel-reply" onclick="toggleReplyForm(<?= $comment['id']; ?>)">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Sub-comments (Replies) -->
-                        <div class="replies-list">
-                            <?php 
-                            $replies = array_filter($children, function($c) use ($comment) { return $c['parent_id'] == $comment['id']; });
-                            foreach($replies as $reply): ?>
-                                <div class="comment-item reply-item">
-                                    <img src="/assets/icon/user.png" alt="User" class="comment-avatar sm">
-                                    <div class="comment-content">
-                                        <div class="comment-header">
-                                            <span class="comment-author"><?= $reply['user_name']; ?></span>
-                                            <span class="comment-date"><?= date('M d, Y', strtotime($reply['created_at'])); ?></span>
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <div id="reply-form-<?= $commentId; ?>" class="reply-form-container" style="display: none;">
+                                <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form reply-form">
+                                    <input type="hidden" name="parent_id" value="<?= $commentId; ?>">
+                                    <div class="comment-input-wrap">
+                                        <textarea name="comment_text" id="replyText-<?= $commentId; ?>" placeholder="Reply to <?= $userName; ?>..." required></textarea>
+                                        <div class="emoji-picker">
+                                            <span onclick="addEmoji('😀', 'replyText-<?= $commentId; ?>')">😀</span>
+                                            <span onclick="addEmoji('😍', 'replyText-<?= $commentId; ?>')">😍</span>
+                                            <span onclick="addEmoji('🔥', 'replyText-<?= $commentId; ?>')">🔥</span>
+                                            <span onclick="addEmoji('👏', 'replyText-<?= $commentId; ?>')">👏</span>
                                         </div>
-                                        <p class="comment-text"><?= nl2br(htmlspecialchars($reply['comment_text'])); ?></p>
                                     </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
+                                    <div class="reply-actions">
+                                        <button type="submit" class="btn-post-comment btn-sm">Post Reply</button>
+                                        <button type="button" class="btn-cancel-reply" onclick="toggleReplyForm(<?= $commentId; ?>)">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($commentsByParent[$commentId])): ?>
+                            <div class="replies-list">
+                                <?php $renderComments($commentId, $depth + 1, $nextVisited); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                <?php endforeach; ?>
+                <?php
+                    endforeach;
+                };
+
+                $renderComments(0);
+                ?>
                 
-                <?php if (empty($parents)): ?>
+                <?php if (empty($commentsByParent[0])): ?>
                     <p class="no-comments">No comments yet. Be the first to comment!</p>
                 <?php endif; ?>
             </div>
@@ -248,7 +279,7 @@
 
     <!-- VIEW OTHER ART -->
     <div class="view-other-bar">
-        <h3>View other art too!</h3>
+        <h3>View other art too!  -</h3>
     </div>
 
     <div class="other-artworks-container">
@@ -260,7 +291,7 @@
                 </div>
                 <div class="other-art-info">
                     <h4><?= $other['title']; ?></h4>
-                    <p>Made by: <?= $other['author_name']; ?></p>
+                    <p>Made by : <?= $other['author_name']; ?></p>
                 </div>
             </a>
             <?php endforeach; ?>
