@@ -15,11 +15,11 @@
         <!-- HEADER -->
         <div class="profile-header">
             <div class="profile-banner-wrap">
-                <img src="/img/banner/<?= $user['banner_path']; ?>" alt="Banner" class="profile-banner">
+                <img src="/assets/banner/<?= $user['banner_path']; ?>" alt="Banner" class="profile-banner">
             </div>
             
             <a href="javascript:history.back()" class="btn-back-profile">
-                <img src="/img/icon/back.png" alt="Back">
+                <img src="/assets/icon/back.png" alt="Back">
             </a>
 
             <!-- SETTINGS BUTTON -->
@@ -39,7 +39,7 @@
                             <button onclick="toggleSettingsPopup()" class="btn-close-settings">&times;</button>
                         </div>
                         <ul class="settings-list">
-                            <li><a href="javascript:void(0)" onclick="toggleLogoutConfirm()" class="settings-item exit"><img src="/img/icon/sampah.png" style="width:20px; filter: invert(1);"> Exit Account</a></li>
+                            <li><a href="javascript:void(0)" onclick="toggleLogoutConfirm()" class="settings-item exit"><img src="/assets/icon/sampah.png" style="width:20px; filter: invert(1);"> Exit Account</a></li>
                             <li><a href="#" class="settings-item">Edit Profile</a></li>
                             <li><a href="#" class="settings-item">Edit Background</a></li>
                             <li><a href="#" class="settings-item">Change Password</a></li>
@@ -53,7 +53,7 @@
                         <div class="settings-popup-content logout-confirm">
                         <div class="logout-confirm-body">
                             <div class="logout-icon-wrap">
-                                <img src="/img/icon/user.png" alt="Logout">
+                                <img src="/assets/icon/user.png" alt="Logout">
                             </div>
                             <h3>Logout?</h3>
                             <p>Are you sure you want to log out of Artvault?</p>
@@ -68,19 +68,19 @@
 
             <div class="profile-info-card">
                 <div class="profile-avatar-wrap">
-                    <img src="/img/icon/<?= $user['avatar_path']; ?>" alt="Avatar" class="profile-avatar">
+                    <img src="/assets/icon/<?= $user['avatar_path']; ?>" alt="Avatar" class="profile-avatar">
                 </div>
                 <div class="profile-details">
                     <div class="profile-name-row">
                         <h1 class="profile-name"><?= $user['full_name']; ?></h1>
-                        <img src="/img/icon/edu-con.png" alt="Icon" style="width: 30px;">
+                        <img src="/assets/icon/edu-con.png" alt="Icon" style="width: 30px;">
                     </div>
                     <p class="profile-id"><?= $user['student_id']; ?></p>
                     
                     <div class="profile-tags">
                         <?php foreach($tags as $tag): ?>
                             <div class="profile-tag" style="background: <?= $tag['tag_color']; ?>22; border-color: <?= $tag['tag_color']; ?>;">
-                                <img src="/img/icon/<?= $tag['tag_icon']; ?>" alt="Tag" style="width: 20px;">
+                                <img src="/assets/icon/<?= $tag['tag_icon']; ?>" alt="Tag" style="width: 20px;">
                                 <span style="color: #000;"><?= $tag['tag_name']; ?></span>
                             </div>
                         <?php endforeach; ?>
@@ -88,11 +88,11 @@
                         <!-- Default tags if empty -->
                         <?php if (empty($tags)): ?>
                             <div class="profile-tag" style="border-color: #ff4d4d; background: #ff4d4d11;">
-                                <img src="/img/icon/user.png" alt="Tag" style="width: 18px; filter: grayscale(1);">
+                                <img src="/assets/icon/user.png" alt="Tag" style="width: 18px; filter: grayscale(1);">
                                 <span>Experienced User</span>
                             </div>
                             <div class="profile-tag" style="border-color: #9c27b0; background: #9c27b011;">
-                                <img src="/img/icon/paint.png" alt="Tag" style="width: 18px;">
+                                <img src="/assets/icon/paint.png" alt="Tag" style="width: 18px;">
                                 <span>Author</span>
                             </div>
                         <?php endif; ?>
@@ -133,13 +133,13 @@
                     <?php foreach($userArtworks as $art): ?>
                         <a href="/art/<?= $art['id']; ?>" class="art-card">
                             <div class="art-img-container">
-                                <img src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>">
+                                <img src="/assets/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>">
                             </div>
                             <div class="art-info">
                                 <p class="art-title"><?= $art['title']; ?></p>
                                 <p class="art-author">Made by : <?= $art['author_name']; ?></p>
                                 <div class="art-like">
-                                    <img src="/img/icon/like.png" class="art-like-img">
+                                    <img src="/assets/icon/like.png" class="art-like-img">
                                     <span><?= $art['like_count']; ?></span>
                                 </div>
                             </div>
@@ -157,13 +157,13 @@
                     <?php foreach($favorites as $art): ?>
                         <a href="/art/<?= $art['id']; ?>" class="art-card">
                             <div class="art-img-container">
-                                <img src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>">
+                                <img src="/assets/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>">
                             </div>
                             <div class="art-info">
                                 <p class="art-title"><?= $art['title']; ?></p>
                                 <p class="art-author">Made by : <?= $art['author_name']; ?></p>
                                 <div class="art-like liked">
-                                    <img src="/img/icon/like.png" class="art-like-img">
+                                    <img src="/assets/icon/like.png" class="art-like-img">
                                     <span><?= $art['like_count']; ?></span>
                                 </div>
                             </div>

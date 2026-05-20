@@ -14,7 +14,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
+            <img src="/assets/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
         </div>
 
         <ul class="nav-menu">
@@ -32,7 +32,7 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <a href="/profile"><img src="/assets/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
@@ -46,7 +46,7 @@
  
         <!-- Header -->
         <div class="art-detail-header">
-            <a href="javascript:history.back()" class="btn-back"><img src="/img/icon/back.png"></a>
+            <a href="javascript:history.back()" class="btn-back"><img src="/assets/icon/back.png"></a>
             <h2>This is the detail of the work!</h2>
         </div>
  
@@ -55,7 +55,7 @@
  
             <!-- Gambar -->
             <div class="art-detail-img-wrap">
-                <img src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" class="art-detail-img">
+                <img src="/assets/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" class="art-detail-img">
             </div>
  
             <!-- Info -->
@@ -63,7 +63,7 @@
                 <div class="art-detail-title-row">
                     <h1 class="art-detail-title"><?= $art['title']; ?></h1>
                     <div class="art-detail-likes <?= $isLiked ? 'liked' : '' ?>" onclick="toggleLike(<?= $art['id']; ?>, this)">
-                        <img src="/img/icon/like.png" alt="Like">
+                        <img src="/assets/icon/like.png" alt="Like">
                         <span><?= $art['like_count']; ?></span>
                     </div>
                 </div>
@@ -95,9 +95,9 @@
                 <div class="add-work-overlay" id="editWorkOverlay">
                     <div class="add-work-popup">
                         <div class="add-work-header">
-                            <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="add-work-logo">
+                            <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="add-work-logo">
                             <div class="header-user-icon">
-                                <img src="/img/icon/user.png" alt="User">
+                                <img src="/assets/icon/user.png" alt="User">
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
                                 <div class="upload-section">
                                     <div class="upload-preview-box" onclick="document.getElementById('editFileInput').click()">
                                         <input type="file" name="art_image" id="editFileInput" accept="image/*" style="display:none" onchange="previewEditImage(event)">
-                                        <img id="editPreviewImg" src="/img/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" style="display:block;">
+                                        <img id="editPreviewImg" src="/assets/gallery/<?= $art['file_path']; ?>" alt="<?= $art['title']; ?>" style="display:block;">
                                         <button type="button" class="btn-add-photo">Change photo</button>
                                     </div>
                                 </div>
@@ -157,7 +157,7 @@
             <?php if (isset($_SESSION['user_id'])): ?>
                 <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form" id="mainCommentForm">
                     <div class="comment-input-wrap">
-                        <img src="/img/icon/user.png" alt="User" class="comment-user-avatar">
+                        <img src="/assets/icon/user.png" alt="User" class="comment-user-avatar">
                         <div class="textarea-container">
                             <textarea name="comment_text" id="mainCommentText" placeholder="Add a comment..." required></textarea>
                             <div class="emoji-picker">
@@ -186,7 +186,7 @@
                 foreach($parents as $comment): ?>
                     <div class="comment-group">
                         <div class="comment-item" id="comment-<?= $comment['id']; ?>">
-                            <img src="/img/icon/user.png" alt="User" class="comment-avatar">
+                            <img src="/assets/icon/user.png" alt="User" class="comment-avatar">
                             <div class="comment-content">
                                 <div class="comment-header">
                                     <span class="comment-author"><?= $comment['user_name']; ?></span>
@@ -225,7 +225,7 @@
                             $replies = array_filter($children, function($c) use ($comment) { return $c['parent_id'] == $comment['id']; });
                             foreach($replies as $reply): ?>
                                 <div class="comment-item reply-item">
-                                    <img src="/img/icon/user.png" alt="User" class="comment-avatar sm">
+                                    <img src="/assets/icon/user.png" alt="User" class="comment-avatar sm">
                                     <div class="comment-content">
                                         <div class="comment-header">
                                             <span class="comment-author"><?= $reply['user_name']; ?></span>
@@ -256,7 +256,7 @@
             <?php foreach($otherArtworks as $other): ?>
             <a href="/art/<?= $other['id']; ?>" class="other-art-card">
                 <div class="other-art-img-wrap">
-                    <img src="/img/gallery/<?= $other['file_path']; ?>" alt="<?= $other['title']; ?>">
+                    <img src="/assets/gallery/<?= $other['file_path']; ?>" alt="<?= $other['title']; ?>">
                 </div>
                 <div class="other-art-info">
                     <h4><?= $other['title']; ?></h4>
@@ -271,7 +271,7 @@
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
                 <span class="footer-brand-name">Artvault</span>
             </div>
         </div>
@@ -293,19 +293,19 @@
                 <ul class="footer-contact">
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/mail.png" alt="Email Icon" class="contact-icon-img">
+                            <img src="/assets/icon/mail.png" alt="Email Icon" class="contact-icon-img">
                         </span>
                         <span>Artvault@gmail.com</span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/location.png" alt="Location Icon" class="contact-icon-img">
+                            <img src="/assets/icon/location.png" alt="Location Icon" class="contact-icon-img">
                         </span>
                         <span>Pontianak, Kalimantan Barat, Indonesia</span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
+                            <img src="/assets/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
                         </span>
                         <span>+62 897 3871 170</span>
                     </li>
@@ -325,14 +325,14 @@
 
             <!-- Logo + Sosmed -->
             <div class="footer-col footer-social-col">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
                 <div class="footer-social">
                     <p class="footer-follow">Follow Us</p>
                     <div class="social-icons">
-                        <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
-                        <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
+                        <a href="#"><img src="/assets/icon/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="/assets/icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="/assets/icon/tiktok.png" alt="TikTok"></a>
+                        <a href="#"><img src="/assets/icon/youtube.png" alt="YouTube"></a>
                     </div>
                 </div>
             </div>

@@ -159,7 +159,7 @@
             loader.innerHTML = `
                 <div class="artvault-loader__content">
                     <div class="artvault-loader__mark" aria-hidden="true">
-                        <img class="artvault-loader__logo" src="/img/logo/Artvault.png" alt="">
+                        <img class="artvault-loader__logo" src="/assets/logo/Artvault.png" alt="">
                     </div>
                     <h2 class="artvault-loader__title">Artvault</h2>
                     <p class="artvault-loader__text">Loading page</p>

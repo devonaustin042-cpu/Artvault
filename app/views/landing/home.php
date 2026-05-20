@@ -18,7 +18,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="/img/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
+            <img src="/assets/logo/Artvault.png" alt="Artvault Logo" class="logo-img">
         </div>
 
         <ul class="nav-menu">
@@ -36,7 +36,7 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/img/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <a href="/profile"><img src="/assets/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
@@ -46,7 +46,7 @@
 
     <!-- HERO BANNER -->
     <section class="hero">
-        <img src="/img/banner/Banner-1.png" alt="Artvault Banner" class="w-full h-auto">
+        <img src="/assets/banner/Banner-1.png" alt="Artvault Banner" class="w-full h-auto">
     </section>
 
     <div class="Box-1"></div>
@@ -65,7 +65,7 @@
             <button class="btn-large" style="margin-top: 2rem;" onclick="location.href='/about'">Learn More</button>
         </div>
         <div class="about-image">
-            <img src="/img/gallery/Homeimg.png" alt="Colorful classroom">
+            <img src="/assets/gallery/Homeimg.png" alt="Colorful classroom">
         </div>
     </section>
 
@@ -77,15 +77,15 @@
         <div class="art-grid">
             <div class="art-card">
                 <p class="art-credit">Made By : Nicho</p>
-                <img src="/img/gallery/sparkle-1.png" alt="Art 1">
+                <img src="/assets/gallery/sparkle-1.png" alt="Art 1">
             </div>
             <div class="art-card">
                 <p class="art-credit">Made By : Nicho</p>
-                <img src="/img/gallery/haze-1.png" alt="Art 2">
+                <img src="/assets/gallery/haze-1.png" alt="Art 2">
             </div>
             <div class="art-card">
                 <p class="art-credit">Made By : Nicho</p>
-                <img src="/img/gallery/Mei-1.png" alt="Art 3">
+                <img src="/assets/gallery/Mei-1.png" alt="Art 3">
             </div>
         </div>
     </section>
@@ -260,7 +260,7 @@
     <section class="motive-section">
         <div class="motive-container">
             <div class="motive-left">
-                <img src="/img/banner/left-note.png" alt="Motive Illustration">
+                <img src="/assets/banner/left-note.png" alt="Motive Illustration">
             </div>
             <div class="motive-right">
                 <h2>What Is Our Motives?</h2>
@@ -312,7 +312,7 @@
     <footer class="footer">
         <div class="footer-brand">
             <div class="footer-brand-top">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="footer-logo">
                 <span class="footer-brand-name">Artvault</span>
             </div>
         </div>
@@ -334,19 +334,19 @@
                 <ul class="footer-contact">
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/mail.png" alt="Email Icon" class="contact-icon-img">
+                            <img src="/assets/icon/mail.png" alt="Email Icon" class="contact-icon-img">
                         </span>
                         <span>Artvault@gmail.com</span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/location.png" alt="Location Icon" class="contact-icon-img">
+                            <img src="/assets/icon/location.png" alt="Location Icon" class="contact-icon-img">
                         </span>
                         <span>Pontianak, Kalimantan Barat, Indonesia</span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <img src="/img/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
+                            <img src="/assets/icon/telephone.png" alt="Phone Icon" class="contact-icon-img">
                         </span>
                         <span>+62 897 3871 170</span>
                     </li>
@@ -366,14 +366,14 @@
 
             <!-- Logo + Sosmed -->
             <div class="footer-col footer-social-col">
-                <img src="/img/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
+                <img src="/assets/logo/Artvault-white.png" alt="Artvault" class="footer-logo-big">
                 <div class="footer-social">
                     <p class="footer-follow">Follow Us</p>
                     <div class="social-icons">
-                        <a href="#"><img src="/img/icon/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="/img/icon/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="/img/icon/tiktok.png" alt="TikTok"></a>
-                        <a href="#"><img src="/img/icon/youtube.png" alt="YouTube"></a>
+                        <a href="#"><img src="/assets/icon/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="/assets/icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="/assets/icon/tiktok.png" alt="TikTok"></a>
+                        <a href="#"><img src="/assets/icon/youtube.png" alt="YouTube"></a>
                     </div>
                 </div>
             </div>

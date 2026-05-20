@@ -77,7 +77,7 @@ Artvault is a specialized web-based gallery platform for school art exhibitions.
 - `app/models/`: Data access layer.
 - `app/resources/`: Source frontend assets (CSS, JS).
 - `app/views/`: PHP template files organized by feature (admin, landing).
-- `public/`: Entry point, compiled assets, and uploaded media (`img/gallery`, `img/banner`, `img/profile`).
+- `public/`: Entry point, compiled assets, and uploaded media (`assets/gallery`, `assets/banner`, `assets/profile`).
 
 ## 8. Development Commands
 - **Tailwind Watch:** `npm run dev`

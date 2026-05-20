@@ -51,7 +51,7 @@ class ArtController {
 
                 if (in_array($fileActualExt, $allowed)) {
                     $newFileName = uniqid('', true) . "." . $fileActualExt;
-                    $fileDestination = __DIR__ . '/../../public/img/gallery/' . $newFileName;
+                    $fileDestination = __DIR__ . '/../../public/assets/gallery/' . $newFileName;
 
                     if (move_uploaded_file($fileTmpName, $fileDestination)) {
                         // Simpan ke Database
@@ -189,11 +189,11 @@ class ArtController {
 
                 if (in_array($fileActualExt, $allowed)) {
                     $newFileName = uniqid('', true) . "." . $fileActualExt;
-                    $fileDestination = __DIR__ . '/../../public/img/gallery/' . $newFileName;
+                    $fileDestination = __DIR__ . '/../../public/assets/gallery/' . $newFileName;
 
                     if (move_uploaded_file($fileTmpName, $fileDestination)) {
                         // Delete old file if exists
-                        $oldFilePath = __DIR__ . '/../../public/img/gallery/' . $art['file_path'];
+                        $oldFilePath = __DIR__ . '/../../public/assets/gallery/' . $art['file_path'];
                         if (file_exists($oldFilePath)) {
                             unlink($oldFilePath);
                         }
@@ -225,7 +225,7 @@ class ArtController {
         }
 
         // Delete File
-        $filePath = __DIR__ . '/../../public/img/gallery/' . $art['file_path'];
+        $filePath = __DIR__ . '/../../public/assets/gallery/' . $art['file_path'];
         if (file_exists($filePath)) {
             unlink($filePath);
         }
