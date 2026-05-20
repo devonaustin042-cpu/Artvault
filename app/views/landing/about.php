@@ -58,7 +58,7 @@
     <!-- WHO WE ARE -->
     <section class="who-we-are-section">
         <div class="who-we-are-image">
-            <img src="/assets/banner/left-about.png" alt="Who We Are">
+            <img src="/assets/banner/about-banner.png" alt="Who We Are">
         </div>
         <div class="who-we-are-content">
             <div class="section-title-container">
@@ -117,74 +117,24 @@
             <hr class="section-underline center-underline">
         </div>
         <div class="showcase-grid">
-            <!-- Handmade -->
+            <?php foreach ($artworks as $art): ?>
             <div class="showcase-card-container">
-                <p class="category-label">Handmade</p>
-                <div class="showcase-card">
+                <p class="category-label"><?= htmlspecialchars($art['category_name'] ?? 'Uncategorized'); ?></p>
+                <a href="/art/<?= $art['id']; ?>" class="showcase-card">
                     <div class="showcase-img-wrapper">
-                        <img src="/assets/gallery/Claymonster.png" alt="Claymonster">
+                        <img src="/assets/gallery/<?= htmlspecialchars($art['file_path']); ?>" alt="<?= htmlspecialchars($art['title']); ?>">
                     </div>
                     <div class="showcase-info">
-                        <h3 class="showcase-title">Claymonster</h3>
-                        <p class="showcase-author">Made by : Chisa Evelyn</p>
+                        <h3 class="showcase-title"><?= htmlspecialchars($art['title']); ?></h3>
+                        <p class="showcase-author">Made by : <?= htmlspecialchars($art['author_name']); ?></p>
                         <div class="showcase-stats">
                             <img src="/assets/icon/like.png" class="like-icon" alt="Likes">
-                            <span class="like-count">25</span>
+                            <span class="like-count"><?= number_format($art['like_count']); ?></span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-            <!-- Digital art -->
-            <div class="showcase-card-container">
-                <p class="category-label">Digital art</p>
-                <div class="showcase-card">
-                    <div class="showcase-img-wrapper">
-                        <img src="/assets/gallery/A-Chill-Doomsday.png" alt="A Chill Doomsday">
-                    </div>
-                    <div class="showcase-info">
-                        <h3 class="showcase-title">A Chill Doomsday</h3>
-                        <p class="showcase-author">Made by : Nicholas Jo</p>
-                        <div class="showcase-stats">
-                            <img src="/assets/icon/like.png" class="like-icon" alt="Likes">
-                            <span class="like-count">324</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Painting art -->
-            <div class="showcase-card-container">
-                <p class="category-label">Painting art</p>
-                <div class="showcase-card">
-                    <div class="showcase-img-wrapper">
-                        <img src="/assets/gallery/Mercusuar.png" alt="Mercusuar">
-                    </div>
-                    <div class="showcase-info">
-                        <h3 class="showcase-title">Mercusuar</h3>
-                        <p class="showcase-author">Made by : Nicholas Jo</p>
-                        <div class="showcase-stats">
-                            <img src="/assets/icon/like.png" class="like-icon" alt="Likes">
-                            <span class="like-count">92</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Hand drawn -->
-            <div class="showcase-card-container">
-                <p class="category-label">Hand drawn</p>
-                <div class="showcase-card">
-                    <div class="showcase-img-wrapper">
-                        <img src="/assets/gallery/Melody-in-Guitar.png" alt="Melody in Guitar">
-                    </div>
-                    <div class="showcase-info">
-                        <h3 class="showcase-title">Melody in Guitar</h3>
-                        <p class="showcase-author">Made by : Jo Halimawan</p>
-                        <div class="showcase-stats">
-                            <img src="/assets/icon/like.png" class="like-icon" alt="Likes">
-                            <span class="like-count">106</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </section>
 
