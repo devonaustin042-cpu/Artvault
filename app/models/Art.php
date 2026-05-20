@@ -1,7 +1,12 @@
 <?php
+namespace App\Models;
+
 require_once __DIR__ . '/../core/Database.php';
 
-class Art_model extends Database {
+use App\Core\Database;
+use PDO;
+
+class Art extends Database {
     
     public function getAllArtworks($categoryId = null) {
         $query = "SELECT artworks.*, users.full_name as author_name, categories.category_name,

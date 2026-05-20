@@ -30,8 +30,8 @@ Artvault/
 │   │   ├── UserController.php
 │   │   └── AdminController.php
 │   ├── models/
-│   │   ├── Art_model.php    # Artworks, categories, likes, comments
-│   │   └── User_model.php   # Users, follows, tags, stats
+│   │   ├── Art.php          # Artworks, categories, likes, comments
+│   │   └── User.php         # Users, follows, tags, stats
 │   ├── resources/
 │   │   ├── css/input.css    # Tailwind source
 │   │   └── js/script.js     # Page loader source
@@ -198,4 +198,4 @@ Every navigation click triggers a full-screen branded overlay (the `artvault-loa
 - `Database.php` has hardcoded credentials. Move these to environment variables or a config file before deploying.
 - The `AdminController` restricts access by checking `$_SESSION['user_role'] === 'admin'` in its constructor — unauthenticated or non-admin requests are immediately redirected to `/login`.
 - Artwork files are stored on disk (`public/assets/gallery/`), not in the database. The database holds only the filename.
-- The gallery supports category filtering via `?category={id}` query parameters, handled entirely in `Art_model::getAllArtworks()`.
+- The gallery supports category filtering via `?category={id}` query parameters, handled entirely in `Art::getAllArtworks()`.

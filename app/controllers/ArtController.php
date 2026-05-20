@@ -1,14 +1,16 @@
 <?php
 namespace App\Controllers;
 
-require_once __DIR__ . '/../models/Art_model.php';
+require_once __DIR__ . '/../models/Art.php';
+
+use App\Models\Art;
 
 class ArtController {
 
     public function gallery()
     {
         $categoryId = $_GET['category'] ?? null;
-        $artModel = new \Art_model();
+        $artModel = new Art();
         $artworks = $artModel->getAllArtworks($categoryId);
         $categories = $artModel->getCategories();
 
@@ -55,7 +57,7 @@ class ArtController {
 
                     if (move_uploaded_file($fileTmpName, $fileDestination)) {
                         // Simpan ke Database
-                        $artModel = new \Art_model();
+                        $artModel = new Art();
                         $data = [
                             'user_id' => $user_id,
                             'category_id' => $category_id,
@@ -84,7 +86,7 @@ class ArtController {
 
     public function detail($id)
     {
-        $artModel = new \Art_model();
+        $artModel = new Art();
         $art = $artModel->getArtworkById($id);
 
         if (!$art) {
@@ -115,7 +117,7 @@ class ArtController {
             $parentId = $_POST['parent_id'] ?? null;
             
             if (!empty(trim($commentText))) {
-                $artModel = new \Art_model();
+                $artModel = new Art();
                 $data = [
                     'artwork_id' => $artworkId,
                     'user_id' => $_SESSION['user_id'],
@@ -139,7 +141,7 @@ class ArtController {
         }
 
         $userId = $_SESSION['user_id'];
-        $artModel = new \Art_model();
+        $artModel = new Art();
         
         $result = $artModel->toggleLike($artworkId, $userId);
         
@@ -163,7 +165,7 @@ class ArtController {
             exit;
         }
 
-        $artModel = new \Art_model();
+        $artModel = new Art();
         $art = $artModel->getArtworkById($id);
 
         // AUTHORIZATION: Only owner or admin can update
@@ -216,7 +218,7 @@ class ArtController {
             exit;
         }
 
-        $artModel = new \Art_model();
+        $artModel = new Art();
         $art = $artModel->getArtworkById($id);
 
         // AUTHORIZATION: Only owner or admin can delete
@@ -243,8 +245,8 @@ class ArtController {
 
     public function about()
     {
-        require_once __DIR__ . '/../models/Art_model.php';
-        $artModel = new \Art_model();
+        require_once __DIR__ . '/../models/Art.php';
+        $artModel = new Art();
         $artworks = array_slice($artModel->getAllArtworks(), 0, 4);
         require_once __DIR__ . '/../views/landing/about.php';
     }

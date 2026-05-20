@@ -13,8 +13,8 @@ Artvault is a specialized web-based gallery platform for school art exhibitions.
 - **Router:** Custom regex-based router supporting dynamic parameters like `{id}`. Located in `app/core/Router.php`.
 - **Database Wrapper:** Base `Database` class in `app/core/Database.php` providing the PDO connection.
 - **Models:**
-    - `Art_model`: Handles artworks, categories, likes, and threaded comments.
-    - `User_model`: Handles registration, authentication, user profiles, stats, and follow system.
+    - `Art`: Handles artworks, categories, likes, and threaded comments.
+    - `User`: Handles registration, authentication, user profiles, stats, and follow system.
 - **Controllers:**
     - `HomeController`: Manages landing pages (Home, About, Contact).
     - `AuthController`: Handles registration, login, and session management.

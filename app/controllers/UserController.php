@@ -1,8 +1,11 @@
 <?php
 namespace App\Controllers;
 
-require_once __DIR__ . '/../models/User_model.php';
-require_once __DIR__ . '/../models/Art_model.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/Art.php';
+
+use App\Models\User;
+use App\Models\Art;
 
 class UserController {
 
@@ -17,8 +20,8 @@ class UserController {
             }
         }
 
-        $userModel = new \User_model();
-        $artModel = new \Art_model();
+        $userModel = new User();
+        $artModel = new Art();
 
         $user = $userModel->getUserById($id);
         if (!$user) {
@@ -54,7 +57,7 @@ class UserController {
             exit;
         }
 
-        $userModel = new \User_model();
+        $userModel = new User();
         $status = $userModel->toggleFollow($followerId, $followingId);
         
         if ($status) {
@@ -87,7 +90,7 @@ class UserController {
                     $fileDestination = __DIR__ . '/../../public/assets/users/' . $newFileName;
 
                     if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                        $userModel = new \User_model();
+                        $userModel = new User();
                         if ($userModel->updateAvatar($_SESSION['user_id'], $newFileName)) {
                             // Update session if we want to use it elsewhere
                             $_SESSION['user_avatar'] = $newFileName;
@@ -122,7 +125,7 @@ class UserController {
                     $fileDestination = __DIR__ . '/../../public/assets/users/' . $newFileName;
 
                     if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                        $userModel = new \User_model();
+                        $userModel = new User();
                         if ($userModel->updateBanner($_SESSION['user_id'], $newFileName)) {
                             $_SESSION['user_banner'] = $newFileName;
                             header('Location: /profile');
@@ -145,9 +148,9 @@ class UserController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newName = $_POST['full_name'] ?? '';
             if (!empty(trim($newName))) {
-                $userModel = new \User_model();
+                $userModel = new User();
                 // We need a specific method to update just the name or use the existing updateUser
-                // Let's check User_model::updateUser
+                // Let's check User::updateUser
                 $user = $userModel->getUserById($_SESSION['user_id']);
                 $data = [
                     'id' => $_SESSION['user_id'],

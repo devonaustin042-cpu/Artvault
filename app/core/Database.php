@@ -1,5 +1,8 @@
 <?php
-// app/core/Database.php
+namespace App\Core;
+
+use PDO;
+use PDOException;
 
 class Database {
     private $host = "localhost";
