@@ -44,8 +44,9 @@ Artvault/
     ├── js/script.js         # Compiled JS
     └── assets/
         ├── gallery/         # Uploaded artwork images
-        ├── profile/         # User avatar uploads
-        └── banner/          # User banner uploads
+        ├── users/           # User avatar and banner uploads
+        ├── icon/            # System icons and default avatars
+        └── logo/            # Branding assets
 ```
 
 ---
@@ -83,7 +84,7 @@ private $db   = "db_gallery_sekolah";
 
 **4. Create upload directories**
 ```bash
-mkdir -p public/assets/gallery public/assets/profile public/assets/banner
+mkdir -p public/assets/gallery public/assets/users
 ```
 
 **5. Install and build Tailwind**
@@ -130,6 +131,9 @@ For Author and Viewer accounts, simply register at `/register` using the appropr
 GET  /gallery            → ArtController::gallery()
 GET  /art/{id}           → ArtController::detail($id)
 POST /art/like/{id}      → ArtController::toggleLike($id)   ← JSON response
+POST /profile/update-avatar → UserController::updateAvatar()
+POST /profile/update-banner → UserController::updateBanner()
+POST /profile/update-name   → UserController::updateName()
 POST /follow/{id}        → UserController::toggleFollow($id) ← JSON response
 GET  /admin              → AdminController::index()
 GET  /profile/{id}       → UserController::profile($id)
@@ -137,13 +141,15 @@ GET  /profile/{id}       → UserController::profile($id)
 
 ### Authentication & Roles
 
-Registration hashes passwords with `password_hash()`. The email address used at signup determines the account role automatically — no manual assignment needed. See [Demo Accounts](#demo-accounts) for ready-to-use credentials covering all three roles.
+Registration hashes passwords with `password_hash()`. The email address used at signup determines the account role automatically. The navbar and profile sections dynamically display the user's current avatar and custom presence.
 
 ### Artwork Management
 
-Authors upload JPG/JPEG/PNG files via `ArtController::uploadArt()`. The controller generates a unique filename with `uniqid()` and moves the file to `public/assets/gallery/`. On edit or delete, the old file is unlinked from disk before the database record is updated.
+Authors upload JPG/JPEG/PNG files via `ArtController::uploadArt()`. The controller generates a unique filename with `uniqid()` and moves the file to `public/assets/gallery/`. The "View other art too! -" section on detail pages is meticulously redesigned to match high-fidelity design specifications.
 
-Only the artwork owner or an admin can edit or delete a piece — enforced in `updateArt()` and `deleteArt()` by comparing `$art['user_id']` against the session.
+### Profile Management
+
+Users can customize their profiles by updating their avatar, banner background, and display name directly from their profile page. These updates use custom backend logic to manage file storage in `public/assets/users/` and maintain session synchronization for a seamless experience.
 
 ### AJAX Interactions
 

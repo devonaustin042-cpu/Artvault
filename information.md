@@ -48,6 +48,9 @@ Artvault is a specialized web-based gallery platform for school art exhibitions.
 | GET | `/login` | AuthController | `login` |
 | POST | `/post-login` | AuthController | `handleLogin` |
 | GET | `/profile` | UserController | `profile` |
+| POST | `/profile/update-avatar` | UserController | `updateAvatar` |
+| POST | `/profile/update-banner` | UserController | `updateBanner` |
+| POST | `/profile/update-name` | UserController | `updateName` |
 | POST | `/follow/{id}` | UserController | `toggleFollow` (AJAX) |
 
 ## 6. Key Features & Business Logic
@@ -59,11 +62,16 @@ Artvault is a specialized web-based gallery platform for school art exhibitions.
 ### Art Management
 - **Upload/Edit:** Authors and Admins can manage artworks. File system cleanup (unlinking old images) is performed on edit/delete.
 - **Filtering:** Gallery supports filtering by category via query parameters (e.g., `/gallery?category=1`).
-- **Recommendations:** Detail pages feature a "View other art too!" section with random suggestions.
+- **Recommendations:** Detail pages feature a redesigned "View other art too! -" section with random suggestions, matching high-fidelity design standards.
+
+### User & Profile Management
+- **Dynamic Profiles:** Users can update their avatar, banner image, and full name directly from their profile page.
+- **Interactive UI:** Settings menu with integrated modals and hidden forms for seamless image updates.
+- **Session Sync:** Profile changes (avatar/name) are immediately reflected in the navbar and throughout the application.
 
 ### Social Interaction
 - **AJAX Likes:** Real-time like/unlike with status synchronization and count updates.
-- **Threaded Comments:** Supports one level of replies with integrated emoji pickers.
+- **Threaded Comments:** Supports one level of replies with integrated emoji pickers and dynamic user avatars.
 - **Follow System:** Users can follow others; stats (followers, following, total likes) are displayed on profiles.
 
 ### Admin Panel
@@ -77,7 +85,9 @@ Artvault is a specialized web-based gallery platform for school art exhibitions.
 - `app/models/`: Data access layer.
 - `app/resources/`: Source frontend assets (CSS, JS).
 - `app/views/`: PHP template files organized by feature (admin, landing).
-- `public/`: Entry point, compiled assets, and uploaded media (`assets/gallery`, `assets/banner`, `assets/profile`).
+- `public/`: Entry point, compiled assets, and uploaded media.
+- `public/assets/users/`: Stores user-uploaded profile and banner images.
+- `public/assets/gallery/`: Stores uploaded artwork images.
 
 ## 8. Development Commands
 - **Tailwind Watch:** `npm run dev`
