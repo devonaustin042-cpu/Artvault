@@ -138,7 +138,7 @@
                             <div class="art-info">
                                 <p class="art-title"><?= $art['title']; ?></p>
                                 <p class="art-author">Made by : <?= $art['author_name']; ?></p>
-                                <div class="art-like">
+                                <div class="art-like" onclick="event.preventDefault(); event.stopPropagation(); toggleLike(<?= $art['id']; ?>, this)">
                                     <img src="/assets/icon/like.png" class="art-like-img">
                                     <span><?= $art['like_count']; ?></span>
                                 </div>
@@ -162,7 +162,7 @@
                             <div class="art-info">
                                 <p class="art-title"><?= $art['title']; ?></p>
                                 <p class="art-author">Made by : <?= $art['author_name']; ?></p>
-                                <div class="art-like liked">
+                                <div class="art-like liked" onclick="event.preventDefault(); event.stopPropagation(); toggleLike(<?= $art['id']; ?>, this)">
                                     <img src="/assets/icon/like.png" class="art-like-img">
                                     <span><?= $art['like_count']; ?></span>
                                 </div>
@@ -191,6 +191,33 @@
     </footer>
 
     <script>
+        async function toggleLike(artworkId, element) {
+            try {
+                const response = await fetch('/art/like/' + artworkId, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    const span = element.querySelector('span');
+                    span.innerText = data.like_count;
+                    
+                    if (data.like_status === 'liked') {
+                        element.classList.add('liked');
+                    } else {
+                        element.classList.remove('liked');
+                    }
+                } else if (data.status === 'error') {
+                    alert(data.message);
+                    if (data.message.includes('login')) {
+                        window.location.href = '/login';
+                    }
+                }
+            } catch (error) {
+                console.error('Error toggling like:', error);
+            }
+        }
+
         function switchTab(tabId) {
             // Update Tab Buttons
             document.querySelectorAll('.tab-item').forEach(btn => {
