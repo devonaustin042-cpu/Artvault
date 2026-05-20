@@ -65,4 +65,102 @@ class UserController {
         }
         exit;
     }
+
+    public function updateAvatar()
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === 0) {
+                $file = $_FILES['avatar'];
+                $fileName = $file['name'];
+                $fileTmpName = $file['tmp_name'];
+                $fileExt = explode('.', $fileName);
+                $fileActualExt = strtolower(end($fileExt));
+                $allowed = ['jpg', 'jpeg', 'png'];
+
+                if (in_array($fileActualExt, $allowed)) {
+                    $newFileName = "avatar_" . $_SESSION['user_id'] . "_" . uniqid() . "." . $fileActualExt;
+                    $fileDestination = __DIR__ . '/../../public/assets/users/' . $newFileName;
+
+                    if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                        $userModel = new \User_model();
+                        if ($userModel->updateAvatar($_SESSION['user_id'], $newFileName)) {
+                            // Update session if we want to use it elsewhere
+                            $_SESSION['user_avatar'] = $newFileName;
+                            header('Location: /profile');
+                            exit;
+                        }
+                    }
+                }
+            }
+        }
+        header('Location: /profile');
+    }
+
+    public function updateBanner()
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_FILES['banner']) && $_FILES['banner']['error'] === 0) {
+                $file = $_FILES['banner'];
+                $fileName = $file['name'];
+                $fileTmpName = $file['tmp_name'];
+                $fileExt = explode('.', $fileName);
+                $fileActualExt = strtolower(end($fileExt));
+                $allowed = ['jpg', 'jpeg', 'png'];
+
+                if (in_array($fileActualExt, $allowed)) {
+                    $newFileName = "banner_" . $_SESSION['user_id'] . "_" . uniqid() . "." . $fileActualExt;
+                    $fileDestination = __DIR__ . '/../../public/assets/users/' . $newFileName;
+
+                    if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                        $userModel = new \User_model();
+                        if ($userModel->updateBanner($_SESSION['user_id'], $newFileName)) {
+                            $_SESSION['user_banner'] = $newFileName;
+                            header('Location: /profile');
+                            exit;
+                        }
+                    }
+                }
+            }
+        }
+        header('Location: /profile');
+    }
+
+    public function updateName()
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $newName = $_POST['full_name'] ?? '';
+            if (!empty(trim($newName))) {
+                $userModel = new \User_model();
+                // We need a specific method to update just the name or use the existing updateUser
+                // Let's check User_model::updateUser
+                $user = $userModel->getUserById($_SESSION['user_id']);
+                $data = [
+                    'id' => $_SESSION['user_id'],
+                    'full_name' => $newName,
+                    'email' => $user['email'],
+                    'role' => $user['role'],
+                    'student_id' => $user['student_id']
+                ];
+                if ($userModel->updateUser($data)) {
+                    $_SESSION['user_name'] = $newName;
+                }
+            }
+        }
+        header('Location: /profile');
+    }
 }

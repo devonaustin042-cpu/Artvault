@@ -15,7 +15,7 @@
         <!-- HEADER -->
         <div class="profile-header">
             <div class="profile-banner-wrap">
-                <img src="/assets/banner/<?= $user['banner_path']; ?>" alt="Banner" class="profile-banner">
+                <img src="/assets/users/<?= $user['banner_path']; ?>" alt="Banner" class="profile-banner">
             </div>
             
             <a href="javascript:history.back()" class="btn-back-profile">
@@ -40,13 +40,24 @@
                         </div>
                         <ul class="settings-list">
                             <li><a href="javascript:void(0)" onclick="toggleLogoutConfirm()" class="settings-item exit"><img src="/assets/icon/sampah.png" style="width:20px; filter: invert(1);"> Exit Account</a></li>
-                            <li><a href="#" class="settings-item">Edit Profile</a></li>
-                            <li><a href="#" class="settings-item">Edit Background</a></li>
+                            <li><a href="javascript:void(0)" onclick="document.getElementById('avatarInput').click()" class="settings-item">Edit Profile</a></li>
+                            <li><a href="javascript:void(0)" onclick="document.getElementById('bannerInput').click()" class="settings-item">Edit Background</a></li>
                             <li><a href="#" class="settings-item">Change Password</a></li>
-                            <li><a href="#" class="settings-item">Change Name</a></li>
+                            <li><a href="javascript:void(0)" onclick="changeNamePrompt()" class="settings-item">Change Name</a></li>
                         </ul>
                         </div>
                         </div>
+
+                        <!-- HIDDEN FORMS FOR UPLOAD -->
+                        <form id="avatarForm" action="/profile/update-avatar" method="POST" enctype="multipart/form-data" style="display: none;">
+                            <input type="file" name="avatar" id="avatarInput" accept="image/*" onchange="document.getElementById('avatarForm').submit()">
+                        </form>
+                        <form id="bannerForm" action="/profile/update-banner" method="POST" enctype="multipart/form-data" style="display: none;">
+                            <input type="file" name="banner" id="bannerInput" accept="image/*" onchange="document.getElementById('bannerForm').submit()">
+                        </form>
+                        <form id="nameForm" action="/profile/update-name" method="POST" style="display: none;">
+                            <input type="hidden" name="full_name" id="nameInput">
+                        </form>
 
                         <!-- LOGOUT CONFIRM POPUP -->
                         <div id="logoutConfirmPopup" class="settings-popup-overlay">
@@ -67,8 +78,13 @@
                         <?php endif; ?>
 
             <div class="profile-info-card">
-                <div class="profile-avatar-wrap">
-                    <img src="/assets/icon/<?= $user['avatar_path']; ?>" alt="Avatar" class="profile-avatar">
+                <div class="profile-avatar-wrap" <?= (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user['id']) ? 'onclick="document.getElementById(\'avatarInput\').click()" style="cursor:pointer;"' : '' ?>>
+                    <img src="/assets/users/<?= $user['avatar_path']; ?>" alt="Avatar" class="profile-avatar">
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user['id']): ?>
+                        <div class="avatar-edit-overlay">
+                            <img src="/assets/icon/paint.png" alt="Edit" style="width: 20px; filter: brightness(0) invert(1);">
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="profile-details">
                     <div class="profile-name-row">
@@ -280,6 +296,15 @@
         function toggleLogoutConfirm() {
             const popup = document.getElementById('logoutConfirmPopup');
             popup.classList.toggle('active');
+        }
+
+        function changeNamePrompt() {
+            const currentName = "<?= $user['full_name']; ?>";
+            const newName = prompt("Enter your new name:", currentName);
+            if (newName !== null && newName.trim() !== "" && newName !== currentName) {
+                document.getElementById('nameInput').value = newName;
+                document.getElementById('nameForm').submit();
+            }
         }
         </script>
     <script src="/js/script.js"></script>

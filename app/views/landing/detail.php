@@ -32,7 +32,11 @@
 
         <div class="nav-actions">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/profile"><img src="/assets/icon/user.png" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%;"></a>
+                <?php 
+                    $avatar = $_SESSION['user_avatar'] ?? 'user.png';
+                    $avatarPath = (strpos($avatar, 'avatar_') === 0) ? '/assets/users/' . $avatar : '/assets/icon/' . $avatar;
+                ?>
+                <a href="/profile"><img src="<?= $avatarPath; ?>" alt="User Icon" class="user-icon" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;"></a>
             <?php else: ?>
                 <button class="btn btn-login" onclick="location.href='/login'">Log In</button>
                 <button class="btn btn-signup" onclick="location.href='/register'">Sign Up</button>
@@ -156,7 +160,11 @@
             <?php if (isset($_SESSION['user_id'])): ?>
                 <form action="/art/comment/<?= $art['id']; ?>" method="POST" class="comment-form" id="mainCommentForm">
                     <div class="comment-input-wrap">
-                        <img src="/assets/icon/user.png" alt="User" class="comment-user-avatar">
+                        <?php 
+                            $uAvatar = $_SESSION['user_avatar'] ?? 'user.png';
+                            $uAvatarPath = (strpos($uAvatar, 'avatar_') === 0) ? '/assets/users/' . $uAvatar : '/assets/icon/' . $uAvatar;
+                        ?>
+                        <img src="<?= $uAvatarPath; ?>" alt="User" class="comment-user-avatar" style="object-fit: cover;">
                         <div class="textarea-container">
                             <textarea name="comment_text" id="mainCommentText" placeholder="Add a comment..." required></textarea>
                             <div class="emoji-picker">
@@ -211,7 +219,11 @@
                 ?>
                     <div class="<?= $isReply ? 'reply-thread' : 'comment-group'; ?>">
                         <div class="comment-item <?= $isReply ? 'reply-item' : ''; ?>" id="comment-<?= $commentId; ?>">
-                            <img src="/assets/icon/user.png" alt="User" class="comment-avatar <?= $isReply ? 'sm' : ''; ?>">
+                            <?php 
+                                $cAvatar = $comment['avatar_path'] ?? 'user.png';
+                                $cAvatarPath = (strpos($cAvatar, 'avatar_') === 0) ? '/assets/users/' . $cAvatar : '/assets/icon/' . $cAvatar;
+                            ?>
+                            <img src="<?= $cAvatarPath; ?>" alt="User" class="comment-avatar <?= $isReply ? 'sm' : ''; ?>" style="object-fit: cover;">
                             <div class="comment-content">
                                 <div class="comment-header">
                                     <span class="comment-author"><?= $userName; ?></span>

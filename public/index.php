@@ -58,6 +58,9 @@ $router->add('GET', '/logout', 'AuthController', 'logout');
 // User Routes
 $router->add('GET', '/profile', 'UserController', 'profile');
 $router->add('GET', '/profile/{id}', 'UserController', 'profile');
+$router->add('POST', '/profile/update-avatar', 'UserController', 'updateAvatar');
+$router->add('POST', '/profile/update-banner', 'UserController', 'updateBanner');
+$router->add('POST', '/profile/update-name', 'UserController', 'updateName');
 $router->add('POST', '/follow/{id}', 'UserController', 'toggleFollow');
 
 $router->run();

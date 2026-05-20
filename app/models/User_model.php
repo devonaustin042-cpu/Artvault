@@ -80,6 +80,20 @@ class User_model extends Database {
         return $stmt->execute();
     }
 
+    public function updateAvatar($userId, $filePath) {
+        $stmt = $this->dbh->prepare("UPDATE users SET avatar_path = :avatar_path WHERE id = :id");
+        $stmt->bindParam(':avatar_path', $filePath);
+        $stmt->bindParam(':id', $userId);
+        return $stmt->execute();
+    }
+
+    public function updateBanner($userId, $filePath) {
+        $stmt = $this->dbh->prepare("UPDATE users SET banner_path = :banner_path WHERE id = :id");
+        $stmt->bindParam(':banner_path', $filePath);
+        $stmt->bindParam(':id', $userId);
+        return $stmt->execute();
+    }
+
     public function getUserTags($userId) {
         $query = "SELECT * FROM user_tags WHERE user_id = :user_id";
         $stmt = $this->dbh->prepare($query);
