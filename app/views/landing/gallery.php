@@ -98,7 +98,7 @@
                 <div class="add-work-overlay" id="addWorkOverlay">
                     <div class="add-work-popup">
                         <div class="add-work-header">
-                            <img src="/assets/logo/Artvault-white.png" alt="Artvault Logo" class="add-work-logo">
+                            <img src="/assets/logo/Artvault.png" alt="Artvault Logo" class="add-work-logo">
                             <div class="header-user-icon">
                                 <img src="/assets/icon/user.png" alt="User">
                             </div>
