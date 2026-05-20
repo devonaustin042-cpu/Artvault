@@ -122,4 +122,25 @@ class User_model extends Database {
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
     }
+
+    public function toggleFollow($followerId, $followingId) {
+        $isFollowing = $this->isFollowing($followerId, $followingId);
+
+        if ($isFollowing) {
+            $query = "DELETE FROM follows WHERE follower_id = :f_id AND following_id = :fg_id";
+            $status = 'unfollowed';
+        } else {
+            $query = "INSERT INTO follows (follower_id, following_id) VALUES (:f_id, :fg_id)";
+            $status = 'followed';
+        }
+
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':f_id', $followerId);
+        $stmt->bindParam(':fg_id', $followingId);
+        
+        if ($stmt->execute()) {
+            return $status;
+        }
+        return false;
+    }
 }

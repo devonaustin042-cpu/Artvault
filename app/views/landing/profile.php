@@ -272,10 +272,6 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        function toggleFollow(userId) {
-            // Future implementation for following
-        }
-
         function toggleSettingsPopup() {
             const popup = document.getElementById('settingsPopup');
             popup.classList.toggle('active');

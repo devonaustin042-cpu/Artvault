@@ -55,22 +55,9 @@ class UserController {
         }
 
         $userModel = new \User_model();
-        $isFollowing = $userModel->isFollowing($followerId, $followingId);
-
-        $db = new \Database(); // Need direct access for toggle
-        if ($isFollowing) {
-            $query = "DELETE FROM follows WHERE follower_id = :f_id AND following_id = :fg_id";
-            $status = 'unfollowed';
-        } else {
-            $query = "INSERT INTO follows (follower_id, following_id) VALUES (:f_id, :fg_id)";
-            $status = 'followed';
-        }
-
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(':f_id', $followerId);
-        $stmt->bindParam(':fg_id', $followingId);
+        $status = $userModel->toggleFollow($followerId, $followingId);
         
-        if ($stmt->execute()) {
+        if ($status) {
             $stats = $userModel->getFollowStats($followingId);
             echo json_encode(['status' => 'success', 'follow_status' => $status, 'follower_count' => $stats['followers']]);
         } else {
