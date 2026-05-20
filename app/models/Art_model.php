@@ -4,10 +4,11 @@ require_once __DIR__ . '/../core/Database.php';
 class Art_model extends Database {
     
     public function getAllArtworks($categoryId = null) {
-        $query = "SELECT artworks.*, users.full_name as author_name,
+        $query = "SELECT artworks.*, users.full_name as author_name, categories.category_name,
                   (SELECT COUNT(*) FROM likes WHERE artwork_id = artworks.id) as like_count
                   FROM artworks 
-                  LEFT JOIN users ON artworks.user_id = users.id";
+                  LEFT JOIN users ON artworks.user_id = users.id
+                  LEFT JOIN categories ON artworks.category_id = categories.id";
         
         if ($categoryId) {
             $query .= " WHERE artworks.category_id = :category_id";

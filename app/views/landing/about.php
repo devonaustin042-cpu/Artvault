@@ -147,77 +147,24 @@
         <!-- Grid 4 Karya -->
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
 
-            <!-- Kartu 1 -->
+            <?php foreach ($artworks as $art): ?>
             <div>
-                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Handmade</p>
-                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
+                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;"><?= htmlspecialchars($art['category_name'] ?? 'Uncategorized'); ?></p>
+                <a href="/art/<?= $art['id']; ?>" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb; transition: border-color 0.3s ease;">
                     <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/assets/gallery/claymonster.png" alt="Claymonster" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="/assets/gallery/<?= htmlspecialchars($art['file_path']); ?>" alt="<?= htmlspecialchars($art['title']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 12px;">
-                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Claymonster</p>
-                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Chisa Evelyn</p>
+                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;"><?= htmlspecialchars($art['title']); ?></p>
+                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : <?= htmlspecialchars($art['author_name']); ?></p>
                         <div style="display: flex; align-items: center; gap: 6px;">
                             <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
-                            <span style="font-size: 0.85rem; color: #333;">25</span>
+                            <span style="font-size: 0.85rem; color: #333;"><?= number_format($art['like_count']); ?></span>
                         </div>
                     </div>
                 </a>
             </div>
-
-            <!-- Kartu 2 -->
-            <div>
-                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Digital art</p>
-                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
-                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/assets/gallery/A-Chill-Doomsday.png" alt="A Chill Doomsday" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div style="padding: 12px;">
-                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">A Chill Doomsday</p>
-                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Nicholas Jo</p>
-                        <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
-                            <span style="font-size: 0.85rem; color: #333;">324</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Kartu 3 -->
-            <div>
-                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Painting art</p>
-                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #e5e7eb;">
-                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/assets/gallery/Mercusuar.png" alt="Mercusuar" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div style="padding: 12px;">
-                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Mercusuar</p>
-                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Nicholas Jo</p>
-                        <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
-                            <span style="font-size: 0.85rem; color: #333;">92</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Kartu 4 -->
-            <div>
-                <p style="text-align: center; font-size: 0.9rem; color: #444; margin-bottom: 8px; font-weight: 700;">Hand drawn</p>
-                <a href="#" style="text-decoration: none; display: block; background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #1F3C88;">
-                    <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                        <img src="/assets/gallery/Melody-in-Guitar.png" alt="Melody in Guitar" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div style="padding: 12px;">
-                        <p style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0 0 4px 0;">Melody in Guitar</p>
-                        <p style="font-size: 0.85rem; color: #555; margin: 0 0 10px 0;">Made by : Jo Halimawan</p>
-                        <div style="display: flex; align-items: center; gap: 6px;">
-                            <img src="/assets/icon/like.png" style="width: 18px; height: 18px;">
-                            <span style="font-size: 0.85rem; color: #333;">106</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <?php endforeach; ?>
 
         </div>
 
