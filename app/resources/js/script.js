@@ -221,7 +221,7 @@
         if (button && button.getAttribute('onclick')?.includes('location.href')) {
             showLoader();
         }
-    }, true);
+    }); // Changed from capturing (true) to bubbling (default/false)
 
     document.addEventListener('submit', (event) => {
         const form = event.target;

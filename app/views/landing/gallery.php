@@ -74,19 +74,19 @@
 
         <div class="gallery-grid">
             <?php foreach ($artworks as $row): ?>
-            <a href="/art/<?= $row['id']; ?>" class="art-card">
-                <div class="art-img-container">
+            <div class="art-card">
+                <a href="/art/<?= $row['id']; ?>" class="art-img-container">
                     <img src="/assets/gallery/<?= $row['file_path']; ?>" alt="<?= $row['title']; ?>">
-                </div>
+                </a>
                 <div class="art-info">
-                    <p class="art-title"><?= $row['title']; ?></p>
+                    <a href="/art/<?= $row['id']; ?>" class="art-title"><?= $row['title']; ?></a>
                     <p class="art-author">Made by : <?= $row['author_name']; ?></p>
-                    <div class="art-like <?= in_array($row['id'], $likedArtIds) ? 'liked' : '' ?>" onclick="event.preventDefault(); toggleLike(<?= $row['id']; ?>, this)">
+                    <div class="art-like <?= in_array($row['id'], $likedArtIds) ? 'liked' : '' ?>" onclick="toggleLike(<?= $row['id']; ?>, this)">
                         <img src="/assets/icon/like.png" class="art-like-img">
                         <span><?= $row['like_count']; ?></span>
                     </div>
                 </div>
-            </a>
+            </div>
             <?php endforeach; ?>
         </div>
 
