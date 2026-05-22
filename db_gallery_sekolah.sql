@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb3
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 15, 2026 at 03:45 AM
--- Server version: 8.0.45-0ubuntu0.24.04.1
--- PHP Version: 8.3.6
+-- Host: localhost
+-- Generation Time: May 22, 2026 at 03:34 AM
+-- Server version: 12.2.2-MariaDB
+-- PHP Version: 8.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `artworks` (
-  `id` int NOT NULL,
-  `user_id` int DEFAULT NULL,
-  `category_id` int DEFAULT NULL,
-  `title` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `title` varchar(150) NOT NULL,
+  `description` text DEFAULT NULL,
   `file_path` varchar(255) NOT NULL,
-  `upload_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `upload_time` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -56,7 +56,7 @@ INSERT INTO `artworks` (`id`, `user_id`, `category_id`, `title`, `description`, 
 (20, 32, 4, 'Melody in Guitar', 'Expressive sketch of a person with a guitar.', 'Melody-in-Guitar.png', '2026-05-12 01:29:07'),
 (21, 44, 6, 'The Samurai  Wuthering Waves', 'The Sky is amazing but the sigma will be the one who being chosenThe Sky is amazing but the sigma will be the one who being chosenThe Sky is amazing but the sigma will be the one who being chosenThe Sky is amazing but the sigma will be the one who being chosenThe Sky is amazing but the sigma will be the one who being chosenThe Sky is amazing but the sigma will be the one who being chosenThe Sky is amazing but the sigma will be the one who being chosen', '6a05e011388191.45144687.jpg', '2026-05-14 14:45:37'),
 (22, 44, 5, 'Amazing, ini yang papa cari', 'dawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawdadawdawdawdadawdawdawdawda', '6a05e147412820.32681982.png', '2026-05-14 14:50:47'),
-(24, 45, 6, 'Niggers or blacky', '1231231321321', '6a0682bbe7b3b1.44495735.jpg', '2026-05-15 02:19:39'),
+(24, 45, 6, 'Guts', '1231231321321', '6a0682bbe7b3b1.44495735.jpg', '2026-05-15 02:19:39'),
 (25, 33, 1, 'The Man Behind The Scene', 'The Man Behind The Scene - Especially telling about nothing The Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingThe Man Behind The Scene - Especially telling about nothingv', '6a06847b3a6223.79369451.jpg', '2026-05-15 02:27:07'),
 (26, 33, 5, 'Amazing Sky', 'Amazing Sky ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... ......... .........v', '6a0685b6938ff0.12633859.jpg', '2026-05-15 02:32:22');
 
@@ -67,8 +67,8 @@ INSERT INTO `artworks` (`id`, `user_id`, `category_id`, `title`, `description`, 
 --
 
 CREATE TABLE `categories` (
-  `id` int NOT NULL,
-  `category_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `category_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -90,12 +90,12 @@ INSERT INTO `categories` (`id`, `category_name`) VALUES
 --
 
 CREATE TABLE `comments` (
-  `id` int NOT NULL,
-  `artwork_id` int NOT NULL,
-  `user_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `artwork_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `comment_text` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `parent_id` int DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `parent_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -113,7 +113,13 @@ INSERT INTO `comments` (`id`, `artwork_id`, `user_id`, `comment_text`, `created_
 (12, 26, 33, '❤️❤️❤️❤️', '2026-05-15 02:32:29', NULL),
 (13, 26, 33, '😍😍😍', '2026-05-15 02:32:34', 12),
 (15, 26, 7, '😀😀😀😀', '2026-05-15 03:05:23', 12),
-(16, 26, 7, 'cool', '2026-05-15 03:16:40', 12);
+(16, 26, 7, 'cool', '2026-05-15 03:16:40', 12),
+(17, 25, 44, '😍😍😍', '2026-05-20 05:39:22', NULL),
+(18, 25, 44, '😍😍', '2026-05-20 05:39:30', 17),
+(19, 18, 44, '😀😀', '2026-05-20 06:06:15', NULL),
+(20, 18, 44, '😀😀', '2026-05-20 06:06:19', 19),
+(21, 25, 44, '😀😀', '2026-05-20 06:27:59', 18),
+(22, 13, 44, '❤️', '2026-05-20 06:33:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -122,11 +128,20 @@ INSERT INTO `comments` (`id`, `artwork_id`, `user_id`, `comment_text`, `created_
 --
 
 CREATE TABLE `follows` (
-  `id` int NOT NULL,
-  `follower_id` int NOT NULL,
-  `following_id` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `follower_id` int(11) NOT NULL,
+  `following_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `follows`
+--
+
+INSERT INTO `follows` (`id`, `follower_id`, `following_id`, `created_at`) VALUES
+(6, 44, 22, '2026-05-20 06:17:51'),
+(7, 44, 25, '2026-05-20 06:28:49'),
+(8, 44, 33, '2026-05-20 08:25:20');
 
 -- --------------------------------------------------------
 
@@ -135,10 +150,10 @@ CREATE TABLE `follows` (
 --
 
 CREATE TABLE `likes` (
-  `id` int NOT NULL,
-  `artwork_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `artwork_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -146,17 +161,10 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`id`, `artwork_id`, `user_id`, `created_at`) VALUES
-(4, 22, 44, '2026-05-14 15:40:04'),
 (5, 21, 44, '2026-05-14 15:40:05'),
-(6, 9, 44, '2026-05-14 15:40:06'),
-(7, 13, 44, '2026-05-14 15:40:07'),
 (8, 12, 44, '2026-05-14 15:40:08'),
-(9, 11, 44, '2026-05-14 15:40:09'),
-(10, 10, 44, '2026-05-14 15:40:10'),
 (11, 20, 44, '2026-05-14 15:40:33'),
-(12, 19, 44, '2026-05-14 15:40:34'),
 (13, 18, 44, '2026-05-14 15:40:35'),
-(14, 14, 44, '2026-05-14 15:40:38'),
 (15, 22, 45, '2026-05-15 02:15:40'),
 (16, 21, 45, '2026-05-15 02:15:44'),
 (17, 9, 45, '2026-05-15 02:16:44'),
@@ -179,7 +187,12 @@ INSERT INTO `likes` (`id`, `artwork_id`, `user_id`, `created_at`) VALUES
 (40, 26, 33, '2026-05-15 02:32:25'),
 (41, 25, 33, '2026-05-15 02:56:13'),
 (42, 26, 7, '2026-05-15 03:18:48'),
-(43, 25, 44, '2026-05-15 03:23:31');
+(44, 15, 44, '2026-05-20 05:26:43'),
+(46, 10, 44, '2026-05-20 05:26:51'),
+(68, 11, 44, '2026-05-20 05:45:32'),
+(70, 26, 44, '2026-05-20 05:48:38'),
+(73, 24, 44, '2026-05-20 05:48:45'),
+(84, 19, 44, '2026-05-20 06:37:11');
 
 -- --------------------------------------------------------
 
@@ -188,12 +201,12 @@ INSERT INTO `likes` (`id`, `artwork_id`, `user_id`, `created_at`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `full_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('viewer','author','admin') DEFAULT 'viewer',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `banner_path` varchar(255) DEFAULT 'background.png',
   `avatar_path` varchar(255) DEFAULT 'user.png',
   `student_id` varchar(20) DEFAULT '123456789'
@@ -233,10 +246,10 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`, `created_at
 (30, 'Felicia Chiao', 'felicia@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07', 'background.png', 'user.png', '80000027'),
 (31, 'Nicholas Jo', 'nicholas@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07', 'background.png', 'user.png', '80000028'),
 (32, 'Jo Halimawan', 'jo@ski.sch.id', '$2y$10$T2Va3ltk4qAEtCFafU0H2.JyZmpSXeUEu3wfiPdWdB4XEjyw.Rl.e', 'author', '2026-05-12 01:29:07', 'background.png', 'user.png', '80000029'),
-(33, 'Flazened Admin', 'flazened@ski.sch.id', '$2y$10$3b.deZ8aho5giYhKRIe0SOIrf.z9yPvSiwUKxAL83ry49EL9lzsri', 'admin', '2026-05-12 02:36:58', 'background.png', 'user.png', '80000030'),
+(33, 'Flazened Admin', 'flazened@ski.sch.id', '$2y$10$3b.deZ8aho5giYhKRIe0SOIrf.z9yPvSiwUKxAL83ry49EL9lzsri', 'admin', '2026-05-12 02:36:58', 'background.png', 'avatar_33_6a0d584ca9048.png', '80000030'),
 (35, 'System Admin', 'admin@ski.sch.id', '$2y0$Z4J68ixrI6IDJuGIJW4AWu7iBM9LCH3sCSS/BJnx4UU0t6qRlOS06', 'admin', '2026-05-12 02:49:00', 'background.png', 'user.png', '80000031'),
 (38, 'siapa', 'abc@gmail.com', '$2y$10$D0ykgc1oo8TaAU09Bnzhker/rRJrs3Zw5dAvIdyLfrx48NQrqBHVS', 'viewer', '2026-05-12 02:53:54', 'background.png', 'user.png', '80000032'),
-(44, 'Michael Sigma', 'abc@ski.sch.id', '$2y$10$v8.XkawEt1mdMhhHy7G7VOpwcKHSZx0zrTiWiMwoRirbOdbzts.eC', 'author', '2026-05-14 14:41:37', 'background.png', 'user.png', '80000033'),
+(44, 'Michael Sigma', 'abc@ski.sch.id', '$2y$10$v8.XkawEt1mdMhhHy7G7VOpwcKHSZx0zrTiWiMwoRirbOdbzts.eC', 'author', '2026-05-14 14:41:37', 'banner_44_6a0d700dcbcd5.png', 'avatar_44_6a0d6ffd74620.png', '80000033'),
 (45, 'Michael Sigma', 'aku@ski.sch.id', '$2y$10$a.uNXDxUYBsUKYuK84yO5uFbeqTKcxxh/2T3witFKN62UEX.7ilzC', 'author', '2026-05-15 02:15:11', 'background.png', 'user.png', '123456789');
 
 -- --------------------------------------------------------
@@ -246,8 +259,8 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`, `created_at
 --
 
 CREATE TABLE `user_tags` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `tag_name` varchar(50) NOT NULL,
   `tag_color` varchar(20) DEFAULT '#f4c430',
   `tag_icon` varchar(50) DEFAULT 'paint.png'
@@ -318,43 +331,43 @@ ALTER TABLE `user_tags`
 -- AUTO_INCREMENT for table `artworks`
 --
 ALTER TABLE `artworks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `follows`
 --
 ALTER TABLE `follows`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `user_tags`
 --
 ALTER TABLE `user_tags`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
